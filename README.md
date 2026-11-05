@@ -68,7 +68,7 @@ O app usa o escopo completo do Drive para você poder escolher qualquer pasta. N
 
 - PS2 (core Play!) ainda é exigente no Android: nem todo jogo roda bem.
 - Nintendo DS: sem toque na tela inferior nesta versão.
-- Arquivos `.7z` não são suportados (use `.zip` ou o arquivo direto).
+- Compactados aceitos: .zip, .7z, .rar (RAR4), .tar, .gz, .bz2, .xz. RAR5 ainda não.
 - Jogos em vários arquivos (`.cue/.bin`, `.gdi`, `.m3u`) precisam ser adicionados por **Adicionar pasta**.
 - GameCube/Wii estão fora do escopo desta versão.
 
