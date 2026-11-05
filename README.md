@@ -12,11 +12,13 @@ Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Ma
 
 Os emuladores (cores libretro) vão dentro do APK.
 
-**Capas automáticas:** ao adicionar jogos, o app busca a capa no acervo aberto [libretro-thumbnails](https://github.com/libretro-thumbnails) (pode desligar em Ajustes).
+**Capas para todos os jogos:** o app busca a capa no acervo aberto [libretro-thumbnails](https://github.com/libretro-thumbnails) e, se não achar, na Wikipédia. Se ainda assim não existir capa (hacks, jogos raros), ele gera uma capa com o nome do jogo e continua procurando a oficial de tempos em tempos. Segure o jogo > *Trocar capa* para usar uma imagem sua.
+
+**Versões do mesmo jogo:** regiões, revisões e traduções do mesmo jogo aparecem como um só cartão; ao tocar, você escolhe a versão.
 
 **Hacks e traduções:** segure um jogo na biblioteca > *Hacks e traduções*. Aceita patches .ips, .ups e .bps (soltos ou dentro de .zip/.7z/.rar), por arquivo ou por link. O jogo original nunca é alterado. Em **Ajustes > Sistemas neste aparelho** o app diz, com honestidade, o que roda bem, o que pode engasgar e o que não é suportado no seu celular.
 
-**Controles do seu jeito:** em *Ajustes > Controles* escolha joystick ou tela, mapeie cada botão do controle (um por um ou todos em sequência) e, no jogo, use *Menu > Controles > Editar botões na tela* para arrastar e redimensionar os botões (salvo separado para retrato e paisagem).
+**Controles do seu jeito:** em *Ajustes > Controles* escolha joystick ou tela, mapeie cada botão do controle (um por um ou todos em sequência) e, no jogo, use *Menu > Controles* para mapear o joystick conectado sem sair da partida ou *Editar botões na tela* para arrastar e redimensionar os botões (salvo separado para retrato e paisagem).
 
 **Coleção:** o diário dos seus jogos — status (jogando, zerado, platinado, abandonado), nota de 0,5 a 5 estrelas, resenha, horas jogadas contadas automaticamente e um cartão para compartilhar. Com a sua *Web API Key* do RetroAchievements, aparecem as platinas e o ranking com quem você segue.
 
@@ -65,17 +67,11 @@ Guarde o `cartucho.jks` em lugar seguro. Sem ele não é possível publicar atua
 
 ## Google Drive (opcional)
 
-O login Google só funciona depois que o app é registrado no Google Cloud com a impressão digital (SHA-1) da sua chave:
+**Ajustes > Nuvem > Backup no Google Drive**: escolha a conta e pronto. O backup liga na hora e os saves vão para *Meu Drive / Cartucho*.
 
-1. Acesse console.cloud.google.com e crie um projeto (ex.: "Cartucho").
-2. **APIs e serviços > Biblioteca**: ative a **Google Drive API**.
-3. **Tela de consentimento OAuth**: tipo *Externo*, status *Em teste*, e adicione seu e-mail em **Usuários de teste**.
-4. **Credenciais > Criar credenciais > ID do cliente OAuth > Android**:
-   - Nome do pacote: `app.cartucho`
-   - SHA-1: o valor que está no arquivo `SEGREDOS-DO-CARTUCHO.txt`
-5. Pronto. No app: **Ajustes > Nuvem**, entre com a conta Google e escolha a pasta.
+O app usa o escopo `drive.file`: ele só enxerga as pastas e arquivos que ele mesmo criou no seu Drive.
 
-O app usa o escopo completo do Drive para você poder escolher qualquer pasta. No modo *Em teste* isso vale só para os usuários de teste que você adicionar (até 100), sem precisar de verificação do Google.
+Para quem compila a própria versão: o login Google exige um ID do cliente OAuth do tipo **Android** no Google Cloud (pacote `app.cartucho` + SHA-1 da sua chave de assinatura) e a **Google Drive API** ativada no mesmo projeto.
 
 ## Privacidade e segurança
 
