@@ -8,7 +8,7 @@ Emulador minimalista para **Android e Windows**, do Atari 2600 ao PlayStation 2.
 
 ## Sistemas
 
-Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Master System · Game Gear · Mega Drive · Sega CD · 32X · PC Engine / CD · Neo Geo Pocket · WonderSwan · Arcade (FinalBurn Neo) · Nintendo 64 · Nintendo DS · PlayStation · PSP · Saturn · Dreamcast · PlayStation 2
+Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Master System · Game Gear · Mega Drive · Sega CD · 32X · PC Engine / CD · Neo Geo Pocket · WonderSwan · Arcade (FinalBurn Neo) · Nintendo 64 · Nintendo DS · Nintendo 3DS (novidade, experimental) · PlayStation · PSP · Saturn · Dreamcast · PlayStation 2
 
 Os emuladores (cores libretro) vão dentro do APK.
 
@@ -87,7 +87,8 @@ O app usa o escopo completo do Drive para você poder escolher qualquer pasta. N
 ## Limitações conhecidas
 
 - PS2 (core Play!) ainda é exigente no Android: nem todo jogo roda bem.
-- Nintendo DS: sem toque na tela inferior nesta versão.
+- Nintendo DS e 3DS: em pé, as duas telas ficam em cima e os controles embaixo; toque com o dedo na tela de baixo (no PC, clique com o mouse).
+- Nintendo 3DS: exige celular 64-bit potente; os jogos precisam estar descriptografados (.3ds/.cci/.cxi/.3dsx). Não roda em celulares 32-bit.
 - Compactados aceitos: .zip, .7z, .rar (RAR4), .tar, .gz, .bz2, .xz. RAR5 ainda não.
 - Jogos em vários arquivos (`.cue/.bin`, `.gdi`, `.m3u`) precisam ser adicionados por **Adicionar pasta**.
 - GameCube/Wii estão fora do escopo desta versão.
