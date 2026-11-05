@@ -1,6 +1,8 @@
 # Cartucho
 
-Emulador minimalista para Android, do Atari 2600 ao PlayStation 2. Joga 100% offline. A internet só é usada para capas (pode desligar), hacks que você baixar, **RetroAchievements** e **backup de saves no Google Drive**.
+<img src="cartucho.png" width="128" alt="Ícone do Cartucho">
+
+Emulador minimalista para **Android e Windows**, do Atari 2600 ao PlayStation 2. Joga 100% offline. A internet só é usada para capas (pode desligar), hacks que você baixar, **RetroAchievements** e **backup de saves no Google Drive**.
 
 > O Cartucho não inclui jogos nem BIOS e não indica onde obtê-los. Use apenas arquivos que você possui.
 
@@ -13,6 +15,20 @@ Os emuladores (cores libretro) vão dentro do APK.
 **Capas automáticas:** ao adicionar jogos, o app busca a capa no acervo aberto [libretro-thumbnails](https://github.com/libretro-thumbnails) (pode desligar em Ajustes).
 
 **Hacks e traduções:** segure um jogo na biblioteca > *Hacks e traduções*. Aceita patches .ips, .ups e .bps (soltos ou dentro de .zip/.7z/.rar), por arquivo ou por link. O jogo original nunca é alterado. Em **Ajustes > Sistemas neste aparelho** o app diz, com honestidade, o que roda bem, o que pode engasgar e o que não é suportado no seu celular.
+
+**Controles do seu jeito:** em *Ajustes > Controles* escolha joystick ou tela, mapeie cada botão do controle (um por um ou todos em sequência) e, no jogo, use *Menu > Controles > Editar botões na tela* para arrastar e redimensionar os botões (salvo separado para retrato e paisagem).
+
+**Coleção:** o diário dos seus jogos — status (jogando, zerado, platinado, abandonado), nota de 0,5 a 5 estrelas, resenha, horas jogadas contadas automaticamente e um cartão para compartilhar. Com a sua *Web API Key* do RetroAchievements, aparecem as platinas e o ranking com quem você segue.
+
+## Versão para computador (Windows)
+
+Em **Releases**, baixe `Cartucho-…-windows-instalador.exe` (ou o `.zip` para usar sem instalar). Windows 10/11 de 64 bits.
+
+- **Adicionar pasta** e pronto: jogos soltos ou em `.zip` são encontrados sozinhos.
+- **Teclado:** setas, Z (B), X (A), A (Y), S (X), Q/W (L/R), E/R (L2/R2), Enter (Start), Backspace (Select). Tudo trocável em *Ajustes > Controles*.
+- **Joystick:** qualquer controle USB ou Bluetooth (Xbox, PlayStation, genéricos), até 4 jogadores, sem configurar.
+- No jogo: **Esc** menu · **F2/F4** salvar/carregar estado · **F11** tela cheia · **Tab** acelerar.
+- O Windows SmartScreen pode avisar na primeira vez (app sem certificado pago): clique em *Mais informações > Executar assim mesmo*.
 
 ## Como o APK é gerado
 
@@ -81,6 +97,7 @@ O app usa o escopo completo do Drive para você poder escolher qualquer pasta. N
 ```
 app/src/main/cpp/        host libretro (C++/JNI), vídeo GLES, áudio, entrada, RetroAchievements
 app/src/main/java/...    Kotlin + Jetpack Compose (interface, biblioteca, Drive, controles)
+desktop/                 versão Windows (C++, SDL2, OpenGL, Dear ImGui)
 scripts/fetch-deps.sh    baixa dependências e cores
 .github/workflows/       compilação e publicação automática
 ```
