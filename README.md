@@ -1,6 +1,6 @@
 # Cartucho
 
-Emulador minimalista para Android, do Atari 2600 ao PlayStation 2. Joga 100% offline; a rede só é usada, se você ativar, pelo **RetroAchievements** e pelo **backup de saves no Google Drive**.
+Emulador minimalista para Android, do Atari 2600 ao PlayStation 2. Joga 100% offline. A internet só é usada para capas (pode desligar), hacks que você baixar, **RetroAchievements** e **backup de saves no Google Drive**.
 
 > O Cartucho não inclui jogos nem BIOS e não indica onde obtê-los. Use apenas arquivos que você possui.
 
@@ -8,7 +8,11 @@ Emulador minimalista para Android, do Atari 2600 ao PlayStation 2. Joga 100% off
 
 Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Master System · Game Gear · Mega Drive · Sega CD · 32X · PC Engine / CD · Neo Geo Pocket · WonderSwan · Arcade (FinalBurn Neo) · Nintendo 64 · Nintendo DS · PlayStation · PSP · Saturn · Dreamcast · PlayStation 2
 
-Os emuladores (cores libretro) vão dentro do APK. Em **Ajustes > Sistemas neste aparelho** o app diz, com honestidade, o que roda bem, o que pode engasgar e o que não é suportado no seu celular.
+Os emuladores (cores libretro) vão dentro do APK.
+
+**Capas automáticas:** ao adicionar jogos, o app busca a capa no acervo aberto [libretro-thumbnails](https://github.com/libretro-thumbnails) (pode desligar em Ajustes).
+
+**Hacks e traduções:** segure um jogo na biblioteca > *Hacks e traduções*. Aceita patches .ips, .ups e .bps (soltos ou dentro de .zip/.7z/.rar), por arquivo ou por link. O jogo original nunca é alterado. Em **Ajustes > Sistemas neste aparelho** o app diz, com honestidade, o que roda bem, o que pode engasgar e o que não é suportado no seu celular.
 
 ## Como o APK é gerado
 
