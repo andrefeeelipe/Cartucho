@@ -77,5 +77,78 @@ jobs:
           body: |
             **Qual arquivo baixar?** Quase todo celular atual usa `arm64-v8a`. Se não souber, baixe o `universal` (maior, funciona em qualquer um).
 
+            **Computador (Windows 10/11, 64 bits):** baixe o `windows-instalador.exe` e abra. Se preferir sem instalar, use o `windows-x64.zip` (extraia e abra `Cartucho.exe`).
+
             Confira a integridade comparando o SHA-256 do arquivo com o `SHA256SUMS.txt`.
+          files: out/*
+
+  windows:
+    needs: build
+    runs-on: windows-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Extrair o código-fonte (se enviado como .zip)
+        run: |
+          if [ -f cartucho-src.zip ]; then
+            unzip -o -q cartucho-src.zip -d .
+            rm cartucho-src.zip
+          fi
+
+      - name: Baixar SDL2, Dear ImGui, miniz e libretro.h
+        run: |
+          cd desktop/third_party
+          curl -fsSL -o sdl.zip https://github.com/libsdl-org/SDL/releases/download/release-2.30.9/SDL2-devel-2.30.9-VC.zip
+          unzip -q sdl.zip && mv SDL2-2.30.9 sdl2
+          git clone --depth 1 -b v1.91.9b https://github.com/ocornut/imgui.git
+          mkdir -p miniz && curl -fsSL -o miniz.zip https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
+          unzip -q -o miniz.zip -d miniz
+          curl -fsSL -o libretro.h https://raw.githubusercontent.com/libretro/RetroArch/master/libretro-common/include/libretro.h
+
+      - name: Compilar Cartucho.exe
+        run: |
+          cmake -S desktop -B build -A x64 -DSDL2_DIR="$PWD/desktop/third_party/sdl2/cmake" -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+          cmake --build build --config Release
+
+      - name: Baixar os emuladores (cores libretro para Windows)
+        run: |
+          mkdir -p dist/cores dist/assets
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds pcsx_rearmed ppsspp flycast yabause play; do
+            if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
+              unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
+            else
+              echo "::warning::Não foi possível baixar $core"
+            fi
+            rm -f core.zip
+          done
+
+      - name: Montar a pasta do programa
+        run: |
+          cp build/Release/Cartucho.exe dist/
+          cp desktop/third_party/sdl2/lib/x64/SDL2.dll dist/
+          cp desktop/assets/Geist-Regular.ttf desktop/assets/Geist-SemiBold.ttf dist/assets/
+          cp LICENSES.md dist/ 2>/dev/null || true
+          ls -la dist dist/cores
+
+      - name: Gerar instalador e .zip
+        shell: pwsh
+        run: |
+          $v = "1.0.${{ github.run_number }}"
+          New-Item -ItemType Directory -Force -Path out | Out-Null
+          Compress-Archive -Path dist\* -DestinationPath "out\Cartucho-$v-windows-x64.zip"
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress | Out-Null }
+          & $iscc "/DAppVersion=$v" "/DSrcDir=$PWD\dist" "/O$PWD\out" desktop\installer.iss
+          Get-ChildItem out | ForEach-Object { "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name } | Set-Content out\SHA256SUMS-windows.txt
+          Get-Content out\SHA256SUMS-windows.txt
+
+      - name: Publicar na mesma versão
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
           files: out/*
