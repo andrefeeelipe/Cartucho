@@ -118,7 +118,7 @@ jobs:
       - name: Baixar os emuladores (cores libretro para Windows)
         run: |
           mkdir -p dist/cores dist/assets
-          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds pcsx_rearmed ppsspp flycast yabause play; do
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play; do
             if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
               unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
             else
