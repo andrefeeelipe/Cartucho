@@ -17,14 +17,14 @@ jobs:
             pass=$(printf '%s' "$user" | openssl dgst -sha1 -hmac "openrelayprojectsecret" -binary | base64)
             for port in 80 443 3478; do
               echo "== staticauth user=$user port=$port udp"
-              timeout 15 turnutils_uclient -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+              timeout 8 turnutils_uclient -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | tail -4
               echo "== staticauth user=$user port=$port tcp"
-              timeout 15 turnutils_uclient -t -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+              timeout 8 turnutils_uclient -t -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | tail -4
             done
           done
           for port in 80 443; do
             echo "== openrelay static port=$port"
-            timeout 15 turnutils_uclient -y -c -n 1 -u openrelayproject -w openrelayproject -p $port openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+            timeout 8 turnutils_uclient -y -c -n 1 -u openrelayproject -w openrelayproject -p $port openrelay.metered.ca 2>&1 | tail -4
           done
           echo "== turnutils_uclient -W (secret mode) staticauth"
-          timeout 15 turnutils_uclient -y -c -n 1 -W openrelayprojectsecret -p 80 staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+          timeout 8 turnutils_uclient -y -c -n 1 -W openrelayprojectsecret -p 80 staticauth.openrelay.metered.ca 2>&1 | tail -4
