@@ -1,0 +1,30 @@
+name: Teste TURN
+on:
+  push:
+    branches: [ teste-turn ]
+jobs:
+  turn:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq coturn-utils >/dev/null 2>&1 || sudo apt-get install -y -qq coturn >/dev/null
+      - name: Testar servidores
+        run: |
+          set +e
+          for h in staticauth.openrelay.metered.ca openrelay.metered.ca global.relay.metered.ca; do echo "== $h"; getent hosts $h; done
+          ts=$(( $(date +%s) + 86400 ))
+          for user in "$ts:cartucho" "$ts"; do
+            pass=$(printf '%s' "$user" | openssl dgst -sha1 -hmac "openrelayprojectsecret" -binary | base64)
+            for port in 80 443 3478; do
+              echo "== staticauth user=$user port=$port udp"
+              timeout 15 turnutils_uclient -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+              echo "== staticauth user=$user port=$port tcp"
+              timeout 15 turnutils_uclient -t -y -c -n 1 -u "$user" -w "$pass" -p $port staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+            done
+          done
+          for port in 80 443; do
+            echo "== openrelay static port=$port"
+            timeout 15 turnutils_uclient -y -c -n 1 -u openrelayproject -w openrelayproject -p $port openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
+          done
+          echo "== turnutils_uclient -W (secret mode) staticauth"
+          timeout 15 turnutils_uclient -y -c -n 1 -W openrelayprojectsecret -p 80 staticauth.openrelay.metered.ca 2>&1 | grep -iE "success|error|fail|401|allocate|Total" | head -5
