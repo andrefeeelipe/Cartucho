@@ -23,9 +23,9 @@ Os emuladores (cores libretro) vão dentro do APK.
 **Na TV:** no menu do jogo, *Transmitir para TV* tem três modos: só celular, duplicar e só TV (o celular vira o controle). Conecte pelo espelhamento do Android (Smart View, Google Home) ou por cabo HDMI.
 
 **Jogar com amigos:** no menu do jogo, *Jogar com amigos* já abre uma sala e mostra um QR.
-- Quem tem o Cartucho lê o QR (pela câmera ou em *Entrar numa sala > Ler QR code*) e entra direto na sala.
+- Quem tem o Cartucho lê o QR (pela câmera ou em *Entrar numa sala > Ler QR code*) e entra direto na sala, de qualquer rede.
 - Quem não tem o app lê o mesmo QR e o navegador vira o controle, no mesmo Wi-Fi (ou no roteador do seu celular). Sem instalar nada.
-- Para quem está longe: convide pelo WhatsApp, por código ou pelos amigos do RetroAchievements. Quem entra assiste ao jogo em tempo real e vira o jogador 1 a 4. O jogo roda só no celular de quem criou a sala.
+- Para quem está longe: convide pelo WhatsApp ou pelo código. Funciona até com os dois nos dados móveis (a imagem passa por um servidor gratuito de retransmissão quando a conexão direta não dá). Quem entra assiste ao jogo em tempo real e vira o jogador 1 a 4. O jogo roda só no celular de quem criou a sala.
 
 **Mural dos amigos:** em *Coleção > Mural*, veja o que você e quem você segue no RetroAchievements estão jogando, zeraram ou platinaram. Curta, reaja com emojis (❤️ 🔥 👏 😂 😮 🏆) e comente. O app avisa quando alguém interage com você e mostra os recados do seu perfil do RetroAchievements.
 
