@@ -22,9 +22,12 @@ Os emuladores (cores libretro) vão dentro do APK.
 
 **Na TV:** no menu do jogo, *Transmitir para TV* tem três modos: só celular, duplicar e só TV (o celular vira o controle). Conecte pelo espelhamento do Android (Smart View, Google Home) ou por cabo HDMI.
 
-**Jogar com amigos:**
-- *Navegador (QR):* no mesmo Wi-Fi (ou no roteador do celular), os amigos leem o QR e o navegador deles vira o controle 2, 3 ou 4. Sem instalar nada.
-- *Sala online:* crie uma sala e convide pelo WhatsApp, por código ou pelos amigos do RetroAchievements. Quem tem o Cartucho assiste ao jogo em tempo real e vira o jogador 1 a 4. O jogo roda só no celular de quem criou a sala.
+**Jogar com amigos:** no menu do jogo, *Jogar com amigos* já abre uma sala e mostra um QR.
+- Quem tem o Cartucho lê o QR (pela câmera ou em *Entrar numa sala > Ler QR code*) e entra direto na sala.
+- Quem não tem o app lê o mesmo QR e o navegador vira o controle, no mesmo Wi-Fi (ou no roteador do seu celular). Sem instalar nada.
+- Para quem está longe: convide pelo WhatsApp, por código ou pelos amigos do RetroAchievements. Quem entra assiste ao jogo em tempo real e vira o jogador 1 a 4. O jogo roda só no celular de quem criou a sala.
+
+**Mural dos amigos:** em *Coleção > Mural*, veja o que você e quem você segue no RetroAchievements estão jogando, zeraram ou platinaram. Curta, reaja com emojis (❤️ 🔥 👏 😂 😮 🏆) e comente. O app avisa quando alguém interage com você e mostra os recados do seu perfil do RetroAchievements.
 
 **Traduções PT-BR em um toque:** ao abrir um jogo que tem tradução da comunidade brasileira, o app pergunta se você quer aplicar (catálogo do [PO.B.R.E](https://romhackers.org/traducoes), com o crédito de cada equipe). Aceita IPS, UPS, BPS, PPF e xdelta, inclusive em jogos de PS1 e PS2 (.iso ou .bin/.cue).
 
@@ -85,7 +88,7 @@ Para quem compila a própria versão: o login Google exige um ID do cliente OAut
 
 ## Privacidade e segurança
 
-- Permissões: Internet e estado da rede (só RA e Drive), vibração. Nenhum acesso amplo a arquivos: os jogos são abertos pelo seletor do Android.
+- Permissões: Internet e estado da rede (RA, Drive, salas e mural), vibração e avisos (opcional, para o mural). Nenhum acesso amplo a arquivos: os jogos são abertos pelo seletor do Android.
 - Sem anúncios, analytics, telemetria ou crash reporting remoto.
 - Token do RetroAchievements cifrado no Android Keystore; a senha nunca é guardada.
 - HTTPS obrigatório; APK assinado com esquemas v1, v2 e v3; R8 ativado.
