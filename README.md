@@ -20,6 +20,8 @@ Os emuladores (cores libretro) vão dentro do APK.
 
 **Controles do seu jeito:** em *Ajustes > Controles* escolha joystick ou tela, mapeie cada botão do controle (um por um ou todos em sequência) e, no jogo, use *Menu > Controles* para mapear o joystick conectado sem sair da partida ou *Editar botões na tela* para arrastar e redimensionar os botões (salvo separado para retrato e paisagem).
 
+**Card para compartilhar:** em qualquer jogo (segure o jogo, na Coleção ou no menu durante a partida) gere um card no formato do celular com a capa, o status (jogando, zerado, platinado), suas estrelas e as horas jogadas, e mande para WhatsApp, Instagram ou onde quiser.
+
 **Coleção:** o diário dos seus jogos — status (jogando, zerado, platinado, abandonado), nota de 0,5 a 5 estrelas, resenha, horas jogadas contadas automaticamente e um cartão para compartilhar. Com a sua *Web API Key* do RetroAchievements, aparecem as platinas e o ranking com quem você segue.
 
 ## Versão para computador (Windows)
