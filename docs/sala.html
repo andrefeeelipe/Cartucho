@@ -1,0 +1,18 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cartucho · Convite para jogar</title><meta name="theme-color" content="#111111">
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#111;color:#f2f2f0;font:17px/1.5 -apple-system,system-ui,sans-serif;text-align:center}
+main{padding:32px 24px;max-width:420px}img{width:88px;border-radius:20px}h1{font-size:28px;letter-spacing:-.02em;margin:20px 0 6px}
+p{color:#8a8a86;margin:0 0 24px}#code{font:600 40px ui-monospace,monospace;letter-spacing:.18em;margin:8px 0 28px}
+a.btn{display:block;padding:16px;border-radius:14px;background:#f2f2f0;color:#111;text-decoration:none;font-weight:600;margin-bottom:12px}
+a.sec{background:#222;color:#f2f2f0}</style></head><body><main>
+<img src="cartucho.png" alt="">
+<h1>Bora jogar junto?</h1><p>Seu amigo abriu uma sala no Cartucho.</p>
+<div id="code">······</div>
+<a class="btn" id="open" href="#">Abrir no Cartucho</a>
+<a class="btn sec" href="https://github.com/andrefeeelipe/Cartucho/releases/latest">Ainda não tenho o app</a>
+<p style="margin-top:20px;font-size:14px">No app: toque no ícone de amigos e digite o código.</p>
+</main><script>
+var c=(location.hash||'').replace('#','').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6);
+document.getElementById('code').textContent=c||'——';
+document.getElementById('open').href='intent://sala/'+c+'#Intent;scheme=cartucho;package=app.cartucho;S.browser_fallback_url='+encodeURIComponent('https://github.com/andrefeeelipe/Cartucho/releases/latest')+';end';
+</script></body></html>
