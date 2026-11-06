@@ -20,6 +20,14 @@ Os emuladores (cores libretro) vão dentro do APK.
 
 **Controles do seu jeito:** em *Ajustes > Controles* escolha joystick ou tela, mapeie cada botão do controle (um por um ou todos em sequência) e, no jogo, use *Menu > Controles* para mapear o joystick conectado sem sair da partida ou *Editar botões na tela* para arrastar e redimensionar os botões (salvo separado para retrato e paisagem).
 
+**Na TV:** no menu do jogo, *Transmitir para TV* tem três modos: só celular, duplicar e só TV (o celular vira o controle). Conecte pelo espelhamento do Android (Smart View, Google Home) ou por cabo HDMI.
+
+**Jogar com amigos:**
+- *Navegador (QR):* no mesmo Wi-Fi (ou no roteador do celular), os amigos leem o QR e o navegador deles vira o controle 2, 3 ou 4. Sem instalar nada.
+- *Sala online:* crie uma sala e convide pelo WhatsApp, por código ou pelos amigos do RetroAchievements. Quem tem o Cartucho assiste ao jogo em tempo real e vira o jogador 1 a 4. O jogo roda só no celular de quem criou a sala.
+
+**Traduções PT-BR em um toque:** ao abrir um jogo que tem tradução da comunidade brasileira, o app pergunta se você quer aplicar (catálogo do [PO.B.R.E](https://romhackers.org/traducoes), com o crédito de cada equipe). Aceita IPS, UPS, BPS, PPF e xdelta, inclusive em jogos de PS1 e PS2 (.iso ou .bin/.cue).
+
 **Card para compartilhar:** em qualquer jogo (segure o jogo, na Coleção ou no menu durante a partida) gere um card no formato do celular com a capa, o status (jogando, zerado, platinado), suas estrelas e as horas jogadas, e mande para WhatsApp, Instagram ou onde quiser.
 
 **Coleção:** o diário dos seus jogos — status (jogando, zerado, platinado, abandonado), nota de 0,5 a 5 estrelas, resenha, horas jogadas contadas automaticamente e um cartão para compartilhar. Com a sua *Web API Key* do RetroAchievements, aparecem as platinas e o ranking com quem você segue.
