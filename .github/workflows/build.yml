@@ -159,6 +159,14 @@ jobs:
             fi
             rm -f pack.zip
           done
+          if [ ! -d dist/system/Machines ]; then
+            if curl -fsSL -o bluemsx-src.zip "https://codeload.github.com/libretro/blueMSX-libretro/zip/refs/heads/master"; then
+              unzip -q bluemsx-src.zip -d bluemsx-src
+              src=$(find bluemsx-src -type d -path "*system/bluemsx" | head -1)
+              if [ -n "$src" ]; then cp -r "$src/Databases" "$src/Machines" dist/system/ && echo "sistema: blueMSX (GitHub)" >> dist/cores-incluidos.txt; fi
+              rm -rf bluemsx-src bluemsx-src.zip
+            fi
+          fi
 
       - name: Montar a pasta do programa
         run: |
