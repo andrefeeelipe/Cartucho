@@ -5,18 +5,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          h() { printf "%s  %s\n" "$(curl -sIL -m 20 -o /dev/null -w '%{http_code}' "$1")" "$1"; }
-          for c in tic80 retro8 fake08 fuse vecx arduous scummvm; do
-            h "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/${c}_libretro_android.so.zip"
-            h "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${c}_libretro.dll.zip"
-          done
-          echo "=== zxinfo"; curl -sL -m 30 "https://api.zxinfo.dk/v3/search?query=&mode=compact&size=1&offset=0&contenttype=SOFTWARE&availability=Available" | head -c 3000; echo
-          echo "=== zxdb repo"; curl -sL -m 30 https://api.github.com/repos/zxdb/ZXDB/contents | grep -E '"name"|"size"' | head -30
-          echo "=== zxdb releases"; curl -sL -m 30 https://api.github.com/repos/zxdb/ZXDB/releases?per_page=2 | grep -E '"name"|browser_download_url' | head -10
-          echo "=== tic80 counts"
-          for p in Games Demos Tools Demoscene; do n=$(curl -sL -m 30 "https://tic80.com/api?fn=dir&path=play/$p" | grep -c 'hash ='); echo "$p: $n"; done
-          curl -sL -m 30 "https://tic80.com/api?fn=dir&path=play/Games/New" | grep -c 'hash ='
-          echo "=== tic80 cart"; h "https://tic80.com/cart/b88b74e7a6f923251de764d89d6f3507/8_bit_panda.tic"
-          curl -sL -m 30 "https://tic80.com/play?cart=188" | grep -iE 'author|license|by <|og:description|genre|tag' | head -15
-          echo "=== hh tags"; curl -sL -m 30 "https://hh3.gbdev.io/api/search?page=1" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d.get('page_total'),[ (e.get('tags'),e.get('typetag')) for e in d['entries'][:10]]); print(list(d['entries'][0].keys()))"
-          echo "=== hh tags-list"; curl -sL -m 30 "https://hh3.gbdev.io/api/tags" | head -c 1500; echo
+          set +e
+          sudo systemctl start mysql
+          curl -sL -o z.zip https://github.com/zxdb/ZXDB/raw/master/ZXDB_mysql.sql.zip && unzip -o -q z.zip && ls -la *.sql
+          mysql -uroot -proot -e "create database zxdb character set utf8mb4"
+          mysql -uroot -proot zxdb < ZXDB_mysql.sql 2>&1 | tail -3
+          q() { echo "--- $1"; mysql -uroot -proot zxdb -e "$1" 2>&1 | head -${2:-40}; }
+          q "show tables" 120
+          q "describe entries"
+          q "describe downloads"
+          q "select * from availabletypes"
+          q "select * from genretypes" 80
+          q "select * from filetypes" 60
+          q "describe languages" ; q "select * from languages where id in ('pt','es','en')"
+          q "select availabletype_id,count(*) from entries group by availabletype_id"
+          q "select e.language_id,count(*) from entries e group by e.language_id order by 2 desc" 20
+          q "select e.id,e.title,e.availabletype_id,e.genretype_id,e.language_id,d.file_link,d.filetype_id from entries e join downloads d on d.entry_id=e.id where e.id in (2259, 100, 5000) limit 20"
+          q "select substring_index(file_link,'/',3) p,count(*) from downloads group by p order by 2 desc" 20
+          echo "=== tic80 page"; curl -sL -m 30 "https://tic80.com/play?cart=188" | grep -iE 'by |author|license|og:|class="card' | head -20
+          for p in Games Demos Tools Demoscene Music WIP; do echo "$p: $(curl -sL -m 30 "https://tic80.com/api?fn=dir&path=play/$p" | grep -c 'hash =')"; done
