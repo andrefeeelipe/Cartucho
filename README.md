@@ -35,6 +35,8 @@ Os emuladores (cores libretro) vão dentro do APK.
 
 **Traduções PT-BR em um toque:** ao abrir um jogo que tem tradução da comunidade brasileira, o app pergunta se você quer aplicar (catálogo do [PO.B.R.E](https://romhackers.org/traducoes), com o crédito de cada equipe). Aceita IPS, UPS, BPS, PPF e xdelta, inclusive em jogos de PS1 e PS2 (.iso ou .bin/.cue).
 
+**Loja de jogos grátis:** no topo da biblioteca, o ícone da sacola abre a Loja: mais de mil jogos e demos homebrew de Game Boy, Game Boy Color, GBA e NES, feitos por fãs e estúdios independentes e publicados pelos próprios autores no [Homebrew Hub](https://hh.gbdev.io). Busque, toque em *Baixar e jogar* e o jogo entra na biblioteca com capa, crédito e licença. Nenhum jogo comercial é oferecido.
+
 **Card para compartilhar:** em qualquer jogo (segure o jogo, na Coleção ou no menu durante a partida) gere um card no formato do celular com a capa, o status (jogando, zerado, platinado), suas estrelas e as horas jogadas, e mande para WhatsApp, Instagram ou onde quiser.
 
 **Coleção:** o diário dos seus jogos — status (jogando, zerado, platinado, abandonado), nota de 0,5 a 5 estrelas, resenha, horas jogadas contadas automaticamente e um cartão para compartilhar. Com a sua *Web API Key* do RetroAchievements, aparecem as platinas e o ranking com quem você segue.

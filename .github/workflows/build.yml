@@ -68,6 +68,8 @@ jobs:
           sha256sum *.apk > SHA256SUMS.txt
           cat SHA256SUMS.txt
           cp ../app/src/main/assets/cores.txt cores-incluidos.txt
+          # Catálogo da Loja: o app busca a versão mais nova em releases/latest/download/loja.json.
+          if [ -f ../app/src/main/assets/loja.json ]; then cp ../app/src/main/assets/loja.json loja.json; fi
 
       - name: Conferir classes exigidas pelo código nativo
         run: |
