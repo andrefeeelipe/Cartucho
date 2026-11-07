@@ -26,6 +26,28 @@ O código do Cartucho (frontend) é distribuído sob **GPLv3**, compatível com 
 | Flycast | Dreamcast | GPLv2 | github.com/flyinghead/flycast |
 | Yabause | Saturn | GPLv2 | github.com/libretro/yabause |
 | Play! | PlayStation 2 | BSD 2-Clause | github.com/jpd002/Play- |
+| Dolphin | GameCube / Wii | GPLv2+ | github.com/libretro/dolphin |
+| Opera | 3DO | Não comercial (LGPL + cláusula não comercial) | github.com/libretro/opera-libretro |
+| Virtual Jaguar | Atari Jaguar | GPLv3 | github.com/libretro/virtualjaguar-libretro |
+| Atari800 | Atari 5200 / 800 | GPLv2 | github.com/libretro/libretro-atari800 |
+| vecx | Vectrex | GPLv3 | github.com/libretro/libretro-vecx |
+| Beetle VB | Virtual Boy | GPLv2 | github.com/libretro/beetle-vb-libretro |
+| NeoCD | Neo Geo CD | LGPLv3 | github.com/libretro/neocd_libretro |
+| Beetle PC-FX | PC-FX | GPLv2 | github.com/libretro/beetle-pcfx-libretro |
+| Gearcoleco | ColecoVision | GPLv3 | github.com/drhelius/Gearcoleco |
+| FreeIntv | Intellivision | GPLv3 | github.com/libretro/FreeIntv |
+| O2EM | Odyssey² | Artistic 2.0 | github.com/libretro/libretro-o2em |
+| FreeChaF | Channel F | GPLv3 | github.com/libretro/FreeChaF |
+| blueMSX | MSX | GPLv2 | github.com/libretro/blueMSX-libretro |
+| Fuse | ZX Spectrum | GPLv3 | github.com/libretro/fuse-libretro |
+| Caprice32 | Amstrad CPC | GPLv2 | github.com/libretro/libretro-cap32 |
+| VICE | Commodore 64 | GPLv2 | github.com/libretro/vice-libretro |
+| PUAE | Amiga | GPLv2 | github.com/libretro/libretro-uae |
+| DOSBox Pure | DOS | GPLv2 | github.com/schellingb/dosbox-pure |
+| PokeMini | Pokémon Mini | GPLv3 | github.com/libretro/PokeMini |
+| Potator | Watara Supervision | Domínio público | github.com/libretro/potator |
+| Arduous | Arduboy | GPLv3 | github.com/libretro/arduous |
+| Game & Watch (gw) | Game & Watch | zlib | github.com/libretro/gw-libretro |
 
 ## Outros componentes
 

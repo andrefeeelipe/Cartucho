@@ -10,6 +10,10 @@ Emulador minimalista para **Android e Windows**, do Atari 2600 ao PlayStation 2.
 
 Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Master System · Game Gear · Mega Drive · Sega CD · 32X · PC Engine / CD · Neo Geo Pocket · WonderSwan · Arcade (FinalBurn Neo) · Nintendo 64 · Nintendo DS · Nintendo 3DS (novidade, experimental) · PlayStation · PSP · Saturn · Dreamcast · PlayStation 2
 
+**Novos:** GameCube · Wii · 3DO · Atari Jaguar · Atari 5200 · Atari 800/XL · Vectrex · Virtual Boy · Neo Geo CD · PC-FX · ColecoVision · Intellivision · Odyssey² · Channel F · MSX · ZX Spectrum · Amstrad CPC · Commodore 64 · Amiga · DOS · Pokémon Mini · Watara Supervision · Arduboy · Game & Watch
+
+**No Windows, o Cartucho avisa antes de cada jogo** se ele deve rodar liso, engasgar, travar ou não rodar no seu computador (aba *Ajustes > Este computador*). Depois que você joga, o aviso passa a usar a velocidade medida de verdade.
+
 Os emuladores (cores libretro) vão dentro do APK.
 
 **Capas para todos os jogos:** o app busca a capa no acervo aberto [libretro-thumbnails](https://github.com/libretro-thumbnails) e, se não achar, na Wikipédia. Se ainda assim não existir capa (hacks, jogos raros), ele gera uma capa com o nome do jogo e continua procurando a oficial de tempos em tempos. Segure o jogo > *Trocar capa* para usar uma imagem sua.

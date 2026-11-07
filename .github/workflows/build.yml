@@ -141,13 +141,23 @@ jobs:
       - name: Baixar os emuladores (cores libretro para Windows)
         run: |
           mkdir -p dist/cores dist/assets
-          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play; do
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw; do
             if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
               unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
             else
               echo "::warning::Não foi possível baixar $core"
             fi
             rm -f core.zip
+          done
+          # Arquivos de sistema que os motores precisam (Dolphin Sys, blueMSX, PPSSPP).
+          mkdir -p dist/system
+          for pack in Dolphin BlueMSX PPSSPP; do
+            if curl -fsSL -o pack.zip "https://buildbot.libretro.com/assets/system/$pack.zip"; then
+              unzip -o -q pack.zip -d dist/system && echo "sistema: $pack" >> dist/cores-incluidos.txt
+            else
+              echo "::warning::Não foi possível baixar os arquivos de sistema $pack"
+            fi
+            rm -f pack.zip
           done
 
       - name: Montar a pasta do programa
