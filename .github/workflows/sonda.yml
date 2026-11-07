@@ -5,12 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          s() { echo; echo "=== $1"; curl -sL -m 30 -A "Cartucho-loja/1.0" "$1" | head -c ${2:-2500}; echo; }
-          s "https://api.zxinfo.dk/v3/search?query=&mode=compact&size=2&offset=0&contenttype=SOFTWARE&availability=Available&genretype=GAMES&output=simple"
-          s "https://api.zxinfo.dk/v3/search?query=&mode=full&size=1&offset=0&contenttype=SOFTWARE&availability=Available&genretype=GAMES" 6000
-          s "https://api.zxinfo.dk/v3/" 1500
-          s "https://www.lexaloffle.com/bbs/cpost_lister3.php?max=4&start_index=0&cat=7&sub=2&orderby=featured&version=000204&cfil=0" 3000
-          s "https://raw.githubusercontent.com/icaroferre/Pico8-Cartloader/main/cartloader.py" 4000
-          s "https://tic80.com/api?fn=dir&path=play/Games" 2000
-          s "https://tic80.com/play?cat=0" 1500
-          for a in android/latest/arm64-v8a windows/x86_64/latest; do echo "=== buildbot $a"; curl -sL -m 30 "https://buildbot.libretro.com/nightly/$a/" | grep -oE '(fake08|retro8|tic80|vecx|fuse|arduous|scummvm)[a-z_]*\.(so|dll)\.zip' | sort -u; done
+          h() { printf "%s  %s\n" "$(curl -sIL -m 20 -o /dev/null -w '%{http_code}' "$1")" "$1"; }
+          for c in tic80 retro8 fake08 fuse vecx arduous scummvm; do
+            h "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/${c}_libretro_android.so.zip"
+            h "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${c}_libretro.dll.zip"
+          done
+          echo "=== zxinfo"; curl -sL -m 30 "https://api.zxinfo.dk/v3/search?query=&mode=compact&size=1&offset=0&contenttype=SOFTWARE&availability=Available" | head -c 3000; echo
+          echo "=== zxdb repo"; curl -sL -m 30 https://api.github.com/repos/zxdb/ZXDB/contents | grep -E '"name"|"size"' | head -30
+          echo "=== zxdb releases"; curl -sL -m 30 https://api.github.com/repos/zxdb/ZXDB/releases?per_page=2 | grep -E '"name"|browser_download_url' | head -10
+          echo "=== tic80 counts"
+          for p in Games Demos Tools Demoscene; do n=$(curl -sL -m 30 "https://tic80.com/api?fn=dir&path=play/$p" | grep -c 'hash ='); echo "$p: $n"; done
+          curl -sL -m 30 "https://tic80.com/api?fn=dir&path=play/Games/New" | grep -c 'hash ='
+          echo "=== tic80 cart"; h "https://tic80.com/cart/b88b74e7a6f923251de764d89d6f3507/8_bit_panda.tic"
+          curl -sL -m 30 "https://tic80.com/play?cart=188" | grep -iE 'author|license|by <|og:description|genre|tag' | head -15
+          echo "=== hh tags"; curl -sL -m 30 "https://hh3.gbdev.io/api/search?page=1" | python3 -c "import sys,json;d=json.load(sys.stdin);print(d.get('page_total'),[ (e.get('tags'),e.get('typetag')) for e in d['entries'][:10]]); print(list(d['entries'][0].keys()))"
+          echo "=== hh tags-list"; curl -sL -m 30 "https://hh3.gbdev.io/api/tags" | head -c 1500; echo
