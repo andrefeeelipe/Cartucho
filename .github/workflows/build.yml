@@ -188,15 +188,22 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           # OpenGL por software (Mesa llvmpipe), porque a máquina do GitHub não tem placa de vídeo.
-          $rel = gh api repos/pal1000/mesa-dist-win/releases/latest | ConvertFrom-Json
-          $asset = $rel.assets | Where-Object { $_.name -match 'release-msvc\.7z$' } | Select-Object -First 1
-          if (-not $asset) { Write-Host "::warning::Mesa não encontrado; autoteste do Windows pulado"; exit 0 }
-          Invoke-WebRequest $asset.browser_download_url -OutFile mesa.7z
-          7z x mesa.7z -omesa -y | Out-Null
+          # As versões mais novas do pacote às vezes não trazem o opengl32.dll; tenta as anteriores até achar.
+          $rels = gh api "repos/pal1000/mesa-dist-win/releases?per_page=15" | ConvertFrom-Json
           $t = "autoteste"
           Copy-Item -Recurse dist $t
-          $gl = Get-ChildItem -Recurse mesa -Filter opengl32.dll | Where-Object { $_.Directory.Name -eq 'x64' } | Select-Object -First 1
-          if (-not $gl) { Get-ChildItem -Recurse mesa | Select-Object -First 40 FullName; Write-Host "::warning::opengl32.dll do Mesa não encontrado"; exit 0 }
+          $gl = $null
+          foreach ($rel in $rels) {
+            foreach ($asset in ($rel.assets | Where-Object { $_.name -match '\.7z$' -and $_.name -notmatch 'devel|debug' })) {
+              Remove-Item -Recurse -Force mesa, mesa.7z -ErrorAction SilentlyContinue
+              try { Invoke-WebRequest $asset.browser_download_url -OutFile mesa.7z } catch { continue }
+              7z x mesa.7z -omesa -y | Out-Null
+              $gl = Get-ChildItem -Recurse mesa -Filter opengl32.dll | Where-Object { $_.Directory.Name -eq 'x64' } | Select-Object -First 1
+              if ($gl) { Write-Host "Mesa $($rel.tag_name) ($($asset.name))"; break }
+            }
+            if ($gl) { break }
+          }
+          if (-not $gl) { Write-Host "::warning::opengl32.dll do Mesa não encontrado em nenhuma versão; autoteste do Windows pulado"; exit 0 }
           Write-Host "Mesa: $($gl.Directory.FullName)"
           Get-ChildItem $gl.Directory -Filter *.dll | Copy-Item -Destination $t
           $env:GALLIUM_DRIVER = "llvmpipe"
@@ -230,6 +237,7 @@ jobs:
         run: |
           $v = "1.0.${{ github.run_number }}"
           New-Item -ItemType Directory -Force -Path out | Out-Null
+          if (Test-Path dist\loja.tsv) { Copy-Item dist\loja.tsv out\loja.tsv }
           Compress-Archive -Path dist\* -DestinationPath "out\Cartucho-$v-windows-x64.zip"
           $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
           if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress | Out-Null }
