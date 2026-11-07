@@ -195,7 +195,10 @@ jobs:
           7z x mesa.7z -omesa -y | Out-Null
           $t = "autoteste"
           Copy-Item -Recurse dist $t
-          Get-ChildItem mesa\x64\*.dll | Where-Object { $_.Name -match '^(opengl32|libgallium_wgl|libglapi|dxil)' } | Copy-Item -Destination $t
+          $gl = Get-ChildItem -Recurse mesa -Filter opengl32.dll | Where-Object { $_.Directory.Name -eq 'x64' } | Select-Object -First 1
+          if (-not $gl) { Get-ChildItem -Recurse mesa | Select-Object -First 40 FullName; Write-Host "::warning::opengl32.dll do Mesa não encontrado"; exit 0 }
+          Write-Host "Mesa: $($gl.Directory.FullName)"
+          Get-ChildItem $gl.Directory -Filter *.dll | Copy-Item -Destination $t
           $env:GALLIUM_DRIVER = "llvmpipe"
           $env:SDL_AUDIODRIVER = "dummy"
           # Um jogo de cada sistema, direto do Homebrew Hub (o mesmo caminho que a Loja usa).
@@ -205,7 +208,7 @@ jobs:
           foreach ($line in $games -split "`n") {
             if (-not $line.Trim()) { continue }
             $sys, $url, $file = $line.Trim().Split('|')
-            $rom = Join-Path $PWD "rom-$sys-$file"
+            $rom = Join-Path $PWD ("rom-$sys-" + [IO.Path]::GetFileName($file))
             try { Invoke-WebRequest $url -OutFile $rom } catch { Write-Host "::warning::Não baixou $url"; continue }
             Write-Host "==> $sys : $file"
             $p = Start-Process -FilePath "$t\Cartucho.exe" -ArgumentList "--autoteste", "`"$rom`"", $sys -PassThru
