@@ -209,8 +209,8 @@ jobs:
           cp desktop/assets/Geist-Regular.ttf desktop/assets/Geist-SemiBold.ttf dist/assets/
           cp LICENSES.md dist/ 2>/dev/null || true
           # Catálogo da Loja: o mesmo gerado na compilação do Android (com o banco do ZX Spectrum).
-          if (Test-Path loja-art/loja.tsv) { Copy-Item loja-art/loja.tsv dist/loja.tsv }
-          else { python scripts/build-loja.py dist/loja.json dist/loja.tsv; if ($LASTEXITCODE) { echo "::warning::Catálogo da Loja indisponível" } }
+          if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv dist/loja.tsv
+          else python scripts/build-loja.py dist/loja.json dist/loja.tsv || echo "::warning::Catálogo da Loja indisponível"; fi
           ls -la dist dist/cores
 
       - name: Autoteste no Windows (abre jogos homebrew de verdade)
