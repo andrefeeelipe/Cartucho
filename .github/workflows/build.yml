@@ -34,8 +34,30 @@ jobs:
         with:
           gradle-version: '8.11.1'
 
+      - name: Banco de dados do ZX Spectrum (ZXDB) para a Loja
+        run: |
+          sudo systemctl start mysql
+          if curl -fsSL --retry 3 -o zxdb.zip https://github.com/zxdb/ZXDB/raw/master/ZXDB_mysql.sql.zip && unzip -o -q zxdb.zip; then
+            mysql -uroot -proot -e "create database zxdb character set utf8mb4" 2>/dev/null
+            mysql -uroot -proot zxdb < ZXDB_mysql.sql 2>/dev/null || echo "::warning::ZXDB não carregou"
+            rm -f zxdb.zip ZXDB_mysql.sql
+          else
+            echo "::warning::ZXDB indisponível; a Loja sai sem ZX Spectrum"
+          fi
+
       - name: Baixar libretro.h, rcheevos e os emuladores
+        env:
+          LOJA_TSV: ${{ github.workspace }}/loja.tsv
         run: bash scripts/fetch-deps.sh
+
+      - name: Guardar o catálogo da Loja para o Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: loja
+          path: |
+            app/src/main/assets/loja.json
+            loja.tsv
+          if-no-files-found: warn
 
       - name: Restaurar a chave de assinatura
         env:
@@ -70,6 +92,7 @@ jobs:
           cp ../app/src/main/assets/cores.txt cores-incluidos.txt
           # Catálogo da Loja: o app busca a versão mais nova em releases/latest/download/loja.json.
           if [ -f ../app/src/main/assets/loja.json ]; then cp ../app/src/main/assets/loja.json loja.json; fi
+          if [ -f ../loja.tsv ]; then cp ../loja.tsv loja.tsv; fi
 
       - name: Conferir classes exigidas pelo código nativo
         run: |
@@ -145,7 +168,7 @@ jobs:
       - name: Baixar os emuladores (cores libretro para Windows)
         run: |
           mkdir -p dist/cores dist/assets
-          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge; do
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge tic80; do
             if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
               unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
             else
@@ -172,14 +195,22 @@ jobs:
             fi
           fi
 
+      - name: Pegar o catálogo da Loja
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: loja
+          path: loja-art
+
       - name: Montar a pasta do programa
         run: |
           cp build/Release/Cartucho.exe dist/
           cp desktop/third_party/sdl2/lib/x64/SDL2.dll dist/
           cp desktop/assets/Geist-Regular.ttf desktop/assets/Geist-SemiBold.ttf dist/assets/
           cp LICENSES.md dist/ 2>/dev/null || true
-          # Catálogo da Loja (homebrew gratuito do Homebrew Hub).
-          python scripts/build-loja.py dist/loja.json dist/loja.tsv || echo "::warning::Catálogo da Loja indisponível"
+          # Catálogo da Loja: o mesmo gerado na compilação do Android (com o banco do ZX Spectrum).
+          if (Test-Path loja-art/loja.tsv) { Copy-Item loja-art/loja.tsv dist/loja.tsv }
+          else { python scripts/build-loja.py dist/loja.json dist/loja.tsv; if ($LASTEXITCODE) { echo "::warning::Catálogo da Loja indisponível" } }
           ls -la dist dist/cores
 
       - name: Autoteste no Windows (abre jogos homebrew de verdade)
@@ -209,7 +240,7 @@ jobs:
           $env:GALLIUM_DRIVER = "llvmpipe"
           $env:SDL_AUDIODRIVER = "dummy"
           # Um jogo de cada sistema, direto do Homebrew Hub (o mesmo caminho que a Loja usa).
-          $games = python -c "import csv,sys;rows=[l.rstrip('\n').split('\t') for l in open('dist/loja.tsv',encoding='utf-8')];pick={};[pick.setdefault(r[2],r) for r in rows if r[3]=='game' and r[8]];print('\n'.join(f'{r[2]}|https://hh3.gbdev.io/static/{r[8]}/entries/{r[0]}/{r[6]}|{r[6]}' for r in pick.values()))"
+          $games = python -c "rows=[l.rstrip('\n').split('\t') for l in open('dist/loja.tsv',encoding='utf-8')];pick={};[pick.setdefault(r[2],r) for r in rows if len(r)>12 and r[3]=='game' and (r[11] or r[8])];print('\n'.join(r[2]+'|'+(r[11] or 'https://hh3.gbdev.io/static/'+r[8]+'/entries/'+r[0]+'/'+r[6])+'|'+r[6] for r in pick.values()))"
           $prefs = Join-Path $env:APPDATA "Cartucho\Cartucho"
           $failed = $false
           foreach ($line in $games -split "`n") {
@@ -217,6 +248,12 @@ jobs:
             $sys, $url, $file = $line.Trim().Split('|')
             $rom = Join-Path $PWD ("rom-$sys-" + [IO.Path]::GetFileName($file))
             try { Invoke-WebRequest $url -OutFile $rom } catch { Write-Host "::warning::Não baixou $url"; continue }
+            if ($rom.EndsWith(".zip")) {
+              $x = "$rom-x"; Expand-Archive $rom -DestinationPath $x -Force
+              $inner = Get-ChildItem -Recurse $x -File | Where-Object { $_.Extension -match '^\.(tap|tzx|z80|sna|szx)$' } | Select-Object -First 1
+              if (-not $inner) { Write-Host "::warning::zip sem jogo: $url"; continue }
+              $rom = $inner.FullName
+            }
             Write-Host "==> $sys : $file"
             $p = Start-Process -FilePath "$t\Cartucho.exe" -ArgumentList "--autoteste", "`"$rom`"", $sys -PassThru
             if (-not $p.WaitForExit(120000)) { $p.Kill(); Write-Host "::error::$sys travou (não terminou em 2 minutos)"; $failed = $true }
@@ -237,7 +274,6 @@ jobs:
         run: |
           $v = "1.0.${{ github.run_number }}"
           New-Item -ItemType Directory -Force -Path out | Out-Null
-          if (Test-Path dist\loja.tsv) { Copy-Item dist\loja.tsv out\loja.tsv }
           Compress-Archive -Path dist\* -DestinationPath "out\Cartucho-$v-windows-x64.zip"
           $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
           if (-not (Test-Path $iscc)) { choco install innosetup -y --no-progress | Out-Null }
