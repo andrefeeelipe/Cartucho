@@ -132,6 +132,8 @@ jobs:
           mkdir -p miniz && curl -fsSL -o miniz.zip https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
           unzip -q -o miniz.zip -d miniz
           curl -fsSL -o libretro.h https://raw.githubusercontent.com/libretro/RetroArch/master/libretro-common/include/libretro.h
+          curl -fsSL -o libretro_vulkan.h https://raw.githubusercontent.com/libretro/libretro-common/master/include/libretro_vulkan.h
+          git clone --depth 1 --branch v1.3.296 https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
 
       - name: Compilar Cartucho.exe
         run: |
@@ -141,7 +143,7 @@ jobs:
       - name: Baixar os emuladores (cores libretro para Windows)
         run: |
           mkdir -p dist/cores dist/assets
-          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw; do
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge; do
             if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
               unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
             else

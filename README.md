@@ -10,7 +10,7 @@ Emulador minimalista para **Android e Windows**, do Atari 2600 ao PlayStation 2.
 
 Atari 2600 · Atari 7800 · Lynx · NES · SNES · Game Boy / Color · GBA · Master System · Game Gear · Mega Drive · Sega CD · 32X · PC Engine / CD · Neo Geo Pocket · WonderSwan · Arcade (FinalBurn Neo) · Nintendo 64 · Nintendo DS · Nintendo 3DS (novidade, experimental) · PlayStation · PSP · Saturn · Dreamcast · PlayStation 2
 
-**Novos:** GameCube · Wii · 3DO · Atari Jaguar · Atari 5200 · Atari 800/XL · Vectrex · Virtual Boy · Neo Geo CD · PC-FX · ColecoVision · Intellivision · Odyssey² · Channel F · MSX · ZX Spectrum · Amstrad CPC · Commodore 64 · Amiga · DOS · Pokémon Mini · Watara Supervision · Arduboy · Game & Watch
+**Novos:** GameCube · Wii · Wii U (beta) · Xbox 360 (beta) · 3DO · Atari Jaguar · Atari 5200 · Atari 800/XL · Vectrex · Virtual Boy · Neo Geo CD · PC-FX · ColecoVision · Intellivision · Odyssey² · Channel F · MSX · ZX Spectrum · Amstrad CPC · Commodore 64 · Amiga · DOS · Pokémon Mini · Watara Supervision · Arduboy · Game & Watch
 
 **No Windows, o Cartucho avisa antes de cada jogo** se ele deve rodar liso, engasgar, travar ou não rodar no seu computador (aba *Ajustes > Este computador*). Depois que você joga, o aviso passa a usar a velocidade medida de verdade.
 

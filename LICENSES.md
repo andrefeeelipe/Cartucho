@@ -48,6 +48,8 @@ O código do Cartucho (frontend) é distribuído sob **GPLv3**, compatível com 
 | Potator | Watara Supervision | Domínio público | github.com/libretro/potator |
 | Arduous | Arduboy | GPLv3 | github.com/libretro/arduous |
 | Game & Watch (gw) | Game & Watch | zlib | github.com/libretro/gw-libretro |
+| Cemu | Wii U (beta) | MPL 2.0 | github.com/cemu-project/Cemu |
+| Xenia Edge | Xbox 360 (beta) | BSD 3-Clause | github.com/has207/xenia-edge |
 
 ## Outros componentes
 
