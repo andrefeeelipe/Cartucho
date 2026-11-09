@@ -162,6 +162,9 @@ jobs:
           git clone --depth 1 --branch v1.3.296 https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
 
       - name: Compilar Cartucho.exe
+        env:
+          CARTUCHO_GOOGLE_DESKTOP_ID: ${{ secrets.CARTUCHO_GOOGLE_DESKTOP_ID }}
+          CARTUCHO_GOOGLE_DESKTOP_SECRET: ${{ secrets.CARTUCHO_GOOGLE_DESKTOP_SECRET }}
         run: |
           cmake -S desktop -B build -A x64 -DSDL2_DIR="$PWD/desktop/third_party/sdl2/cmake" -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
           cmake --build build --config Release
