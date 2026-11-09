@@ -279,7 +279,7 @@ jobs:
               Get-Content (Join-Path $prefs "ultimo-jogo.log") -ErrorAction SilentlyContinue
               if (Test-Path (Join-Path $prefs "ultimo-erro.txt")) { Get-Content (Join-Path $prefs "ultimo-erro.txt") }
               if ($code -eq 0) { Write-Host "OK: $sys rodou 300 quadros" }
-              elseif ($code -eq 1) { Write-Host "::error::$sys: a janela de vídeo não abriu nem com o OpenGL por software"; $failed = $true }
+              elseif ($code -eq 1) { Write-Host "::error::${sys}: a janela de vídeo não abriu nem com o OpenGL por software"; $failed = $true }
               elseif ($code -eq 2) { Write-Host "::warning::$sys não abriu no ambiente do GitHub (código $code)" }
               else { Write-Host "::error::$sys FECHOU POR ERRO (código $code)"; $failed = $true }
             }
