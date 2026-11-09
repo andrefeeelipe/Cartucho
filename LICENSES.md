@@ -3,7 +3,7 @@
 Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e cada uma tem as suas regras (licenças). Por isso:
 
 - O código do próprio Cartucho é **GPLv3**: qualquer pessoa pode ver, estudar e melhorar.
-- Alguns emuladores só podem ser usados **sem fins comerciais** (Snes9x, Genesis Plus GX, PicoDrive, FinalBurn Neo, Opera). Por isso o Cartucho é e sempre será **gratuito**.
+- Alguns emuladores só podem ser usados **sem fins comerciais** (Snes9x, Genesis Plus GX, PicoDrive, FinalBurn Neo, Opera, Mu, Cannonball). Por isso o Cartucho é e sempre será **gratuito**.
 
 ## Emuladores (cores libretro, baixados do buildbot oficial)
 
@@ -55,6 +55,46 @@ Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e ca
 | TIC-80 | TIC-80 | MIT | github.com/nesbox/TIC-80 |
 | Cemu | Wii U (beta) | MPL 2.0 | github.com/cemu-project/Cemu |
 | Xenia Edge | Xbox 360 (beta) | BSD 3-Clause | github.com/has207/xenia-edge |
+| ARMSX2 / PCSX2 (LRPS2) | PlayStation 2 (com BIOS) | GPLv3 | github.com/libretro/ps2 |
+| SAME CDi | Philips CD-i | BSD 3-Clause / GPL (MAME) | github.com/libretro/same_cdi |
+| Geolith | Neo Geo AES/MVS | BSD 3-Clause | github.com/libretro/geolith-libretro |
+| SameDuck | Mega Duck | MIT | github.com/LIJI32/SameBoy (ramo SameDuck) |
+| AmiArcadia | Arcadia 2001 / Interton | ver o repositório | github.com/libretro/amiarcadia |
+| EmuSCV | Super Cassette Vision | GPLv3 | github.com/libretro/emuscv |
+| HyperScan | Mattel HyperScan | ver o repositório | github.com/libretro/hyperscan-emu |
+| Uzem | Uzebox | GPLv3 | github.com/libretro/libretro-uzem |
+| GameTank | GameTank | ver o repositório | github.com/libretro/gametank |
+| VeMUlator | VMU do Dreamcast | GPLv3 | github.com/libretro/vemulator-libretro |
+| SquirrelJME | Celular Java (J2ME) | MPL 2.0 | github.com/SquirrelJME/SquirrelJME |
+| Mu | Palm OS | Não comercial (CC BY-NC 3.0) | github.com/libretro/Mu |
+| Numero | TI-83 | ver o repositório | github.com/nbarkhina/numero |
+| AppleWin | Apple II | GPLv2 | github.com/audetto/AppleWin |
+| Mini vMac | Macintosh | GPLv2 | github.com/libretro/libretro-minivmac |
+| Hatari | Atari ST | GPLv2 | github.com/libretro/hatari |
+| EightyOne (81) | ZX81 | GPLv3 | github.com/libretro/81-libretro |
+| b2 | BBC Micro | GPLv3 | github.com/libretro/b2-libretro |
+| VICE (xvic, xplus4, xpet, x128) | VIC-20, Plus/4, PET, C128 | GPLv2 | github.com/libretro/vice-libretro |
+| QUASI88 | PC-88 | BSD 3-Clause | github.com/libretro/quasi88-libretro |
+| Neko Project II Kai | PC-98 | MIT | github.com/AZO234/NP2kai |
+| PX68k | Sharp X68000 | ver o repositório | github.com/libretro/px68k-libretro |
+| X Millennium | Sharp X1 | BSD 3-Clause | github.com/libretro/xmil-libretro |
+| Geartowns | FM Towns | GPLv3 | github.com/drhelius/Geartowns |
+| ep128emu | Enterprise 128 | GPLv2 | github.com/libretro/ep128emu-core |
+| Theodore | Thomson MO/TO | GPLv3 | github.com/Zlika/theodore |
+| M2000 | Philips P2000 | ver o repositório | github.com/p2000t/M2000 |
+| BK | Elektronika BK | ver o repositório | github.com/libretro/bk-emulator |
+| Galaksija | Galaksija | ver o repositório | github.com/libretro/galaksija |
+| Retro8 | PICO-8 | GPLv3 | github.com/libretro/retro8 |
+| WASM-4 | WASM-4 | ISC | github.com/aduros/wasm4 |
+| LowRes NX | LowRes NX | zlib | github.com/timoinutilis/lowres-nx |
+| EasyRPG Player | RPG Maker 2000/2003 | GPLv3 | github.com/EasyRPG/Player |
+| ScummVM | Aventuras (ScummVM) | GPLv3 | github.com/libretro/scummvm |
+| PrBoom | Doom | GPLv2 | github.com/libretro/libretro-prboom |
+| TyrQuake | Quake | GPLv2 | github.com/libretro/tyrquake |
+| ECWolf | Wolfenstein 3D | GPLv2 | github.com/libretro/ecwolf |
+| EDuke32 | Duke Nukem 3D | GPLv2 + licença Build | github.com/libretro/eduke32 |
+| NXEngine | Cave Story (dados grátis inclusos) | GPLv3 | github.com/libretro/nxengine-libretro |
+| Cannonball | OutRun | Não comercial (licença MAME) | github.com/libretro/cannonball |
 
 ## Outros componentes
 

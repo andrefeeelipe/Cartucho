@@ -109,11 +109,20 @@ Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer 
 | Família | Consoles |
 |---|---|
 | Nintendo | NES · Super Nintendo · Game Boy · Game Boy Color · Game Boy Advance · Nintendo 64 · Nintendo DS · Nintendo 3DS · Virtual Boy · Pokémon Mini · Game & Watch · GameCube · Wii · Wii U (beta) |
-| Sega | Master System · Game Gear · Mega Drive · Sega CD · 32X · Saturn · Dreamcast |
+| Sega | Master System · Game Gear · Mega Drive · Sega CD · 32X · Saturn · Dreamcast · VMU do Dreamcast · Naomi e Atomiswave (arcade) |
 | Sony | PlayStation · PlayStation 2 · PSP |
 | Microsoft | Xbox 360 (beta) · MSX |
-| Atari | 2600 · 5200 · 7800 · 800/XL · Lynx · Jaguar |
-| Outros | Arcade (FinalBurn Neo) · PC Engine / CD · PC-FX · Neo Geo Pocket · Neo Geo CD · WonderSwan · 3DO · Vectrex · ColecoVision · Intellivision · Odyssey² · Channel F · ZX Spectrum · Amstrad CPC · Commodore 64 · Amiga · DOS · Watara Supervision · Arduboy · TIC-80 |
+| Atari | 2600 · 5200 · 7800 · 800/XL · Lynx · Jaguar · ST |
+| SNK e NEC | Neo Geo (AES/MVS) · Neo Geo CD · Neo Geo Pocket · PC Engine / CD · PC-FX · PC-88 · PC-98 |
+| Outros consoles | Arcade (FinalBurn Neo) · Philips CD-i (beta) · WonderSwan · 3DO · Vectrex · ColecoVision · Intellivision · Odyssey² · Channel F · Mega Duck · Arcadia 2001 · Super Cassette Vision · HyperScan (beta) · Uzebox · GameTank · Watara Supervision · Arduboy |
+| De bolso | Celular Java / J2ME (beta) · Palm OS (beta) · Calculadora TI-83 |
+| Computadores | ZX Spectrum · ZX81 · Amstrad CPC · Commodore 64, 128, VIC-20, Plus/4 e PET · Amiga · DOS · Apple II · Macintosh clássico · BBC Micro · Sharp X68000 e X1 · FM Towns (beta) · Enterprise 128 · Thomson MO/TO · Philips P2000 · Elektronika BK · Galaksija |
+| Consoles "de mentirinha" | TIC-80 · PICO-8 · WASM-4 · LowRes NX |
+| Jogos de PC clássicos | Doom · Quake · Wolfenstein 3D · Duke Nukem 3D · RPG Maker 2000/2003 · aventuras do ScummVM · OutRun (Cannonball) · **Cave Story (já vem grátis no app!)** |
+
+**PlayStation 2 mais rápido:** se você colocar a BIOS do seu PS2 (em *Ajustes → BIOS*), o Cartucho usa um emulador bem mais rápido (ARMSX2 no celular, PCSX2 no PC). Sem BIOS, ele continua com o Play!, que não precisa dela. Dá para trocar no menu do jogo → *Emulador do PS2*.
+
+**Jogos de PC em pasta** (Doom, Quake, Duke Nukem, RPG Maker, ScummVM): a forma mais fácil é colocar a pasta inteira do jogo num `.zip` e adicionar o `.zip`.
 
 **No Windows, antes de abrir um jogo, o Cartucho avisa** se o seu computador vai rodar liso, pode engasgar, vai travar ou não roda. Depois que você joga, o aviso passa a usar a velocidade que ele mediu de verdade.
 

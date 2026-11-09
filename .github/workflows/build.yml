@@ -172,7 +172,7 @@ jobs:
       - name: Baixar os emuladores (cores libretro para Windows)
         run: |
           mkdir -p dist/cores dist/assets
-          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge tic80; do
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge tic80 same_cdi geolith sameduck amiarcadia emuscv hyperscanemu uzem gametank vemulator squirreljme mu numero applewin minivmac hatari 81 b2 vice_xvic vice_xplus4 vice_xpet vice_x128 quasi88 np2kai px68k x1 geartowns ep128emu_core theodore m2000 bk galaksija retro8 wasm4 lowresnx easyrpg scummvm prboom tyrquake ecwolf eduke32 nxengine cannonball pcsx2; do
             if curl -fsSL -o "core.zip" "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${core}_libretro.dll.zip"; then
               unzip -o -q core.zip -d dist/cores && echo "$core" >> dist/cores-incluidos.txt
             else
@@ -182,7 +182,7 @@ jobs:
           done
           # Arquivos de sistema que os motores precisam (Dolphin Sys, blueMSX, PPSSPP).
           mkdir -p dist/system
-          for pack in Dolphin BlueMSX PPSSPP; do
+          for pack in Dolphin BlueMSX PPSSPP ScummVM PrBoom ECWolf "NXEngine%20%28Cave%20Story%29" LRPS2; do
             if curl -fsSL -o pack.zip "https://buildbot.libretro.com/assets/system/$pack.zip"; then
               unzip -o -q pack.zip -d dist/system && echo "sistema: $pack" >> dist/cores-incluidos.txt
             else
