@@ -45,6 +45,7 @@ Teclas no PC: setas para andar · **Z** e **X** são os botões B e A · **Enter
 - Escolha uma pasta e o Cartucho acha os jogos sozinho, inclusive dentro de arquivos `.zip`, `.7z` e `.rar`.
 - **Nome e capa certos, sozinho:** o app olha *dentro* do arquivo (não no nome) e descobre qual jogo é. Ele funciona até se o arquivo se chamar "jogo1.bin". Depois troca para o nome oficial e baixa a capa certa. São mais de 80 mil jogos reconhecidos.
 - Se não houver capa, ele cria uma bonita com o nome do jogo. Quer usar outra imagem? Segure o jogo → *Trocar capa*.
+- **Jogos em partes, juntados sozinhos:** jogos grandes que vêm cortados (`jogo.iso.001`, `.002`…, `jogo.7z.001`, `jogo.part1.rar`, Wii em `.wbfs` + `.wbf1`, PS2 no formato do OPL `ul.….00`) aparecem como um jogo só. Na hora de jogar, o Cartucho junta as partes, estejam elas soltas na pasta ou dentro de um `.zip`/`.7z`. É só deixar todas as partes juntas na mesma pasta.
 - Várias versões do mesmo jogo (Brasil, EUA, Japão, traduções) viram um cartão só. Ao tocar, você escolhe a versão.
 - **Filtros:** por console, gênero, letra de A a Z, *Em português*, já jogados ou nunca jogados, e ordem.
 - Tudo fica no botão **☰ (menu)** no canto de cima: Perfil, Baixar jogos, Jogar com amigos, Coleção, Buscar e Ajustes.
