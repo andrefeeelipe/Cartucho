@@ -1,0 +1,17 @@
+name: sonda
+on: workflow_dispatch
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          set +e
+          h() { printf "%s %s\n" "$(curl -sIL -m 20 -o /dev/null -w '%{http_code}' "$1")" "$1" | sed 's#https://buildbot.libretro.com/nightly/##'; }
+          for c in same_cdi geolith flycast sameduck amiarcadia emuscv hyperscanemu uzem gametank vemulator mesen-s freej2me squirreljme mu numero applewin minivmac hatari 81 b2 vice_xvic vice_xplus4 vice_xpet vice_x128 quasi88 np2kai px68k x1 geartowns simcoupe ep128emu_core theodore m2000 bk galaksija retro8 fake08 wasm4 lowresnx easyrpg scummvm prboom tyrquake ecwolf eduke32 nxengine doukutsu_rs cannonball xrick armsx2 pcsx2 play daphne hypseus; do
+            h "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/${c}_libretro_android.so.zip"
+            h "https://buildbot.libretro.com/nightly/windows/x86_64/latest/${c}_libretro.dll.zip"
+          done
+          echo "=== tamanhos"
+          for c in armsx2 scummvm np2kai easyrpg; do curl -sIL -m 20 "https://buildbot.libretro.com/nightly/android/latest/arm64-v8a/${c}_libretro_android.so.zip" | grep -i content-length | tail -1; done
+          echo "=== assets"
+          curl -sL -m 30 https://buildbot.libretro.com/assets/system/ | grep -oE 'href="[^"]+\.zip"' | head -60
