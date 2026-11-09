@@ -48,7 +48,7 @@ jobs:
       - name: Baixar libretro.h, rcheevos e os emuladores
         env:
           LOJA_TSV: ${{ github.workspace }}/loja.tsv
-          RELAY_URL: ${{ vars.CARTUCHO_RELAY_URL }}
+          RELAY_URL: ${{ secrets.CARTUCHO_RELAY }}
         run: bash scripts/fetch-deps.sh
 
       - name: Guardar o catálogo da Loja para o Windows
