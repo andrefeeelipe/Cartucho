@@ -1,6 +1,9 @@
 # Licenças
 
-O código do Cartucho (frontend) é distribuído sob **GPLv3**, compatível com os emuladores que ele embute. Por causa de cores com licença não comercial (Snes9x, Genesis Plus GX, PicoDrive, FinalBurn Neo), o Cartucho deve ser distribuído **gratuitamente e sem fins comerciais**.
+Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e cada uma tem as suas regras (licenças). Por isso:
+
+- O código do próprio Cartucho é **GPLv3**: qualquer pessoa pode ver, estudar e melhorar.
+- Alguns emuladores só podem ser usados **sem fins comerciais** (Snes9x, Genesis Plus GX, PicoDrive, FinalBurn Neo, Opera). Por isso o Cartucho é e sempre será **gratuito**.
 
 ## Emuladores (cores libretro, baixados do buildbot oficial)
 
@@ -48,6 +51,8 @@ O código do Cartucho (frontend) é distribuído sob **GPLv3**, compatível com 
 | Potator | Watara Supervision | Domínio público | github.com/libretro/potator |
 | Arduous | Arduboy | GPLv3 | github.com/libretro/arduous |
 | Game & Watch (gw) | Game & Watch | zlib | github.com/libretro/gw-libretro |
+| Citra | Nintendo 3DS | GPLv2+ | github.com/libretro/citra |
+| TIC-80 | TIC-80 | MIT | github.com/nesbox/TIC-80 |
 | Cemu | Wii U (beta) | MPL 2.0 | github.com/cemu-project/Cemu |
 | Xenia Edge | Xbox 360 (beta) | BSD 3-Clause | github.com/has207/xenia-edge |
 
@@ -60,4 +65,22 @@ O código do Cartucho (frontend) é distribuído sob **GPLv3**, compatível com 
 | Geist e Geist Mono (fontes, Vercel) | SIL Open Font License 1.1 |
 | Phosphor Icons | MIT |
 | OkHttp | Apache 2.0 |
+| WebRTC (sala online) | BSD 3-Clause |
+| ZXing (QR codes) | Apache 2.0 |
+| SDL2, Dear ImGui, glad, miniz (versão Windows) | zlib / MIT |
+| Vulkan-Headers | Apache 2.0 / MIT |
 | AndroidX, Jetpack Compose, Google Play Services Auth | Apache 2.0 / Termos do Google |
+
+## Dados de terceiros (com crédito)
+
+| Fonte | Para que o Cartucho usa |
+|---|---|
+| [libretro-database](https://github.com/libretro/libretro-database) (listas No-Intro e Redump) | Reconhecer o nome oficial de cada jogo |
+| [libretro-thumbnails](https://github.com/libretro-thumbnails) e Wikipédia | Capas dos jogos |
+| [Homebrew Hub](https://hh.gbdev.io) | Jogos grátis de GB, GBC, GBA e NES na Loja, baixados direto do site, com autor e licença de cada jogo |
+| [ZXDB](https://github.com/zxdb/ZXDB) / [Spectrum Computing](https://spectrumcomputing.co.uk) | Jogos de ZX Spectrum com distribuição liberada pelos autores ou editoras |
+| [TIC-80](https://tic80.com) | Jogos publicados de graça pelos autores no site oficial |
+| [PO.B.R.E](https://romhackers.org/traducoes) | Catálogo de traduções em português, com o crédito de cada equipe |
+| [RetroAchievements](https://retroachievements.org) | Conquistas, pontos e mural |
+
+Nenhum jogo é guardado neste repositório: o app só aponta para os sites de origem.
