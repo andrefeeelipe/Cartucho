@@ -43,7 +43,8 @@ Teclas no PC: setas para andar · **Z** e **X** são os botões B e A · **Enter
 
 ### 🎮 Biblioteca (a tela inicial)
 - Escolha uma pasta e o Cartucho acha os jogos sozinho, inclusive dentro de arquivos `.zip`, `.7z` e `.rar`.
-- **Nome e capa certos, sozinho:** o app olha *dentro* do arquivo (não no nome) e descobre qual jogo é. Ele funciona até se o arquivo se chamar "jogo1.bin". Depois troca para o nome oficial e baixa a capa certa. São mais de 80 mil jogos reconhecidos.
+- **Nome e capa certos, sozinho:** o app olha *dentro* do arquivo (não no nome) e descobre qual jogo é, mesmo que o arquivo se chame "jogo1.bin" ou esteja dentro de um `.zip` com outro nome. Ele lê o CRC dos cartuchos, o código de série dos discos (PS1, PS2, PSP, Saturn, Sega CD, GameCube, Wii), o índice dos `.zip`, as trilhas apontadas por `.cue`/`.m3u` e os EBOOT `.pbp`. Se nada disso bastar, compara o nome do arquivo com a lista oficial (por exemplo, `super_mario_world_usa` vira *Super Mario World*). O que só dá para ver depois de extrair (`.7z`, `.rar`, jogos em partes) é reconhecido na primeira vez que você abre. São mais de 80 mil jogos na lista.
+- **Sem repetidos:** cópias do mesmo jogo (mesmo conteúdo, mesmo nome oficial, ou o mesmo arquivo em pastas diferentes) viram um cartão só. Ao tocar, você escolhe a versão.
 - Se não houver capa, ele cria uma bonita com o nome do jogo. Quer usar outra imagem? Segure o jogo → *Trocar capa*.
 - **Jogos em partes, juntados sozinhos:** jogos grandes que vêm cortados (`jogo.iso.001`, `.002`…, `jogo.7z.001`, `jogo.part1.rar`, Wii em `.wbfs` + `.wbf1`, PS2 no formato do OPL `ul.….00`) aparecem como um jogo só. Na hora de jogar, o Cartucho junta as partes, estejam elas soltas na pasta ou dentro de um `.zip`/`.7z`. É só deixar todas as partes juntas na mesma pasta.
 - Várias versões do mesmo jogo (Brasil, EUA, Japão, traduções) viram um cartão só. Ao tocar, você escolhe a versão.
