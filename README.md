@@ -29,11 +29,15 @@ Qual arquivo escolher:
 | `x86_64` | Chromebooks e emuladores de Android no PC |
 | `universal` | Funciona em qualquer um, mas é bem maior |
 
-### No computador (Windows 10 ou 11)
+### No computador (Windows 10 ou 11, 64 bits; também deve funcionar no 7 e no 8)
 
 1. Na mesma página **[Releases](https://github.com/andrefeeelipe/Cartucho/releases/latest)**, baixe o **`windows-instalador.exe`**. Se preferir usar sem instalar, baixe o **`windows-x64.zip`**.
 2. Se o Windows mostrar um aviso azul (SmartScreen), clique em **Mais informações → Executar assim mesmo**. Ele avisa porque o app não tem um certificado pago.
-3. Clique em **Adicionar pasta** e escolha onde estão seus jogos.
+3. Abra pelo atalho **Cartucho** na área de trabalho (ou no menu Iniciar) e clique em **Adicionar pasta** para escolher onde estão seus jogos.
+
+**Atualizar:** é só instalar a versão nova por cima. Não precisa desinstalar; jogos, saves e configurações continuam.
+
+**Computador sem placa de vídeo boa?** Se o driver de vídeo não servir (computador antigo, máquina virtual, sem driver), o Cartucho usa sozinho um modo de vídeo pelo processador. Os jogos mais leves rodam normal; os de PS2, GameCube e afins ficam lentos nesse modo. Instalar o driver do fabricante resolve.
 
 Teclas no PC: setas para andar · **Z** e **X** são os botões B e A · **Enter** é o Start · **Esc** abre o menu · **F2/F4** salva e carrega · **F11** tela cheia · **Tab** acelera. Qualquer controle USB ou Bluetooth funciona sem configurar, até 4 jogadores.
 

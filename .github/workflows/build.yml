@@ -217,19 +217,18 @@ jobs:
           else python scripts/build-loja.py dist/loja.json dist/loja.tsv || echo "::warning::Catálogo da Loja indisponível"; fi
           ls -la dist dist/cores
 
-      - name: Autoteste no Windows (abre jogos homebrew de verdade)
+      - name: OpenGL por software (plano B para qualquer Windows)
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # OpenGL por software (Mesa llvmpipe), porque a máquina do GitHub não tem placa de vídeo.
+          # Mesa llvmpipe: OpenGL que roda no processador. Vai na pasta "mesa" e só é usado quando o driver
+          # de vídeo do computador não serve (sem driver, máquina virtual, placa antiga, área de trabalho remota).
           # As versões mais novas do pacote às vezes não trazem o opengl32.dll; tenta as anteriores até achar.
           $rels = gh api "repos/pal1000/mesa-dist-win/releases?per_page=15" | ConvertFrom-Json
-          $t = "autoteste"
-          Copy-Item -Recurse dist $t
           $gl = $null
           foreach ($rel in $rels) {
-            foreach ($asset in ($rel.assets | Where-Object { $_.name -match '\.7z$' -and $_.name -notmatch 'devel|debug' })) {
+            foreach ($asset in ($rel.assets | Where-Object { $_.name -match '\.7z$' -and $_.name -notmatch 'devel|debug|msvc-dev' })) {
               Remove-Item -Recurse -Force mesa, mesa.7z -ErrorAction SilentlyContinue
               try { Invoke-WebRequest $asset.browser_download_url -OutFile mesa.7z } catch { continue }
               7z x mesa.7z -omesa -y | Out-Null
@@ -238,9 +237,22 @@ jobs:
             }
             if ($gl) { break }
           }
-          if (-not $gl) { Write-Host "::warning::opengl32.dll do Mesa não encontrado em nenhuma versão; autoteste do Windows pulado"; exit 0 }
-          Write-Host "Mesa: $($gl.Directory.FullName)"
-          Get-ChildItem $gl.Directory -Filter *.dll | Copy-Item -Destination $t
+          if (-not $gl) { Write-Host "::warning::opengl32.dll do Mesa não encontrado; o Cartucho vai sem o plano B"; exit 0 }
+          New-Item -ItemType Directory -Force -Path dist\mesa | Out-Null
+          Get-ChildItem $gl.Directory -Filter *.dll | Where-Object { $_.Name -match '^(opengl32|libgallium_wgl|libglapi|libgallium)\.dll$' } | Copy-Item -Destination dist\mesa
+          if (Test-Path (Join-Path $gl.Directory.Parent.FullName "LICENSE*")) { Copy-Item (Join-Path $gl.Directory.Parent.FullName "LICENSE*") dist\mesa }
+          Get-ChildItem dist\mesa | ForEach-Object { "{0,10}  {1}" -f $_.Length, $_.Name }
+
+      - name: Autoteste no Windows (abre jogos homebrew de verdade)
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # A máquina do GitHub não tem placa de vídeo: o Cartucho precisa achar sozinho o plano B (pasta "mesa"),
+          # exatamente como num computador sem driver.
+          $t = "autoteste"
+          Copy-Item -Recurse dist $t
+          if (-not (Test-Path "$t\mesa\opengl32.dll")) { Write-Host "::warning::sem OpenGL por software; autoteste do Windows pulado"; exit 0 }
           $env:GALLIUM_DRIVER = "llvmpipe"
           $env:SDL_AUDIODRIVER = "dummy"
           # Um jogo de cada sistema, direto do Homebrew Hub (o mesmo caminho que a Loja usa).
@@ -267,7 +279,8 @@ jobs:
               Get-Content (Join-Path $prefs "ultimo-jogo.log") -ErrorAction SilentlyContinue
               if (Test-Path (Join-Path $prefs "ultimo-erro.txt")) { Get-Content (Join-Path $prefs "ultimo-erro.txt") }
               if ($code -eq 0) { Write-Host "OK: $sys rodou 300 quadros" }
-              elseif ($code -eq 1 -or $code -eq 2) { Write-Host "::warning::$sys não abriu no ambiente do GitHub (código $code)" }
+              elseif ($code -eq 1) { Write-Host "::error::$sys: a janela de vídeo não abriu nem com o OpenGL por software"; $failed = $true }
+              elseif ($code -eq 2) { Write-Host "::warning::$sys não abriu no ambiente do GitHub (código $code)" }
               else { Write-Host "::error::$sys FECHOU POR ERRO (código $code)"; $failed = $true }
             }
           }

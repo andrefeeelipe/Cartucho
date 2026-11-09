@@ -124,3 +124,7 @@ Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e ca
 | [RetroAchievements](https://retroachievements.org) | Conquistas, pontos e mural |
 
 Nenhum jogo é guardado neste repositório: o app só aponta para os sites de origem.
+
+## OpenGL por software (Windows)
+
+A pasta `mesa` do Cartucho para Windows traz o Mesa 3D (llvmpipe), compilado por pal1000/mesa-dist-win. Licença MIT. Código-fonte: gitlab.freedesktop.org/mesa/mesa. Só é usado quando o driver de vídeo do computador não oferece OpenGL 3.3.
