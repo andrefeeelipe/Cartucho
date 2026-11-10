@@ -71,6 +71,29 @@ jobs:
           echo "$KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/cartucho.jks"
           echo "CARTUCHO_KEYSTORE_PATH=$RUNNER_TEMP/cartucho.jks" >> "$GITHUB_ENV"
 
+      - name: NDK (com novas tentativas e plano B)
+        run: |
+          # O NDK usado pelo Android Gradle Plugin às vezes vem corrompido do servidor do Google ou some da
+          # imagem do GitHub. Tenta instalar 3 vezes; se não der, usa o NDK mais novo que já está na máquina.
+          WANT=27.0.12077973
+          SDK="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+          MGR=$(ls "$SDK"/cmdline-tools/*/bin/sdkmanager 2>/dev/null | head -1)
+          if [ ! -f "$SDK/ndk/$WANT/source.properties" ] && [ -n "$MGR" ]; then
+            for i in 1 2 3; do
+              rm -rf "$SDK/ndk/$WANT"
+              yes | "$MGR" --install "ndk;$WANT" > /tmp/ndk.log 2>&1 && [ -f "$SDK/ndk/$WANT/source.properties" ] && break
+              tail -3 /tmp/ndk.log; sleep 20
+            done
+          fi
+          if [ -f "$SDK/ndk/$WANT/source.properties" ]; then
+            echo "CARTUCHO_NDK=$WANT" >> "$GITHUB_ENV"
+          else
+            ALT=$(ls "$SDK/ndk" 2>/dev/null | sort -V | tail -1)
+            echo "::warning::NDK $WANT indisponível; usando $ALT"
+            echo "CARTUCHO_NDK=$ALT" >> "$GITHUB_ENV"
+          fi
+          ls "$SDK/ndk" || true
+
       - name: Compilar
         env:
           CARTUCHO_KEYSTORE_PASSWORD: ${{ secrets.CARTUCHO_KEYSTORE_PASSWORD }}
