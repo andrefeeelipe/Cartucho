@@ -127,7 +127,9 @@ Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer 
 | Consoles "de mentirinha" | TIC-80 · PICO-8 · WASM-4 · LowRes NX |
 | Jogos de PC clássicos | Doom · Quake · Wolfenstein 3D · Duke Nukem 3D · RPG Maker 2000/2003 · aventuras do ScummVM · OutRun (Cannonball) · **Cave Story (já vem grátis no app!)** |
 
-**PlayStation 2 mais rápido:** se você colocar a BIOS do seu PS2 (em *Ajustes → BIOS*), o Cartucho usa um emulador bem mais rápido (ARMSX2 no celular, PCSX2 no PC). Sem BIOS, ele continua com o Play!, que não precisa dela. Dá para trocar no menu do jogo → *Emulador do PS2*.
+**PlayStation 2: use a BIOS para os jogos não fecharem.** Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa o ARMSX2 no celular e o PCSX2 no PC, que rodam muito mais jogos, mais rápido e sem fechar no meio. Sem BIOS, ele usa o Play!, que não precisa dela, mas tem jogos que fecham sozinhos (por exemplo, *Need for Speed Underground 2* fecha ao começar a corrida). Se o jogo fechar, a biblioteca oferece **Continuar de onde parou**, porque o progresso é salvo sozinho a cada 2 minutos.
+
+> **De onde vem a BIOS?** Do seu próprio PlayStation 2. Ela é da Sony, por isso o Cartucho não traz e não indica onde baixar. Para copiar a do seu console, use um PS2 com o programa gratuito *biosdrain* (ele grava o arquivo num pendrive). Qualquer região serve; o arquivo `.bin` tem 4 MB.
 
 **Jogos de PC em pasta** (Doom, Quake, Duke Nukem, RPG Maker, ScummVM): a forma mais fácil é colocar a pasta inteira do jogo num `.zip` e adicionar o `.zip`.
 
@@ -149,7 +151,7 @@ Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer 
 
 ## Limitações conhecidas
 
-- PlayStation 2 ainda exige bastante do celular: nem todo jogo roda bem.
+- PlayStation 2 ainda exige bastante do celular: nem todo jogo roda bem. Sem a BIOS, alguns jogos fecham sozinhos (veja "PlayStation 2" acima).
 - Nintendo 3DS precisa de celular 64-bit forte, e os jogos precisam estar descriptografados (`.3ds`, `.cci`, `.cxi`, `.3dsx`).
 - Ainda não abre arquivos `.rar` no formato RAR5.
 - Jogos em vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) devem ser adicionados pela opção **Adicionar pasta**.
