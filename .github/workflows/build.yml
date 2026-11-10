@@ -278,8 +278,8 @@ jobs:
             Write-Host "tela inicial: código de saída $($p.ExitCode)"
             Get-Content (Join-Path $prefs "inicio.log") -ErrorAction SilentlyContinue
             if (Test-Path (Join-Path $prefs "inicio-erro.txt")) { Get-Content (Join-Path $prefs "inicio-erro.txt") }
-            if ($p.ExitCode -eq 0) { Write-Host "OK: tela inicial abriu, procurou na pasta e passou por Biblioteca, Loja e Ajustes" }
             if (-not (Select-String -Path (Join-Path $prefs "inicio.log") -Pattern "^capa:" -Quiet)) { Write-Host "::warning::nenhuma capa chegou no autoteste" }
+            if ($p.ExitCode -eq 0) { Write-Host "OK: tela inicial abriu, procurou na pasta e passou por Biblioteca, Loja e Ajustes" }
             else { Write-Host "::error::a tela inicial FECHOU POR ERRO (código $($p.ExitCode))"; $failed = $true }
           }
           Remove-Item (Join-Path $prefs "config.ini") -ErrorAction SilentlyContinue
