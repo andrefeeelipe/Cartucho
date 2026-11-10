@@ -128,3 +128,7 @@ Nenhum jogo é guardado neste repositório: o app só aponta para os sites de or
 ## OpenGL por software (Windows)
 
 A pasta `mesa` do Cartucho para Windows traz o Mesa 3D (llvmpipe), compilado por pal1000/mesa-dist-win. Licença MIT. Código-fonte: gitlab.freedesktop.org/mesa/mesa. Só é usado quando o driver de vídeo do computador não oferece OpenGL 3.3.
+
+## Imagens no Windows
+
+`stb_image.h` (Sean Barrett, github.com/nothings/stb), domínio público / MIT. As capas vêm do acervo libretro-thumbnails (github.com/libretro-thumbnails), o mesmo usado pelo app de Android.

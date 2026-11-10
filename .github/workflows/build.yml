@@ -264,6 +264,7 @@ jobs:
           New-Item -ItemType Directory -Force -Path $weird, (Join-Path $weird "SNES"), (Join-Path $weird "サブ") | Out-Null
           [IO.File]::WriteAllBytes((Join-Path $weird "SNES\ゼルダの伝説 ★ 神々のトライフォース ™ (J).sfc"), [byte[]]::new(131072))
           [IO.File]::WriteAllBytes((Join-Path $weird "サブ\Pokémon Ω Edição Ünïcödé 🎮.gba"), [byte[]]::new(65536))
+          [IO.File]::WriteAllBytes((Join-Path $weird "SNES\super_mario_world_usa.sfc"), [byte[]]::new(131072))
           [IO.File]::WriteAllBytes((Join-Path $weird "Jogo.7z.001"), [byte[]]::new(1024))
           [IO.File]::WriteAllBytes((Join-Path $weird "Jogo.7z.002"), [byte[]]::new(1024))
           $inner = Join-Path $PWD "zipdentro"; New-Item -ItemType Directory -Force $inner | Out-Null
@@ -278,6 +279,7 @@ jobs:
             Get-Content (Join-Path $prefs "inicio.log") -ErrorAction SilentlyContinue
             if (Test-Path (Join-Path $prefs "inicio-erro.txt")) { Get-Content (Join-Path $prefs "inicio-erro.txt") }
             if ($p.ExitCode -eq 0) { Write-Host "OK: tela inicial abriu, procurou na pasta e passou por Biblioteca, Loja e Ajustes" }
+            if (-not (Select-String -Path (Join-Path $prefs "inicio.log") -Pattern "^capa:" -Quiet)) { Write-Host "::warning::nenhuma capa chegou no autoteste" }
             else { Write-Host "::error::a tela inicial FECHOU POR ERRO (código $($p.ExitCode))"; $failed = $true }
           }
           Remove-Item (Join-Path $prefs "config.ini") -ErrorAction SilentlyContinue
