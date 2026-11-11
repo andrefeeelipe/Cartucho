@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cartucho — videogame antigo no celular e no computador</title>
+<meta name="description" content="Cartucho transforma o seu celular ou computador num videogame antigo: mais de 90 consoles e computadores clássicos num app só. Grátis, sem propaganda e funciona sem internet.">
+<meta name="theme-color" content="#e4e3e8">
+<meta property="og:title" content="Cartucho">
+<meta property="og:description" content="Um videogame antigo no seu celular e no seu computador. Grátis, sem propaganda, funciona sem internet.">
+<meta property="og:image" content="/icone.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="/icone.png">
+<link rel="apple-touch-icon" href="/icone.png">
+<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://api.github.com">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<a class="skip" href="#baixar">Pular para o download</a>
+
+<header class="top">
+  <a class="brand" href="/" aria-label="Cartucho, início">
+    <img src="/icone.png" alt="" width="32" height="32">
+    <span>Cartucho</span>
+  </a>
+  <nav aria-label="Seções">
+    <a href="#arquivos">Arquivos</a>
+    <a href="#recursos">Recursos</a>
+    <a href="#instalar">Instalar</a>
+    <a href="#duvidas">Dúvidas</a>
+    <a href="https://github.com/andrefeeelipe/cartucho" rel="noopener">Código</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="baixar">
+    <div class="hero-text">
+      <h1>Um videogame antigo no seu celular e no seu computador.</h1>
+      <p class="lede">Mais de 90 consoles e computadores clássicos num app só. Grátis, sem propaganda e funciona sem internet.</p>
+      <p class="meta" id="release-meta">Buscando a versão mais recente…</p>
+    </div>
+
+    <!-- O "console": cartucho encaixado + duas teclas de download -->
+    <div class="deck" aria-label="Baixar o Cartucho">
+      <div class="slot">
+        <div class="cart" aria-hidden="true">
+          <div class="cart-ribs"></div>
+          <div class="cart-label">
+            <strong>Cartucho</strong>
+            <span id="cart-version">versão nova</span>
+          </div>
+          <div class="cart-ribs"></div>
+        </div>
+        <div class="slot-mouth" aria-hidden="true"></div>
+      </div>
+
+      <div class="keys">
+        <span class="led" id="led" title="Versão carregada" aria-hidden="true"></span>
+        <a class="key" id="dl-android" data-os="android" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+          <span class="key-cap">Android</span>
+          <span class="key-sub" id="dl-android-sub">Celular e tablet</span>
+        </a>
+        <a class="key" id="dl-windows" data-os="windows" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+          <span class="key-cap">Windows</span>
+          <span class="key-sub" id="dl-windows-sub">Computador 64 bits</span>
+        </a>
+      </div>
+      <p class="deck-note" id="deck-note">Não sabe qual escolher? O botão do seu aparelho fica em destaque.</p>
+    </div>
+  </section>
+
+  <section class="files" id="arquivos" aria-labelledby="arquivos-titulo">
+    <div class="section-head">
+      <h2 id="arquivos-titulo">Todos os arquivos</h2>
+      <p id="files-intro">Cada atualização do Cartucho aparece aqui sozinha, assim que fica pronta.</p>
+    </div>
+    <div class="file-groups" id="file-groups">
+      <div class="file-group">
+        <h3>Celular</h3>
+        <ul class="file-list" id="list-android"><li class="file-empty">Carregando…</li></ul>
+      </div>
+      <div class="file-group">
+        <h3>Computador</h3>
+        <ul class="file-list" id="list-windows"><li class="file-empty">Carregando…</li></ul>
+      </div>
+    </div>
+    <p class="checks" id="checks"></p>
+  </section>
+
+  <section class="features" id="recursos" aria-labelledby="recursos-titulo">
+    <div class="section-head">
+      <h2 id="recursos-titulo">O que vem no Cartucho</h2>
+      <p>Só o que importa para jogar: escolher o jogo, ajustar controle, som e imagem.</p>
+    </div>
+    <ul class="pad">
+      <li class="pad-item c-blue">
+        <span class="dot" aria-hidden="true"></span>
+        <h3>Loja de jogos grátis</h3>
+        <p>Mais de 9 mil jogos liberados pelos próprios autores, para baixar dentro do app.</p>
+      </li>
+      <li class="pad-item c-red">
+        <span class="dot" aria-hidden="true"></span>
+        <h3>Biblioteca que se arruma sozinha</h3>
+        <p>Nome e capa de cada jogo aparecem sozinhos. Versões do mesmo jogo viram um item só.</p>
+      </li>
+      <li class="pad-item c-green">
+        <span class="dot" aria-hidden="true"></span>
+        <h3>Saves no seu Google Drive</h3>
+        <p>Comece no celular e continue no computador. Cada pessoa usa a própria conta.</p>
+      </li>
+      <li class="pad-item c-yellow">
+        <span class="dot" aria-hidden="true"></span>
+        <h3>Jogar com amigos</h3>
+        <p>Salas de 2 a 4 jogadores, perto ou longe, funcionando até nos dados móveis.</p>
+      </li>
+    </ul>
+    <p class="extras">Também tem troféus do RetroAchievements, qualquer joystick, e no computador funciona com teclado.</p>
+  </section>
+
+  <section class="install" id="instalar" aria-labelledby="instalar-titulo">
+    <div class="section-head">
+      <h2 id="instalar-titulo">Como instalar</h2>
+    </div>
+    <div class="install-cols">
+      <div>
+        <h3>No celular Android</h3>
+        <ol class="steps">
+          <li>Toque em <b>Android</b> lá em cima, neste celular.</li>
+          <li>Abra o arquivo baixado. Se o celular pedir, permita instalar apps desta fonte.</li>
+          <li>Toque em <b>Instalar</b> e depois em <b>Abrir</b>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>No computador com Windows</h3>
+        <ol class="steps">
+          <li>Clique em <b>Windows</b> lá em cima para baixar o instalador.</li>
+          <li>Abra o arquivo. Se aparecer “O Windows protegeu o computador”, clique em <b>Mais informações</b> e em <b>Executar assim mesmo</b>.</li>
+          <li>Abra o Cartucho pelo menu Iniciar.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="duvidas" aria-labelledby="duvidas-titulo">
+    <div class="section-head">
+      <h2 id="duvidas-titulo">Dúvidas</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>O Cartucho vem com jogos?</summary>
+        <p>Não vem com jogos comerciais. A Loja dentro do app só tem jogos gratuitos, liberados pelos próprios autores. Para outros jogos, use apenas arquivos que são seus.</p>
+      </details>
+      <details>
+        <summary>Quanto custa?</summary>
+        <p>Nada. Não tem assinatura, compra dentro do app nem propaganda.</p>
+      </details>
+      <details>
+        <summary>Qual arquivo de Android eu baixo?</summary>
+        <p>Quase todo celular atual usa o <b>arm64-v8a</b>, que é o do botão principal. Se não tiver certeza, baixe o <b>universal</b>: é maior, mas funciona em qualquer aparelho.</p>
+      </details>
+      <details>
+        <summary>Os jogos de PlayStation 2 fecham sozinhos. O que faço?</summary>
+        <p>Coloque a BIOS do seu próprio console em Ajustes, BIOS, PlayStation 2. Com ela o Cartucho usa um motor mais rápido e estável. O app não traz a BIOS e não indica onde baixar.</p>
+      </details>
+      <details>
+        <summary>Precisa de internet?</summary>
+        <p>Só para a Loja, as capas, o backup no Drive, os troféus e as partidas online. Para jogar, não.</p>
+      </details>
+      <details>
+        <summary>Como sei que o arquivo é seguro?</summary>
+        <p>O código é aberto no GitHub e cada versão é montada lá, automaticamente. Se quiser conferir, compare o código SHA-256 do arquivo baixado com a lista publicada junto da versão.</p>
+      </details>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Cartucho é um projeto independente e gratuito, sem ligação com fabricantes de videogames. Nomes de consoles citados pertencem aos seus donos.</p>
+  <p class="foot-links">
+    <a href="https://andrefeeelipe.github.io/Cartucho/privacidade.html">Privacidade</a>
+    <a href="https://andrefeeelipe.github.io/Cartucho/termos.html">Termos</a>
+    <a href="https://github.com/andrefeeelipe/cartucho/releases">Versões anteriores</a>
+    <a href="https://github.com/andrefeeelipe/cartucho">Código no GitHub</a>
+  </p>
+</footer>
+
+<script src="/app.js" defer></script>
+</body>
+</html>

@@ -3,6 +3,10 @@ name: Compilar APK
 on:
   push:
     branches: [ main ]
+    # Mudanças só no site de download não recompilam o app.
+    paths-ignore:
+      - 'site/**'
+      - 'netlify.toml'
   workflow_dispatch:
 
 permissions:
@@ -351,3 +355,11 @@ jobs:
         with:
           tag_name: v1.0.${{ github.run_number }}
           files: out/*
+
+      - name: Avisar o site de download (Netlify)
+        env:
+          NETLIFY_BUILD_HOOK: ${{ secrets.NETLIFY_BUILD_HOOK }}
+        run: |
+          # Opcional: com o secret NETLIFY_BUILD_HOOK, o site é publicado de novo assim que a versão sai.
+          # Sem ele, o site continua certo (busca a versão no GitHub ao abrir), só o plano B fica atrasado.
+          if [ -n "$NETLIFY_BUILD_HOOK" ]; then curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" && echo "Netlify avisado"; else echo "NETLIFY_BUILD_HOOK não configurado; pulando"; fi

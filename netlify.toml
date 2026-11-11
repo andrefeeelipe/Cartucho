@@ -1,0 +1,21 @@
+# Site de download do Cartucho (pasta site/). Sem dependências: só Node para gerar o release.json.
+[build]
+  base = "site"
+  publish = "."
+  command = "node build.mjs"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# A versão muda a cada build do app: nunca guardar em cache por muito tempo.
+[[headers]]
+  for = "/release.json"
+  [headers.values]
+    Cache-Control = "public, max-age=60"
