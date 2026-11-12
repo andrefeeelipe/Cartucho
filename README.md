@@ -255,4 +255,5 @@ Crie um "ID do cliente OAuth" do tipo **Android** no Google Cloud, com o pacote 
 
 ---
 
-Licenças: veja [LICENSES.md](LICENSES.md). Contato: andre.rpgxp@gmail.com
+© 2026 André Felipe. O nome **Cartucho**, o logo e o site são dele: veja [MARCA.md](MARCA.md).
+O código do app usa a licença GPLv3; as licenças de cada peça estão em [LICENSES.md](LICENSES.md). Contato: andre.rpgxp@gmail.com

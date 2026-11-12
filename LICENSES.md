@@ -3,6 +3,7 @@
 Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e cada uma tem as suas regras (licenças). Por isso:
 
 - O código do próprio Cartucho é **GPLv3**: qualquer pessoa pode ver, estudar e melhorar.
+- O **nome "Cartucho", o logo e o site** são de André Felipe e **não** entram na GPLv3. Quem fizer uma versão modificada precisa usar outro nome e outro logo. Veja [MARCA.md](MARCA.md).
 - Alguns emuladores só podem ser usados **sem fins comerciais** (Snes9x, Genesis Plus GX, PicoDrive, FinalBurn Neo, Opera, Mu, Cannonball). Por isso o Cartucho é e sempre será **gratuito**.
 
 ## Emuladores (cores libretro, baixados do buildbot oficial)
