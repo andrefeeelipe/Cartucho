@@ -30,7 +30,7 @@ jobs:
           set -o pipefail
           gradle :app:compileDebugKotlin --stacktrace 2>&1 | tee build.log
       - name: Prévia do card (Robolectric)
-        run: gradle :app:testDebugUnitTest --tests 'app.cartucho.data.GameCardPreviewTest' --stacktrace
+        run: gradle :app:testDebugUnitTest --tests 'app.cartucho.data.GameCardPreviewTest' --tests 'app.cartucho.achievements.RaFallbackCheckTest' --stacktrace
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -40,7 +40,7 @@ jobs:
       - name: Guardar a prévia no branch (para conferir sem baixar artefato)
         if: success()
         run: |
-          mkdir -p previews && cp app/build/card-previews/*.png previews/
+          mkdir -p previews && cp app/build/card-previews/* previews/
           git config user.name "cartucho-ci"
           git config user.email "cartucho-ci@users.noreply.github.com"
           git add previews
