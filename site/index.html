@@ -2,189 +2,330 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Cartucho — videogame antigo no celular e no computador</title>
-<meta name="description" content="Cartucho transforma o seu celular ou computador num videogame antigo: mais de 90 consoles e computadores clássicos num app só. Grátis, sem propaganda e funciona sem internet.">
-<meta name="theme-color" content="#e4e3e8">
-<meta property="og:title" content="Cartucho">
-<meta property="og:description" content="Um videogame antigo no seu celular e no seu computador. Grátis, sem propaganda, funciona sem internet.">
-<meta property="og:image" content="/icone.png">
-<meta property="og:type" content="website">
-<link rel="icon" href="/icone.png">
-<link rel="apple-touch-icon" href="/icone.png">
-<link rel="preload" href="/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preconnect" href="https://api.github.com">
-<link rel="stylesheet" href="/styles.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartucho — Emulador gratuito, do Atari ao Xbox 360</title>
+<meta name="description" content="Cartucho é um emulador gratuito para Android e Windows. Reconhece seus jogos, busca as capas sozinho e funciona com qualquer controle.">
+<meta name="theme-color" content="#E3E3EA">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<link rel="preload" href="fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
-<a class="skip" href="#baixar">Pular para o download</a>
 
-<header class="top">
-  <a class="brand" href="/" aria-label="Cartucho, início">
-    <img src="/icone.png" alt="" width="32" height="32">
-    <span>Cartucho</span>
-  </a>
-  <nav aria-label="Seções">
-    <a href="#arquivos">Arquivos</a>
-    <a href="#recursos">Recursos</a>
-    <a href="#instalar">Instalar</a>
-    <a href="#duvidas">Dúvidas</a>
-    <a href="https://github.com/andrefeeelipe/cartucho" rel="noopener">Código</a>
+<header class="topbar">
+  <nav class="wrap" aria-label="Principal">
+    <a class="brand" href="#topo">
+      <img src="favicon.png" alt="" width="32" height="32">
+      <span>Cartucho</span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-text" href="#consoles">Consoles</a>
+      <a class="nav-text" href="#recursos">Recursos</a>
+      <a class="nav-text" href="#duvidas">Dúvidas</a>
+      <a class="nav-cta" href="#download">Baixar</a>
+    </div>
   </nav>
 </header>
 
 <main>
-  <section class="hero" id="baixar">
+  <!-- Topo -->
+  <section id="topo" class="wrap hero">
     <div class="hero-text">
-      <h1>Um videogame antigo no seu celular e no seu computador.</h1>
-      <p class="lede">Mais de 90 consoles e computadores clássicos num app só. Grátis, sem propaganda e funciona sem internet.</p>
-      <p class="meta" id="release-meta">Buscando a versão mais recente…</p>
+      <div class="kicker">
+        <span class="dots" aria-hidden="true"><i style="background:var(--red)"></i><i style="background:var(--yellow)"></i><i style="background:var(--green)"></i><i style="background:var(--blue)"></i></span>
+        <span>Grátis · Android e Windows</span>
+      </div>
+      <h1>Do Atari ao Xbox 360. Num só cartucho.</h1>
+      <p class="lead">Um emulador simples que reconhece seus jogos, busca as capas sozinho e funciona com qualquer controle. É só escolher o jogo e apertar start.</p>
+      <div class="actions">
+        <a class="btn btn-primary" data-asset="android-arm64" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Baixar para Android
+        </a>
+        <a class="btn btn-soft" data-asset="win-setup" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
+          Baixar para Windows
+        </a>
+      </div>
     </div>
+    <div class="hero-visual">
+      <div class="cart">
+        <img src="favicon.png" alt="Ícone do Cartucho: um cartucho de videogame cinza com o nome Cartucho" width="245" height="245">
+        <div class="pad" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><i class="b4"></i></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- O "console": cartucho encaixado + duas teclas de download -->
-    <div class="deck" aria-label="Baixar o Cartucho">
-      <div class="slot">
-        <div class="cart" aria-hidden="true">
-          <div class="cart-ribs"></div>
-          <div class="cart-label">
-            <strong>Cartucho</strong>
-            <span id="cart-version">versão nova</span>
-          </div>
-          <div class="cart-ribs"></div>
+  <div class="stripe" aria-hidden="true"><i style="background:var(--purple)"></i><i style="background:#8F86D6"></i><i style="background:var(--lav)"></i></div>
+
+  <!-- Gerações -->
+  <section id="consoles" class="band-light">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2>Sete gerações de videogame.</h2>
+        <p>No celular, do Atari ao PlayStation 2. No PC, vai até o Wii U e o Xbox 360, com o Cartucho avisando antes se o seu computador roda o jogo liso.</p>
+      </div>
+
+      <div class="grid">
+        <article class="gen">
+          <div class="gen-top"><span>2ª geração</span><i aria-hidden="true" style="background:var(--red)"></i></div>
+          <p>Atari 2600, Atari 7800</p>
+          <div class="tags"><span>Android</span><span>Windows</span></div>
+        </article>
+        <article class="gen">
+          <div class="gen-top"><span>3ª geração</span><i aria-hidden="true" style="background:var(--yellow)"></i></div>
+          <p>NES, Master System</p>
+          <div class="tags"><span>Android</span><span>Windows</span></div>
+        </article>
+        <article class="gen">
+          <div class="gen-top"><span>4ª geração</span><i aria-hidden="true" style="background:var(--green)"></i></div>
+          <p>Super Nintendo, Mega Drive</p>
+          <div class="tags"><span>Android</span><span>Windows</span></div>
+        </article>
+        <article class="gen">
+          <div class="gen-top"><span>5ª geração</span><i aria-hidden="true" style="background:var(--blue)"></i></div>
+          <p>PlayStation, Nintendo 64, Saturn</p>
+          <div class="tags"><span>Android</span><span>Windows</span></div>
+        </article>
+        <article class="gen">
+          <div class="gen-top"><span>6ª geração</span><i aria-hidden="true" style="background:var(--red)"></i></div>
+          <p>PlayStation 2, GameCube, Dreamcast</p>
+          <div class="tags"><span>Android</span><span>Windows</span></div>
+        </article>
+        <article class="gen">
+          <div class="gen-top"><span>7ª geração</span><i aria-hidden="true" style="background:var(--yellow)"></i></div>
+          <p>Wii, Xbox 360 (beta)</p>
+          <div class="tags"><span>Windows</span></div>
+        </article>
+        <article class="gen gen-dark">
+          <div class="gen-top"><span>8ª geração</span><i aria-hidden="true" style="background:var(--green)"></i></div>
+          <p>Wii U (beta)</p>
+          <div class="tags"><span>Windows</span><span>Exige um PC mais forte</span></div>
+        </article>
+      </div>
+
+      <details class="more">
+        <summary><span class="when-closed">Ver todos os sistemas</span><span class="when-open">Ocultar a lista de sistemas</span></summary>
+        <div class="systems">
+          <div><h3>Nintendo</h3><p>NES, Super Nintendo, Game Boy, Game Boy Color, Game Boy Advance, Nintendo 64, Nintendo DS, Nintendo 3DS, Virtual Boy, Pokémon Mini, Game &amp; Watch, GameCube, Wii, Wii U (beta)</p></div>
+          <div><h3>Sega</h3><p>Master System, Game Gear, Mega Drive, Sega CD, 32X, Saturn, Dreamcast, VMU do Dreamcast, Naomi e Atomiswave (arcade)</p></div>
+          <div><h3>Sony</h3><p>PlayStation, PlayStation 2, PSP</p></div>
+          <div><h3>Microsoft</h3><p>Xbox 360 (beta), MSX</p></div>
+          <div><h3>Atari</h3><p>2600, 5200, 7800, 800/XL, Lynx, Jaguar, ST</p></div>
+          <div><h3>SNK e NEC</h3><p>Neo Geo (AES/MVS), Neo Geo CD, Neo Geo Pocket, PC Engine / CD, PC-FX, PC-88, PC-98</p></div>
+          <div><h3>Outros consoles</h3><p>Arcade (FinalBurn Neo), Philips CD-i (beta), WonderSwan, 3DO, Vectrex, ColecoVision, Intellivision, Odyssey², Channel F, Mega Duck, Arcadia 2001, Super Cassette Vision, HyperScan (beta), Uzebox, GameTank, Watara Supervision, Arduboy</p></div>
+          <div><h3>De bolso</h3><p>Celular Java / J2ME (beta), Palm OS (beta), Calculadora TI-83</p></div>
+          <div><h3>Computadores</h3><p>ZX Spectrum, ZX81, Amstrad CPC, Commodore 64, 128, VIC-20, Plus/4 e PET, Amiga, DOS, Apple II, Macintosh clássico, BBC Micro, Sharp X68000 e X1, FM Towns (beta), Enterprise 128, Thomson MO/TO, Philips P2000, Elektronika BK, Galaksija</p></div>
+          <div><h3>Consoles “de mentirinha”</h3><p>TIC-80, PICO-8, WASM-4, LowRes NX</p></div>
+          <div><h3>Jogos de PC clássicos</h3><p>Doom, Quake, Wolfenstein 3D, Duke Nukem 3D, RPG Maker 2000/2003, aventuras do ScummVM, OutRun (Cannonball), Cave Story (já vem grátis no app)</p></div>
         </div>
-        <div class="slot-mouth" aria-hidden="true"></div>
-      </div>
-
-      <div class="keys">
-        <span class="led" id="led" title="Versão carregada" aria-hidden="true"></span>
-        <a class="key" id="dl-android" data-os="android" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
-          <span class="key-cap">Android</span>
-          <span class="key-sub" id="dl-android-sub">Celular e tablet</span>
-        </a>
-        <a class="key" id="dl-windows" data-os="windows" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
-          <span class="key-cap">Windows</span>
-          <span class="key-sub" id="dl-windows-sub">Computador 64 bits</span>
-        </a>
-      </div>
-      <p class="deck-note" id="deck-note">Não sabe qual escolher? O botão do seu aparelho fica em destaque.</p>
-    </div>
-  </section>
-
-  <section class="files" id="arquivos" aria-labelledby="arquivos-titulo">
-    <div class="section-head">
-      <h2 id="arquivos-titulo">Todos os arquivos</h2>
-      <p id="files-intro">Cada atualização do Cartucho aparece aqui sozinha, assim que fica pronta.</p>
-    </div>
-    <div class="file-groups" id="file-groups">
-      <div class="file-group">
-        <h3>Celular</h3>
-        <ul class="file-list" id="list-android"><li class="file-empty">Carregando…</li></ul>
-      </div>
-      <div class="file-group">
-        <h3>Computador</h3>
-        <ul class="file-list" id="list-windows"><li class="file-empty">Carregando…</li></ul>
-      </div>
-    </div>
-    <p class="checks" id="checks"></p>
-  </section>
-
-  <section class="features" id="recursos" aria-labelledby="recursos-titulo">
-    <div class="section-head">
-      <h2 id="recursos-titulo">O que vem no Cartucho</h2>
-      <p>Só o que importa para jogar: escolher o jogo, ajustar controle, som e imagem.</p>
-    </div>
-    <ul class="pad">
-      <li class="pad-item c-blue">
-        <span class="dot" aria-hidden="true"></span>
-        <h3>Loja de jogos grátis</h3>
-        <p>Mais de 9 mil jogos liberados pelos próprios autores, para baixar dentro do app.</p>
-      </li>
-      <li class="pad-item c-red">
-        <span class="dot" aria-hidden="true"></span>
-        <h3>Biblioteca que se arruma sozinha</h3>
-        <p>Nome e capa de cada jogo aparecem sozinhos. Versões do mesmo jogo viram um item só.</p>
-      </li>
-      <li class="pad-item c-green">
-        <span class="dot" aria-hidden="true"></span>
-        <h3>Saves no seu Google Drive</h3>
-        <p>Comece no celular e continue no computador. Cada pessoa usa a própria conta.</p>
-      </li>
-      <li class="pad-item c-yellow">
-        <span class="dot" aria-hidden="true"></span>
-        <h3>Jogar com amigos</h3>
-        <p>Salas de 2 a 4 jogadores, perto ou longe, funcionando até nos dados móveis.</p>
-      </li>
-    </ul>
-    <p class="extras">Também tem troféus do RetroAchievements, qualquer joystick, e no computador funciona com teclado.</p>
-  </section>
-
-  <section class="install" id="instalar" aria-labelledby="instalar-titulo">
-    <div class="section-head">
-      <h2 id="instalar-titulo">Como instalar</h2>
-    </div>
-    <div class="install-cols">
-      <div>
-        <h3>No celular Android</h3>
-        <ol class="steps">
-          <li>Toque em <b>Android</b> lá em cima, neste celular.</li>
-          <li>Abra o arquivo baixado. Se o celular pedir, permita instalar apps desta fonte.</li>
-          <li>Toque em <b>Instalar</b> e depois em <b>Abrir</b>.</li>
-        </ol>
-      </div>
-      <div>
-        <h3>No computador com Windows</h3>
-        <ol class="steps">
-          <li>Clique em <b>Windows</b> lá em cima para baixar o instalador.</li>
-          <li>Abra o arquivo. Se aparecer “O Windows protegeu o computador”, clique em <b>Mais informações</b> e em <b>Executar assim mesmo</b>.</li>
-          <li>Abra o Cartucho pelo menu Iniciar.</li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <section class="faq" id="duvidas" aria-labelledby="duvidas-titulo">
-    <div class="section-head">
-      <h2 id="duvidas-titulo">Dúvidas</h2>
-    </div>
-    <div class="faq-list">
-      <details>
-        <summary>O Cartucho vem com jogos?</summary>
-        <p>Não vem com jogos comerciais. A Loja dentro do app só tem jogos gratuitos, liberados pelos próprios autores. Para outros jogos, use apenas arquivos que são seus.</p>
       </details>
-      <details>
-        <summary>Quanto custa?</summary>
-        <p>Nada. Não tem assinatura, compra dentro do app nem propaganda.</p>
+    </div>
+  </section>
+
+  <!-- Recursos -->
+  <section id="recursos" class="wrap section">
+    <div class="section-head">
+      <h2>Sem configuração. Só jogar.</h2>
+      <p>O Cartucho cuida da parte chata para você não precisar abrir menu nenhum.</p>
+    </div>
+    <div class="grid">
+      <div class="feature">
+        <span class="ico" style="background:var(--purple)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="10" rx="5"/><path d="M7 10v4"/><path d="M5 12h4"/><circle cx="16" cy="11" r="0.8" fill="currentColor"/><circle cx="18" cy="13" r="0.8" fill="currentColor"/></svg></span>
+        <h3>Qualquer controle</h3>
+        <p>Conectou, funcionou. Bluetooth, USB ou teclado no PC.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--red)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m4 15 4-4 4 4 3-3 5 5"/><circle cx="15" cy="8" r="1.5"/></svg></span>
+        <h3>Capas automáticas</h3>
+        <p>Cada jogo ganha sua capa, e versões do mesmo jogo viram um item só.</p>
+      </div>
+      <div class="feature">
+        <span class="ico on-yellow" style="background:var(--yellow)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18Z"/><path d="M12 11v6"/><path d="m9 14 3-3 3 3"/></svg></span>
+        <h3>Saves no seu Drive</h3>
+        <p>Conecte sua conta Google e continue o jogo do celular no PC.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--green)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M15 15.5a5 5 0 0 1 6 4.5"/></svg></span>
+        <h3>Jogue online</h3>
+        <p>Salas de 2 a 4 jogadores, até com todo mundo nos dados móveis.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--blue)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4-6"/></svg></span>
+        <h3>Avisa antes de travar</h3>
+        <p>Lê o seu hardware e diz se o jogo roda liso, engasga ou trava.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--purple)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V7Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></span>
+        <h3>Conquistas</h3>
+        <p>Integração com RetroAchievements para desbloquear troféus nos clássicos.</p>
+      </div>
+      <div class="feature">
+        <span class="ico" style="background:var(--red)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16"/><path d="M4 12h10"/><path d="M4 19h7"/><path d="M17 15v6"/><path d="M14 18h6"/></svg></span>
+        <h3>Em português</h3>
+        <p>Filtre jogos traduzidos para PT-BR e aplique hacks e traduções direto no app.</p>
+      </div>
+      <div class="feature">
+        <span class="ico on-yellow" style="background:var(--yellow)"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 12H6Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+        <h3>Loja de jogos livres</h3>
+        <p>Baixe jogos gratuitos, liberados pelos próprios autores, sem sair do Cartucho.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download -->
+  <section id="download" class="dark">
+    <div class="wrap section">
+      <div class="section-head">
+        <h2>Coloque o cartucho.</h2>
+        <p>100% gratuito, sem cadastro. Escolha onde você vai jogar.</p>
+      </div>
+
+      <div class="dl-grid" id="dl-grid">
+        <div class="dl-card dl-android">
+          <div class="dl-title">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9C6EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+            <h3>Android</h3>
+          </div>
+          <p>Do Atari ao PlayStation 2. Arquivo APK, instale direto no celular.</p>
+          <p class="meta" data-meta="android" aria-live="polite">Android 5.0 ou mais novo</p>
+          <a class="btn btn-primary" data-asset="android-arm64" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Baixar APK
+          </a>
+        </div>
+        <div class="dl-card dl-win">
+          <div class="dl-title">
+            <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9C6EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
+            <h3>Windows</h3>
+          </div>
+          <p>Do Atari ao Xbox 360, com teclado ou controle.</p>
+          <p class="meta" data-meta="windows" aria-live="polite">Windows 10 ou 11, 64 bits</p>
+          <a class="btn btn-soft" data-asset="win-setup" href="https://github.com/andrefeeelipe/cartucho/releases/latest">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+            Baixar para Windows
+          </a>
+        </div>
+      </div>
+
+      <details class="more">
+        <summary><span class="when-closed">Ver todos os arquivos</span><span class="when-open">Ocultar os arquivos</span></summary>
+        <div class="files">
+          <p class="release-line" data-release-line></p>
+          <ul>
+            <li data-row="android-arm64">
+              <div class="f-name"><strong>Android (arm64-v8a)</strong><span>Recomendado. Quase todo celular atual.</span></div>
+              <span class="f-size" data-size="android-arm64">—</span>
+              <a class="f-get" data-asset="android-arm64" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar Android arm64-v8a">Baixar</a>
+            </li>
+            <li data-row="android-universal">
+              <div class="f-name"><strong>Android universal</strong><span>Funciona em qualquer aparelho. Maior.</span></div>
+              <span class="f-size" data-size="android-universal">—</span>
+              <a class="f-get" data-asset="android-universal" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar Android universal">Baixar</a>
+            </li>
+            <li data-row="android-32">
+              <div class="f-name"><strong>Android 32 bits</strong><span>Celulares bem antigos, sem os consoles mais pesados.</span></div>
+              <span class="f-size" data-size="android-32">—</span>
+              <a class="f-get" data-asset="android-32" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar Android 32 bits">Baixar</a>
+            </li>
+            <li data-row="android-x86">
+              <div class="f-name"><strong>Android x86_64</strong><span>Chromebooks e alguns TV box.</span></div>
+              <span class="f-size" data-size="android-x86">—</span>
+              <a class="f-get" data-asset="android-x86" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar Android x86_64">Baixar</a>
+            </li>
+            <li data-row="win-setup">
+              <div class="f-name"><strong>Instalador para Windows</strong><span>Recomendado. Windows 10 e 11, 64 bits.</span></div>
+              <span class="f-size" data-size="win-setup">—</span>
+              <a class="f-get" data-asset="win-setup" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar instalador para Windows">Baixar</a>
+            </li>
+            <li data-row="win-zip">
+              <div class="f-name"><strong>Windows sem instalar</strong><span>Extraia a pasta e abra o Cartucho.exe.</span></div>
+              <span class="f-size" data-size="win-zip">—</span>
+              <a class="f-get" data-asset="win-zip" href="https://github.com/andrefeeelipe/cartucho/releases/latest" aria-label="Baixar Windows sem instalar">Baixar</a>
+            </li>
+          </ul>
+          <p class="integrity">Conferir integridade (SHA-256):
+            <a class="inline" data-asset="sha-android" href="https://github.com/andrefeeelipe/cartucho/releases/latest">Android</a> ·
+            <a class="inline" data-asset="sha-windows" href="https://github.com/andrefeeelipe/cartucho/releases/latest">Windows</a>
+          </p>
+        </div>
       </details>
+    </div>
+  </section>
+
+  <!-- Dúvidas -->
+  <section id="duvidas" class="faq-wrap">
+    <h2>Dúvidas</h2>
+    <div class="faq">
       <details>
-        <summary>Qual arquivo de Android eu baixo?</summary>
-        <p>Quase todo celular atual usa o <b>arm64-v8a</b>, que é o do botão principal. Se não tiver certeza, baixe o <b>universal</b>: é maior, mas funciona em qualquer aparelho.</p>
-      </details>
-      <details>
-        <summary>Os jogos de PlayStation 2 fecham sozinhos. O que faço?</summary>
-        <p>Coloque a BIOS do seu próprio console em Ajustes, BIOS, PlayStation 2. Com ela o Cartucho usa um motor mais rápido e estável. O app não traz a BIOS e não indica onde baixar.</p>
+        <summary>É grátis e é seguro?</summary>
+        <div class="answer">
+          <p>Sim. O Cartucho é 100% gratuito, sem cadastro e sem nenhuma cobrança.</p>
+          <p>O código é aberto no GitHub e cada versão é montada lá, automaticamente. Se quiser conferir, compare o código SHA-256 do arquivo baixado com a lista publicada junto da versão.</p>
+        </div>
       </details>
       <details>
         <summary>Precisa de internet?</summary>
-        <p>Só para a Loja, as capas, o backup no Drive, os troféus e as partidas online. Para jogar, não.</p>
+        <div class="answer"><p>Só para a Loja, as capas, o backup no Drive, os troféus e as partidas online. Para jogar, não.</p></div>
       </details>
       <details>
-        <summary>Como sei que o arquivo é seguro?</summary>
-        <p>O código é aberto no GitHub e cada versão é montada lá, automaticamente. Se quiser conferir, compare o código SHA-256 do arquivo baixado com a lista publicada junto da versão.</p>
+        <summary>Onde consigo jogos?</summary>
+        <div class="answer"><p>Na Loja dentro do app há mais de 9 mil jogos gratuitos, liberados pelos próprios autores. O Cartucho não vem com jogos comerciais: para outros jogos, use apenas arquivos que são seus.</p></div>
+      </details>
+      <details>
+        <summary>Meu computador roda os jogos mais pesados?</summary>
+        <div class="answer"><p>Em Ajustes, Sistemas neste aparelho, o Cartucho diz o que roda liso, o que engasga e o que trava no seu computador ou celular. Consoles pesados (PS2, GameCube, Wii U, Xbox 360) precisam de máquinas mais fortes.</p></div>
+      </details>
+      <details>
+        <summary>Os jogos de PlayStation 2 fecham sozinhos. O que faço?</summary>
+        <div class="answer"><p>Coloque a BIOS do seu próprio console em Ajustes, BIOS, PlayStation 2. Com ela o Cartucho usa um motor mais rápido e estável. O app não traz a BIOS e não indica onde baixar.</p></div>
+      </details>
+      <details>
+        <summary>Como instalar no Android?</summary>
+        <div class="answer">
+          <ol>
+            <li>Toque em Baixar APK, neste celular.</li>
+            <li>Abra o arquivo baixado. Se o celular pedir, permita instalar apps desta fonte.</li>
+            <li>Toque em Instalar e depois em Abrir.</li>
+          </ol>
+          <p>Quase todo celular atual usa o arm64-v8a, que é o do botão principal. Se não tiver certeza, baixe o universal: é maior, mas funciona em qualquer aparelho.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Como instalar no Windows?</summary>
+        <div class="answer">
+          <ol>
+            <li>Clique em Baixar para Windows.</li>
+            <li>Abra o arquivo. Se aparecer “O Windows protegeu o computador”, clique em Mais informações e em Executar assim mesmo.</li>
+            <li>Abra o Cartucho pelo menu Iniciar.</li>
+          </ol>
+        </div>
       </details>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <p>Cartucho é um projeto independente e gratuito, sem ligação com fabricantes de videogames. Nomes de consoles citados pertencem aos seus donos.</p>
-  <p class="foot-links">
-    <a href="https://andrefeeelipe.github.io/Cartucho/privacidade.html">Privacidade</a>
-    <a href="https://andrefeeelipe.github.io/Cartucho/termos.html">Termos</a>
-    <a href="https://github.com/andrefeeelipe/cartucho/releases">Versões anteriores</a>
-    <a href="https://github.com/andrefeeelipe/cartucho">Código no GitHub</a>
-  </p>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <img src="favicon.png" alt="" width="24" height="24">
+        <strong>Cartucho</strong>
+        <span>· Gratuito e de código aberto</span>
+      </div>
+      <nav class="footer-links" aria-label="Links do rodapé">
+        <a href="https://andrefeeelipe.github.io/Cartucho/privacidade.html">Privacidade</a>
+        <a href="https://andrefeeelipe.github.io/Cartucho/termos.html">Termos</a>
+        <a href="https://github.com/andrefeeelipe/cartucho/releases">Versões anteriores</a>
+        <a href="https://github.com/andrefeeelipe/cartucho">Ver no GitHub</a>
+      </nav>
+    </div>
+    <p class="notice">Cartucho é um projeto independente e gratuito, sem ligação com fabricantes de videogames. Nomes de consoles citados pertencem aos seus donos.</p>
+  </div>
 </footer>
 
-<script src="/app.js" defer></script>
+<script src="site.js" defer></script>
 </body>
 </html>
