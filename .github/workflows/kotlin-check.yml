@@ -1,0 +1,32 @@
+name: Checar Kotlin (rápido)
+
+# Só compila o Kotlin do app, sem a parte nativa nem release. Usado nos branches de trabalho ui-*.
+on:
+  push:
+    branches: [ 'ui-*' ]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extrair o código-fonte
+        run: |
+          if [ -f cartucho-src.zip ]; then unzip -o -q cartucho-src.zip -d . && rm cartucho-src.zip; fi
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Compilar Kotlin
+        run: |
+          set -o pipefail
+          gradle :app:compileDebugKotlin --stacktrace 2>&1 | tee build.log
+      - name: Erros
+        if: failure()
+        run: |
+          grep -E '^e: |error:' build.log | head -80 || true
