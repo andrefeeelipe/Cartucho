@@ -7,6 +7,7 @@ on:
     paths-ignore:
       - 'site/**'
       - 'netlify.toml'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -151,11 +152,13 @@ jobs:
           tag_name: v1.0.${{ github.run_number }}
           name: Cartucho 1.0.${{ github.run_number }}
           body: |
-            **Qual arquivo baixar?** Quase todo celular atual usa `arm64-v8a`. Se não souber, baixe o `universal` (maior, funciona em qualquer um).
+            **Jeito mais fácil de baixar:** https://cartucho-emulador.netlify.app (o site já sabe se você está no celular ou no computador).
 
-            **Computador (Windows 10/11, 64 bits):** baixe o `windows-instalador.exe` e abra. Se preferir sem instalar, use o `windows-x64.zip` (extraia e abra `Cartucho.exe`).
+            **Celular:** quase todo celular de hoje usa o `arm64-v8a`. Na dúvida, baixe o `universal` (é maior, mas funciona em qualquer um).
 
-            Confira a integridade comparando o SHA-256 do arquivo com o `SHA256SUMS.txt`.
+            **Computador (Windows 10 ou 11):** baixe o `windows-instalador.exe` e abra. Para usar sem instalar, baixe o `windows-x64.zip`, abra a pasta e clique em `Cartucho.exe`.
+
+            O `SHA256SUMS.txt` é a "impressão digital" de cada arquivo, para conferir que ninguém mexeu nele.
           files: out/*
 
   windows:

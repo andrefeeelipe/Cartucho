@@ -2,118 +2,135 @@
 
 <img src="docs/cartucho.png" width="128" alt="Ícone do Cartucho">
 
-**O Cartucho é um app que transforma o seu celular (Android) ou computador (Windows) num videogame antigo.**
-Ele "finge" ser os consoles de antigamente, como Super Nintendo, Mega Drive, PlayStation e muitos outros, para você jogar os seus jogos onde estiver.
+### 👉 Baixe aqui: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**
 
-É **grátis para sempre**, não tem propaganda e funciona **sem internet**.
+**O Cartucho transforma o seu celular ou o seu computador num videogame antigo.**
 
-> O Cartucho não vem com jogos comerciais nem com BIOS (o "cérebro" de alguns consoles) e não diz onde conseguir. Use só arquivos que são seus. Na Loja do app há milhares de jogos grátis liberados pelos próprios autores.
+Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android) ou no computador (Windows), onde estiver.
+
+- 💸 **É de graça.** Para sempre.
+- 🚫 **Não tem propaganda.**
+- ✈️ **Funciona sem internet.**
+
+> **Importante:** o Cartucho não vem com jogos de loja nem com a BIOS (BIOS é o "cérebro" de alguns videogames). Ele também não diz onde achar. Use só arquivos que são seus. Mas dentro do app tem uma Loja com milhares de jogos grátis, que os próprios criadores liberaram.
 
 ---
 
 ## Como instalar
 
+O jeito mais fácil é pelo site: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**. Ele sempre mostra a versão mais nova e já sabe se você está no celular ou no computador.
+
 ### No celular (Android)
 
-1. Abra a página **[Releases](https://github.com/andrefeeelipe/Cartucho/releases/latest)** no navegador do celular.
-2. Baixe o arquivo que termina em **`arm64-v8a.apk`**. Ele serve para quase todo celular de hoje.
-3. Abra o arquivo baixado. O Android pergunta se pode instalar apps "desta fonte": diga que sim, instale e depois pode desligar essa permissão de novo.
-4. Se aparecer um aviso do Play Protect, toque em **Instalar mesmo assim**. Isso acontece com qualquer app que não vem da Play Store.
+1. Abra o **[site do Cartucho](https://cartucho-emulador.netlify.app)** no navegador do celular.
+2. Toque em **Baixar para Android**.
+3. Abra o arquivo que baixou.
+4. O celular vai perguntar se pode instalar apps "desta fonte". Toque em **sim**. Depois de instalar, você pode desligar isso de novo.
+5. Se aparecer um aviso do **Play Protect**, toque em **Instalar mesmo assim**. Esse aviso aparece com qualquer app que não veio da Play Store.
 
-Qual arquivo escolher:
+Tem mais de um arquivo de Android. Qual é o seu?
 
 | Arquivo | Para quem |
 |---|---|
-| `arm64-v8a` | Quase todos os celulares atuais |
-| `armeabi-v7a` | Celulares bem antigos (sem os consoles mais pesados) |
-| `x86_64` | Chromebooks e emuladores de Android no PC |
+| `arm64-v8a` | Quase todos os celulares de hoje. **Na dúvida, é este.** |
+| `armeabi-v7a` | Celulares bem velhinhos (os videogames mais pesados não rodam) |
+| `x86_64` | Chromebooks e "celulares de mentira" no computador |
 | `universal` | Funciona em qualquer um, mas é bem maior |
 
-### No computador (Windows 10 ou 11, 64 bits; também deve funcionar no 7 e no 8)
+### No computador (Windows 10 ou 11)
 
-1. Na mesma página **[Releases](https://github.com/andrefeeelipe/Cartucho/releases/latest)**, baixe o **`windows-instalador.exe`**. Se preferir usar sem instalar, baixe o **`windows-x64.zip`**.
-2. Se o Windows mostrar um aviso azul (SmartScreen), clique em **Mais informações → Executar assim mesmo**. Ele avisa porque o app não tem um certificado pago.
-3. Abra pelo atalho **Cartucho** na área de trabalho (ou no menu Iniciar) e clique em **Adicionar pasta** para escolher onde estão seus jogos.
+1. Abra o **[site do Cartucho](https://cartucho-emulador.netlify.app)** e clique em **Baixar para Windows**.
+2. Abra o arquivo. Se aparecer uma tela azul dizendo "O Windows protegeu o computador", clique em **Mais informações** e depois em **Executar assim mesmo**. Ela aparece porque o Cartucho não pagou por um "selo" da Microsoft. Não tem problema.
+3. Abra o **Cartucho** pelo atalho na área de trabalho.
+4. Clique em **Adicionar pasta** e escolha onde estão os seus jogos.
 
-**Atualizar:** é só instalar a versão nova por cima. Não precisa desinstalar; jogos, saves e configurações continuam.
+Quer usar sem instalar? Baixe o `windows-x64.zip`, abra a pasta e clique em `Cartucho.exe`.
 
-**Computador sem placa de vídeo boa?** Se o driver de vídeo não servir (computador antigo, máquina virtual, sem driver), o Cartucho usa sozinho um modo de vídeo pelo processador. Os jogos mais leves rodam normal; os de PS2, GameCube e afins ficam lentos nesse modo. Instalar o driver do fabricante resolve.
+**Saiu versão nova?** É só instalar por cima. Seus jogos, saves e ajustes continuam lá.
 
-Teclas no PC: setas para andar · **Z** e **X** são os botões B e A · **Enter** é o Start · **Esc** abre o menu · **F2/F4** salva e carrega · **F11** tela cheia · **Tab** acelera. Qualquer controle USB ou Bluetooth funciona sem configurar, até 4 jogadores.
+**Computador fraquinho ou sem placa de vídeo boa?** O Cartucho percebe sozinho e usa o processador para mostrar a imagem. Os jogos leves rodam bem. Os pesados (PS2, GameCube) ficam lentos. Instalar o programa da placa de vídeo (o "driver") ajuda.
+
+### Teclas no computador
+
+| Tecla | O que faz |
+|---|---|
+| Setas | Andar |
+| **Z** e **X** | Botões B e A |
+| **Enter** | Start |
+| **Esc** | Abre o menu |
+| **F2** / **F4** | Salvar / carregar o jogo |
+| **F11** | Tela cheia |
+| **Tab** | Acelerar o jogo |
+
+Qualquer controle USB ou Bluetooth funciona sozinho, sem configurar. Dá para jogar até 4 pessoas.
 
 ---
 
 ## O que dá para fazer
 
-### 🎮 Biblioteca (a tela inicial)
-- Escolha uma pasta e o Cartucho acha os jogos sozinho, inclusive dentro de arquivos `.zip`, `.7z` e `.rar`.
-- **Nome e capa certos, sozinho:** o app olha *dentro* do arquivo (não no nome) e descobre qual jogo é, mesmo que o arquivo se chame "jogo1.bin" ou esteja dentro de um `.zip` com outro nome. Ele lê o CRC dos cartuchos, o código de série dos discos (PS1, PS2, PSP, Saturn, Sega CD, GameCube, Wii), o índice dos `.zip`, as trilhas apontadas por `.cue`/`.m3u` e os EBOOT `.pbp`. Nos cartuchos de GBA e DS ele lê o código do jogo (que as traduções mantêm), e no SNES, GB e N64 o título gravado no cartucho. Se nada disso bastar, compara o nome do arquivo com a lista oficial, ignorando lixo de site e entendendo português (por exemplo, `super_mario_world_usa` vira *Super Mario World* e `Pokemon Branco (PT-BR) www.site.com` vira *Pokémon White*). O que só dá para ver depois de extrair (`.7z`, `.rar`, jogos em partes) é reconhecido na primeira vez que você abre. São mais de 80 mil jogos na lista.
-- **Sem repetidos:** cópias do mesmo jogo (mesmo conteúdo, mesmo nome oficial, ou o mesmo arquivo em pastas diferentes) viram um cartão só. Ao tocar, você escolhe a versão.
-- Se não houver capa, ele cria uma bonita com o nome do jogo. Quer usar outra imagem? Segure o jogo → *Trocar capa*.
-- **Jogos em partes, juntados sozinhos:** jogos grandes que vêm cortados (`jogo.iso.001`, `.002`…, `jogo.7z.001`, `jogo.part1.rar`, Wii em `.wbfs` + `.wbf1`, PS2 no formato do OPL `ul.….00`) aparecem como um jogo só. Na hora de jogar, o Cartucho junta as partes, estejam elas soltas na pasta ou dentro de um `.zip`/`.7z`. É só deixar todas as partes juntas na mesma pasta.
-- **Compactado dentro de compactado e pacotes:** um `.7z` dentro de um `.zip`, partes `.7z.001` dentro de um download do Google Drive (`drive-download-…-001.zip`, `-002.zip`…), tudo é aberto sozinho até chegar no jogo. Se o arquivo tiver vários jogos (um `.rar` com 200 ROMs, por exemplo), na primeira vez que você tocar nele cada jogo vira um cartão separado, com nome e capa.
-- Várias versões do mesmo jogo (Brasil, EUA, Japão, traduções) viram um cartão só. Ao tocar, você escolhe a versão.
-- **Filtros:** por console, gênero, letra de A a Z, *Em português*, já jogados ou nunca jogados, e ordem.
-- Tudo fica no botão **☰ (menu)** no canto de cima: Perfil, Baixar jogos, Jogar com amigos, Coleção, Buscar e Ajustes.
+### 🎮 Biblioteca (a primeira tela)
+- Você escolhe uma pasta e o Cartucho acha os jogos sozinho. Até os que estão dentro de arquivos compactados (`.zip`, `.7z`, `.rar`).
+- **Ele descobre o nome e a capa sozinho.** Mesmo que o arquivo se chame "jogo1", ele olha dentro e descobre qual jogo é. Ele conhece mais de 80 mil jogos!
+- **Nada repetido.** Se você tiver o mesmo jogo duas vezes (ou em versões diferentes, como Brasil, EUA e Japão), aparece um cartão só. Quando você toca, escolhe a versão.
+- Jogo sem capa? Ele faz uma bonita com o nome. Quer outra imagem? Segure o dedo no jogo e toque em *Trocar capa*.
+- **Jogo cortado em pedaços?** Alguns jogos grandes vêm em várias partes (`.001`, `.002`…). O Cartucho junta tudo sozinho. É só deixar as partes na mesma pasta.
+- **Um arquivo com muitos jogos dentro?** Na primeira vez que você tocar nele, cada jogo vira um cartão separado.
+- **Filtros:** por videogame, por tipo de jogo, de A a Z, só os *Em português*, os que você já jogou e os que nunca jogou.
+- Tudo fica no botão **☰ (menu)**, lá em cima: Perfil, Baixar jogos, Jogar com amigos, Coleção, Buscar e Ajustes.
 
-### ⬇️ Baixar jogos grátis (a Loja)
-Mais de **9 mil jogos gratuitos** que os próprios criadores liberaram para todo mundo jogar:
-- Game Boy, Game Boy Color, GBA e NES, do [Homebrew Hub](https://hh.gbdev.io)
-- ZX Spectrum, só os que os autores ou as editoras liberaram ([ZXDB](https://github.com/zxdb/ZXDB) e [Spectrum Computing](https://spectrumcomputing.co.uk)). Inclui jogos brasileiros em português.
-- TIC-80, um console "de mentirinha" feito para jogos novos, do [tic80.com](https://tic80.com)
+### ⬇️ Loja de jogos grátis
+Mais de **9 mil jogos de graça**, que os próprios criadores deixaram todo mundo jogar:
+- Game Boy, Game Boy Color, Game Boy Advance e NES, do [Homebrew Hub](https://hh.gbdev.io)
+- ZX Spectrum, só os liberados pelos autores ([ZXDB](https://github.com/zxdb/ZXDB) e [Spectrum Computing](https://spectrumcomputing.co.uk)). Tem até jogos brasileiros em português!
+- TIC-80, um videogame "de mentirinha" feito para jogos novos, do [tic80.com](https://tic80.com)
 
-Filtre por console, gênero (ação, aventura, plataforma, corrida…), letra, idioma, época, número de jogadores e ordem. Toque em **Baixar e jogar**: o jogo baixa direto do site do autor e entra na sua biblioteca. Nenhum jogo comercial é oferecido.
+Escolha um jogo e toque em **Baixar e jogar**. Ele baixa direto do site de quem criou e já aparece na sua biblioteca. A Loja não tem jogos de loja de verdade, só os liberados.
 
 ### 🙂 Perfil
-- Sua foto da galeria, a foto do RetroAchievements ou um dos 12 bichinhos em pixel art do Cartucho.
-- Seu **nível**, que sobe com pontos, horas jogadas e jogos zerados.
-- Seus **troféus**: as conquistas do RetroAchievements, com a imagem de cada uma.
-- Números da sua coleção: tempo jogado, zerados, platinas e quantidade de jogos.
+- Coloque uma foto sua ou escolha um dos 12 bichinhos desenhados em pixel.
+- Veja o seu **nível**. Ele sobe quando você joga, ganha pontos e termina jogos.
+- Veja os seus **troféus** e quanto tempo você já jogou.
 
-### 🏆 Conquistas (RetroAchievements)
-Entre com sua conta do [RetroAchievements](https://retroachievements.org) (é grátis). Enquanto você joga, aparecem troféus como "passou da fase 1 sem morrer", e cada um vale pontos. No **Mural** (em *Coleção*), você vê o que seus amigos estão jogando e zerando, e pode curtir, reagir com emoji e comentar.
+### 🏆 Troféus (RetroAchievements)
+Crie uma conta grátis no [RetroAchievements](https://retroachievements.org) e entre com ela no app. Enquanto você joga, aparecem troféus como "passou da fase 1 sem morrer". Cada troféu vale pontos. No **Mural** (em *Coleção*), você vê o que seus amigos estão jogando e pode curtir e comentar.
 
-### 👫 Jogar com amigos (até 4 jogadores)
-No jogo, abra o menu → **Jogar com amigos**. Tem dois jeitos:
+### 👫 Jogar com amigos (até 4 pessoas)
+Dentro do jogo, abra o menu e toque em **Jogar com amigos**. Tem dois jeitos:
 
-- **Aqui perto (todo mundo no mesmo lugar):** o celular cria um **Wi-Fi do Cartucho**. Os amigos leem o primeiro QR com a câmera para entrar na rede e o segundo QR para abrir o controle no navegador. Ninguém precisa instalar nada e não precisa de internet.
-- **De longe (cada um na sua casa):** mande o convite pelo WhatsApp, pelo QR ou pelo código. Quem tem o Cartucho entra na sala, vê o jogo ao vivo e joga junto. Funciona até com todos nos dados móveis.
+- **Aqui perto (todo mundo no mesmo lugar):** o celular cria um Wi-Fi do Cartucho. Os amigos apontam a câmera para o primeiro QR (para entrar no Wi-Fi) e para o segundo QR (para virar controle). Eles não precisam instalar nada e não precisa de internet.
+- **De longe (cada um na sua casa):** mande o convite pelo WhatsApp, pelo QR ou pelo código. Quem tem o Cartucho entra na sala e joga junto. Funciona até usando os dados do celular.
 
-Controles Bluetooth ou USB ligados no celular também viram os jogadores 2, 3 e 4.
+Controles ligados no celular também viram os jogadores 2, 3 e 4.
 
 ### 📺 Jogar na TV
-No menu do jogo → **Transmitir para TV**. Funciona pelo espelhamento do Android (Smart View, Google Home) ou por cabo HDMI. São três modos: só no celular, no celular e na TV, ou só na TV, com o celular virando o controle. Até acelerado (2x, 3x, 4x) a imagem fica lisa.
+No menu do jogo, toque em **Transmitir para TV**. Funciona espelhando a tela do celular (Smart View, Google Home) ou com cabo HDMI. Você pode ver só no celular, nos dois, ou só na TV (aí o celular vira o controle).
 
-### 📱 Telas do Nintendo DS e 3DS
-No menu do jogo → **Telas** (só aparece no DS e no 3DS):
-- **Automático:** com o celular deitado, as telas ficam lado a lado (a de cima à esquerda, a de baixo à direita). Em pé, uma em cima da outra.
-- **Lado a lado**, **Uma em cima da outra** ou **Tela de cima grande**.
-
-A tela de baixo continua de toque: é só tocar com o dedo.
+### 📱 Duas telas (Nintendo DS e 3DS)
+No menu do jogo, toque em **Telas** para escolher como as duas telas aparecem: lado a lado, uma em cima da outra, ou a de cima grande. A tela de baixo funciona com o dedo, igual ao videogame de verdade.
 
 ### 🔒 Travar a tela
-No menu do jogo → **Girar a tela**: escolha **girar junto com o celular**, **travar em pé** ou **travar deitado**. Travada, a tela não fica virando enquanto você mexe o celular, mesmo com o giro automático ligado.
+No menu do jogo, toque em **Girar a tela**. Você pode deixar a tela girar junto com o celular, ou travar em pé, ou travar deitada.
 
-### 🇧🇷 Traduções em português
-Se o jogo tem tradução feita por fãs brasileiros, o app pergunta se você quer usar. O catálogo vem do [PO.B.R.E](https://romhackers.org/traducoes), com o nome de cada equipe. O arquivo original nunca é alterado.
+### 🇧🇷 Jogos traduzidos
+Se fãs brasileiros traduziram o jogo para o português, o app pergunta se você quer usar a tradução. As traduções vêm do [PO.B.R.E](https://romhackers.org/traducoes), com o nome de quem traduziu. O seu arquivo original não muda.
 
 ### 🛠️ Hacks
-Segure um jogo → **Hacks e traduções** para aplicar patches `.ips`, `.ups`, `.bps`, `.ppf` ou `xdelta`, por arquivo ou por link.
+Hack é uma versão modificada de um jogo (com fases novas, por exemplo). Segure o dedo num jogo e toque em **Hacks e traduções** para colocar uma.
 
-### 📒 Coleção e cartão para compartilhar
-Marque jogos como jogando, zerado, platinado ou abandonado, dê de 0,5 a 5 estrelas e escreva o que achou. As horas são contadas sozinhas. Dá para gerar um **card** bonito do jogo e mandar no WhatsApp ou no Instagram.
+### 📒 Coleção
+Marque cada jogo como *jogando*, *zerado*, *platinado* ou *larguei*. Dê estrelas e escreva o que achou. O app conta as horas sozinho. Dá até para criar um cartão bonito do jogo e mandar no WhatsApp ou no Instagram.
 
-### ☁️ Backup no Google Drive (opcional)
-Em *Ajustes → Nuvem*, escolha sua conta. Os saves vão para a pasta *Cartucho* do seu Drive, e o app só enxerga essa pasta.
+### ☁️ Guardar o progresso no Google Drive (se quiser)
+Em *Ajustes → Nuvem*, escolha sua conta do Google. Seus saves vão para uma pasta chamada *Cartucho* no seu Drive. Assim você pode começar no celular e continuar no computador. O app só mexe nessa pasta.
 
 ### 🎛️ Controles
-Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer controle Bluetooth ou USB (Xbox, PlayStation, genéricos). Dá para trocar cada botão como preferir.
+Use os botões na tela (dá para arrastar e mudar o tamanho) ou um controle de verdade, com fio ou Bluetooth (Xbox, PlayStation ou outros). Dá para trocar a função de cada botão.
 
 ---
 
-## Consoles
+## Videogames que funcionam
 
-| Família | Consoles |
+| Família | Videogames |
 |---|---|
 | Nintendo | NES · Super Nintendo · Game Boy · Game Boy Color · Game Boy Advance · Nintendo 64 · Nintendo DS · Nintendo 3DS · Virtual Boy · Pokémon Mini · Game & Watch · GameCube · Wii · Wii U (beta) |
 | Sega | Master System · Game Gear · Mega Drive · Sega CD · 32X · Saturn · Dreamcast · VMU do Dreamcast · Naomi e Atomiswave (arcade) |
@@ -121,50 +138,57 @@ Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer 
 | Microsoft | Xbox 360 (beta) · MSX |
 | Atari | 2600 · 5200 · 7800 · 800/XL · Lynx · Jaguar · ST |
 | SNK e NEC | Neo Geo (AES/MVS) · Neo Geo CD · Neo Geo Pocket · PC Engine / CD · PC-FX · PC-88 · PC-98 |
-| Outros consoles | Arcade (FinalBurn Neo) · Philips CD-i (beta) · WonderSwan · 3DO · Vectrex · ColecoVision · Intellivision · Odyssey² · Channel F · Mega Duck · Arcadia 2001 · Super Cassette Vision · HyperScan (beta) · Uzebox · GameTank · Watara Supervision · Arduboy |
+| Outros | Arcade (FinalBurn Neo) · Philips CD-i (beta) · WonderSwan · 3DO · Vectrex · ColecoVision · Intellivision · Odyssey² · Channel F · Mega Duck · Arcadia 2001 · Super Cassette Vision · HyperScan (beta) · Uzebox · GameTank · Watara Supervision · Arduboy |
 | De bolso | Celular Java / J2ME (beta) · Palm OS (beta) · Calculadora TI-83 |
-| Computadores | ZX Spectrum · ZX81 · Amstrad CPC · Commodore 64, 128, VIC-20, Plus/4 e PET · Amiga · DOS · Apple II · Macintosh clássico · BBC Micro · Sharp X68000 e X1 · FM Towns (beta) · Enterprise 128 · Thomson MO/TO · Philips P2000 · Elektronika BK · Galaksija |
-| Consoles "de mentirinha" | TIC-80 · PICO-8 · WASM-4 · LowRes NX |
-| Jogos de PC clássicos | Doom · Quake · Wolfenstein 3D · Duke Nukem 3D · RPG Maker 2000/2003 · aventuras do ScummVM · OutRun (Cannonball) · **Cave Story (já vem grátis no app!)** |
+| Computadores antigos | ZX Spectrum · ZX81 · Amstrad CPC · Commodore 64, 128, VIC-20, Plus/4 e PET · Amiga · DOS · Apple II · Macintosh clássico · BBC Micro · Sharp X68000 e X1 · FM Towns (beta) · Enterprise 128 · Thomson MO/TO · Philips P2000 · Elektronika BK · Galaksija |
+| Videogames "de mentirinha" | TIC-80 · PICO-8 · WASM-4 · LowRes NX |
+| Jogos clássicos de computador | Doom · Quake · Wolfenstein 3D · Duke Nukem 3D · RPG Maker 2000/2003 · aventuras do ScummVM · OutRun (Cannonball) · **Cave Story (já vem grátis no app!)** |
 
-**PlayStation 2: use a BIOS para os jogos não fecharem.** Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa o ARMSX2 no celular e o PCSX2 no PC, que rodam muito mais jogos, mais rápido e sem fechar no meio. Sem BIOS, ele usa o Play!, que não precisa dela, mas tem jogos que fecham sozinhos (por exemplo, *Need for Speed Underground 2* fecha ao começar a corrida). Se o jogo fechar, a biblioteca oferece **Continuar de onde parou**, porque o progresso é salvo sozinho a cada 2 minutos.
+*"Beta" quer dizer que ainda está em teste: pode ter erros.*
 
-> **De onde vem a BIOS?** Do seu próprio PlayStation 2. Ela é da Sony, por isso o Cartucho não traz e não indica onde baixar. Para copiar a do seu console, use um PS2 com o programa gratuito *biosdrain* (ele grava o arquivo num pendrive). Qualquer região serve; o arquivo `.bin` tem 4 MB.
+**PlayStation 2: coloque a BIOS para os jogos não fecharem.**
+Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa um "motor" mais forte, e os jogos rodam melhor e não fecham sozinhos. Sem a BIOS, ele usa outro motor, mas alguns jogos fecham no meio. Se fechar, não se preocupe: o jogo é salvo sozinho a cada 2 minutos, e a biblioteca mostra **Continuar de onde parou**.
 
-**Jogos de PC em pasta** (Doom, Quake, Duke Nukem, RPG Maker, ScummVM): a forma mais fácil é colocar a pasta inteira do jogo num `.zip` e adicionar o `.zip`.
+> **De onde vem a BIOS?** Do seu próprio PlayStation 2. Ela pertence à Sony, por isso o Cartucho não traz e não diz onde baixar. Para copiar a do seu videogame, use o programa grátis *biosdrain* no seu PS2. Ele grava o arquivo num pendrive.
 
-**No Windows, antes de abrir um jogo, o Cartucho avisa** se o seu computador vai rodar liso, pode engasgar, vai travar ou não roda. Depois que você joga, o aviso passa a usar a velocidade que ele mediu de verdade.
+**Jogos de computador (Doom, Quake e outros):** coloque a pasta inteira do jogo dentro de um `.zip` e adicione o `.zip` no Cartucho.
+
+**No computador, o Cartucho avisa antes de abrir o jogo** se ele vai rodar liso, engasgar, travar ou nem abrir. Depois que você joga, o aviso fica ainda mais certo.
 
 ---
 
 ## Perguntas rápidas
 
-**Precisa de internet?** Não para jogar. A internet só é usada para baixar capas e jogos da Loja, para as conquistas, para o backup e para jogar com amigos de longe.
+**Precisa de internet?**
+Para jogar, não. A internet só é usada para baixar capas, baixar jogos da Loja, ganhar troféus, guardar no Drive e jogar com amigos de longe.
 
-**Por que não tem Nintendo Switch?** Em 2026 a Nintendo mandou tirar do ar 13 emuladores de Switch de uma vez. Se o Cartucho tivesse Switch, ele também seria derrubado, e todo o resto iria junto. Por isso ele fica de fora.
+**Por que não tem Nintendo Switch?**
+Em 2026, a Nintendo mandou tirar do ar vários programas que rodavam jogos de Switch. Se o Cartucho tivesse Switch, ele poderia ser tirado do ar também, e todo mundo perderia o resto. Por isso o Switch fica de fora.
 
-**Os jogos ficam lentos no meu celular. E agora?** Em *Ajustes → Sistemas neste aparelho*, o app diz com sinceridade o que roda bem no seu celular. Consoles pesados (PS2, GameCube, 3DS) precisam de celulares fortes.
+**Os jogos estão lentos no meu celular. E agora?**
+Vá em *Ajustes → Sistemas neste aparelho*. O app conta, com sinceridade, o que roda bem no seu celular. Os videogames mais pesados (PS2, GameCube, 3DS) precisam de celulares fortes.
 
-**Meu jogo apareceu com o nome errado.** Espere alguns segundos com o app aberto: ele reconhece os jogos aos poucos. Se for um hack ou um jogo muito raro, talvez não esteja na lista. Aí dá para escolher a capa à mão.
-
----
-
-## Limitações conhecidas
-
-- PlayStation 2 ainda exige bastante do celular: nem todo jogo roda bem. Sem a BIOS, alguns jogos fecham sozinhos (veja "PlayStation 2" acima).
-- Nintendo 3DS precisa de celular 64-bit forte, e os jogos precisam estar descriptografados (`.3ds`, `.cci`, `.cxi`, `.3dsx`).
-- Ainda não abre arquivos `.rar` no formato RAR5.
-- Jogos em vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) devem ser adicionados pela opção **Adicionar pasta**.
-- O reconhecimento automático de nome ainda não lê `.cue`, `.chd` e `.cso`, e por enquanto só funciona no celular.
+**Meu jogo apareceu com o nome errado.**
+Espere alguns segundos com o app aberto: ele reconhece os jogos aos poucos. Se for um jogo muito raro, escolha a capa você mesmo.
 
 ---
 
-## Privacidade
+## O que ainda não funciona direito
 
-- Sem propaganda, sem rastreamento e sem coleta de dados.
-- Sua biblioteca, seus saves, sua foto de perfil e suas notas ficam **só no seu aparelho**.
-- O app só pede o que precisa: internet, vibração, avisos do mural e acesso a "aparelhos por perto" para criar o Wi-Fi do Cartucho.
-- Detalhes em [Privacidade](https://andrefeeelipe.github.io/Cartucho/privacidade.html) e [Termos](https://andrefeeelipe.github.io/Cartucho/termos.html).
+- **PlayStation 2** pesa bastante no celular. Nem todo jogo roda bem.
+- **Nintendo 3DS** precisa de um celular forte, e o jogo precisa estar "aberto" (descriptografado), nos formatos `.3ds`, `.cci`, `.cxi` ou `.3dsx`.
+- Arquivos `.rar` do tipo RAR5 ainda não abrem.
+- Jogos feitos de vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) precisam ser adicionados pelo botão **Adicionar pasta**.
+- O reconhecimento de nome ainda não lê `.cue`, `.chd` e `.cso`, e por enquanto só funciona no celular.
+
+---
+
+## Seus dados
+
+- Sem propaganda. Ninguém fica espiando o que você faz.
+- Seus jogos, saves, foto e anotações ficam **só no seu aparelho**.
+- O app só pede o que precisa: internet, vibrar, avisos do mural e "aparelhos por perto" (para criar o Wi-Fi do Cartucho).
+- Os detalhes estão em [Privacidade](https://andrefeeelipe.github.io/Cartucho/privacidade.html) e [Termos](https://andrefeeelipe.github.io/Cartucho/termos.html).
 
 ---
 
@@ -173,53 +197,59 @@ Use os botões na tela, que você pode arrastar e mudar de tamanho, ou qualquer 
 <details>
 <summary>Como o Cartucho é montado (clique para abrir)</summary>
 
-### O que tem neste repositório
+### O que tem aqui dentro
 
-| Arquivo | Para que serve |
+| Arquivo ou pasta | Para que serve |
 |---|---|
-| `cartucho-src.zip` | Todo o código do app (Android e Windows) |
-| `.github/workflows/build.yml` | A "receita" que o GitHub segue para montar o app sozinho |
-| `docs/` | O site do Cartucho (página inicial, privacidade, termos), a página dos convites da sala (`sala.html`) e o catálogo de traduções (`traducoes.json`) |
-| `LICENSES.md` | As licenças dos emuladores e das outras peças usadas |
+| `cartucho-src.zip` | Todo o código do app (celular e computador), guardado num arquivo só |
+| `.github/workflows/build.yml` | A "receita": o passo a passo que o GitHub segue para montar o app sozinho |
+| `site/` | O site de download ([cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)) |
+| `netlify.toml` | Diz ao Netlify (quem deixa o site no ar, de graça) onde está o site |
+| `docs/` | As páginas de Privacidade e Termos, a página de convite para jogar junto (`sala.html`) e a lista de traduções (`traducoes.json`) |
+| `LICENSES.md` | As licenças: quem fez cada peça que o Cartucho usa |
 
 ### Como uma versão nova nasce
 
-A cada mudança enviada para a branch `main`, o **GitHub Actions** (grátis) faz tudo sozinho:
+Toda vez que alguém manda uma mudança para a branch `main`, o **GitHub Actions** (um robô grátis do GitHub) faz tudo sozinho:
 
-1. Baixa os emuladores oficiais do libretro, as listas para reconhecer jogos (libretro-database) e monta o catálogo da Loja.
-2. Compila o app de Android e o de Windows.
+1. **Junta as peças:** baixa os emuladores, a lista que reconhece os jogos e o catálogo da Loja.
+2. **Monta o app:** um para Android e outro para Windows.
 3. **Testa de verdade:**
-   - No Android: liga um celular de mentira e confere a sala online, o servidor de retransmissão, a Loja e os downloads.
-   - No Windows: abre jogos grátis de seis consoles e confere se rodam.
-4. Publica tudo em **Releases**, com o arquivo `SHA256SUMS` para conferir que nada foi alterado.
+   - no Android, liga um celular de mentira e testa a sala de jogar junto, a Loja e os downloads;
+   - no Windows, abre jogos grátis de vários videogames para ver se rodam.
+4. **Publica** tudo em **Releases**, junto com o arquivo `SHA256SUMS`. Ele é como uma "impressão digital" de cada arquivo, para conferir que ninguém mexeu nele.
+5. **O site se atualiza sozinho:** os botões de download sempre pegam a versão mais nova das Releases.
+
+Mudanças só na pasta `site/` **não** montam o app de novo. Elas só atualizam o site.
 
 ### Segredos do repositório
 
-Ficam em *Settings → Secrets and variables → Actions* e nunca aparecem no código:
+São senhas que ficam escondidas em *Settings → Secrets and variables → Actions*. Elas nunca aparecem no código.
 
 | Nome | O que é |
 |---|---|
-| `CARTUCHO_KEYSTORE_B64` | A chave que "assina" o app, em base64. Sem ela, as atualizações não instalam por cima da versão anterior. |
-| `CARTUCHO_KEYSTORE_PASSWORD` | A senha dessa chave |
-| `CARTUCHO_RELAY` | O servidor gratuito de retransmissão (TURN, do [ExpressTURN](https://expressturn.com)) que faz a sala "De longe" funcionar nos dados móveis |
+| `CARTUCHO_KEYSTORE_B64` | A "assinatura" do app. Sem ela, as versões novas não instalam por cima das antigas. |
+| `CARTUCHO_KEYSTORE_PASSWORD` | A senha dessa assinatura |
+| `CARTUCHO_RELAY` | O servidor grátis ([ExpressTURN](https://expressturn.com)) que faz o "jogar de longe" funcionar nos dados do celular |
+| `NETLIFY_BUILD_HOOK` | (opcional) Avisa o Netlify quando sai versão nova |
 
-Guarde o arquivo `cartucho.jks` num lugar seguro.
+Guarde o arquivo `cartucho.jks` (a assinatura) num lugar seguro. Se perder, as pessoas vão precisar desinstalar e instalar de novo.
 
-### Organização do código (dentro do zip)
+### Onde fica cada parte do código (dentro do zip)
 
 ```
-app/src/main/cpp/          o "motor": roda os emuladores, a imagem, o som e as conquistas (C++)
-app/src/main/java/...      as telas e as funções do app de Android (Kotlin + Jetpack Compose)
+app/src/main/cpp/          o "motor": roda os emuladores, a imagem, o som e os troféus (C++)
+app/src/main/java/...      as telas do app de Android (Kotlin + Jetpack Compose)
 desktop/                   a versão para Windows (C++, SDL2, OpenGL, Dear ImGui)
-scripts/fetch-deps.sh      baixa os emuladores e o que mais o app precisa
+scripts/fetch-deps.sh      baixa os emuladores e o resto que o app precisa
 scripts/build-loja.py      monta o catálogo da Loja
 scripts/build-ids.py       monta as listas que reconhecem os jogos
 scripts/autoteste.sh       o teste automático do Android
 ```
 
-### Login do Google Drive para quem compila a própria versão
+### Login do Google Drive para quem monta a própria versão
 
-É preciso criar um "ID do cliente OAuth" do tipo **Android** no Google Cloud, com o pacote `app.cartucho` e o SHA-1 da sua chave, e ativar a **Google Drive API** no mesmo projeto.
+Crie um "ID do cliente OAuth" do tipo **Android** no Google Cloud, com o pacote `app.cartucho` e o SHA-1 da sua assinatura. Depois ative a **Google Drive API** no mesmo projeto.
 
 </details>
 
