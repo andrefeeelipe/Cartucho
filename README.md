@@ -1,16 +1,16 @@
 # Cartucho
 
-<img src="docs/cartucho.png" width="128" alt="Ícone do Cartucho">
+<img src="docs/banner.png" alt="Cartucho: um console para todos os consoles. Do Atari ao Xbox 360, grátis para Android e Windows.">
 
-### 👉 Baixe aqui: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**
+### Baixe aqui: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**
 
 **O Cartucho transforma o seu celular ou o seu computador num videogame antigo.**
 
 Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android) ou no computador (Windows), onde estiver.
 
-- 💸 **É de graça.** Para sempre.
-- 🚫 **Não tem propaganda.**
-- ✈️ **Funciona sem internet.**
+- **É de graça.** Para sempre.
+- **Não tem propaganda.**
+- **Funciona sem internet.**
 
 > **Importante:** o Cartucho não vem com jogos de loja nem com a BIOS (BIOS é o "cérebro" de alguns videogames). Ele também não diz onde achar. Use só arquivos que são seus. Mas dentro do app tem uma Loja com milhares de jogos grátis, que os próprios criadores liberaram.
 
@@ -68,7 +68,11 @@ Qualquer controle USB ou Bluetooth funciona sozinho, sem configurar. Dá para jo
 
 ## O que dá para fazer
 
-### 🎮 Biblioteca (a primeira tela)
+### O jeito do app
+
+Embaixo da tela ficam quatro abas: **Biblioteca**, **Loja**, **Online** e **Ajustes**. No computador, elas ficam num menu do lado esquerdo.
+
+### Biblioteca (a primeira tela)
 - Você escolhe uma pasta e o Cartucho acha os jogos sozinho. Até os que estão dentro de arquivos compactados (`.zip`, `.7z`, `.rar`).
 - **Ele descobre o nome e a capa sozinho.** Mesmo que o arquivo se chame "jogo1", ele olha dentro e descobre qual jogo é. Ele conhece mais de 80 mil jogos!
 - **Nada repetido.** Se você tiver o mesmo jogo duas vezes (ou em versões diferentes, como Brasil, EUA e Japão), aparece um cartão só. Quando você toca, escolhe a versão.
@@ -76,9 +80,11 @@ Qualquer controle USB ou Bluetooth funciona sozinho, sem configurar. Dá para jo
 - **Jogo cortado em pedaços?** Alguns jogos grandes vêm em várias partes (`.001`, `.002`…). O Cartucho junta tudo sozinho. É só deixar as partes na mesma pasta.
 - **Um arquivo com muitos jogos dentro?** Na primeira vez que você tocar nele, cada jogo vira um cartão separado.
 - **Filtros:** por videogame, por tipo de jogo, de A a Z, só os *Em português*, os que você já jogou e os que nunca jogou.
-- Tudo fica no botão **☰ (menu)**, lá em cima: Perfil, Baixar jogos, Jogar com amigos, Coleção, Buscar e Ajustes.
+- **Continuar jogando:** o último jogo aparece no topo, com um botão roxo para voltar a jogar na hora.
+- **Toque numa capa** para abrir a página do jogo: horas jogadas, saves, sua nota, troféus e os botões **Jogar** e **Compartilhar**.
+- No canto de cima ficam o **+** (para abrir um jogo ou uma pasta) e a sua foto (Perfil e Coleção).
 
-### ⬇️ Loja de jogos grátis
+### Loja de jogos grátis
 Mais de **9 mil jogos de graça**, que os próprios criadores deixaram todo mundo jogar:
 - Game Boy, Game Boy Color, Game Boy Advance e NES, do [Homebrew Hub](https://hh.gbdev.io)
 - ZX Spectrum, só os liberados pelos autores ([ZXDB](https://github.com/zxdb/ZXDB) e [Spectrum Computing](https://spectrumcomputing.co.uk)). Tem até jogos brasileiros em português!
@@ -86,44 +92,58 @@ Mais de **9 mil jogos de graça**, que os próprios criadores deixaram todo mund
 
 Escolha um jogo e toque em **Baixar e jogar**. Ele baixa direto do site de quem criou e já aparece na sua biblioteca. A Loja não tem jogos de loja de verdade, só os liberados.
 
-### 🙂 Perfil
+### Perfil
 - Coloque uma foto sua ou escolha um dos 12 bichinhos desenhados em pixel.
 - Veja o seu **nível**. Ele sobe quando você joga, ganha pontos e termina jogos.
 - Veja os seus **troféus** e quanto tempo você já jogou.
 
-### 🏆 Troféus (RetroAchievements)
+### Troféus (RetroAchievements)
 Crie uma conta grátis no [RetroAchievements](https://retroachievements.org) e entre com ela no app. Enquanto você joga, aparecem troféus como "passou da fase 1 sem morrer". Cada troféu vale pontos. No **Mural** (em *Coleção*), você vê o que seus amigos estão jogando e pode curtir e comentar.
 
-### 👫 Jogar com amigos (até 4 pessoas)
-Dentro do jogo, abra o menu e toque em **Jogar com amigos**. Tem dois jeitos:
+**Jogando a versão traduzida?** Quando o RetroAchievements não conhece a tradução, o Cartucho procura o jogo pelo nome e usa os troféus da versão oficial. No modo *hardcore* isso não vale: lá só contam as versões que o RetroAchievements aceita.
+
+### Jogar com amigos (até 4 pessoas)
+Na aba **Online**, escolha um jogo e toque em **Criar sala**, ou digite o código de 6 letras de um amigo para entrar na sala dele. Dentro do jogo, o menu também tem **Jogar com amigos**. Tem dois jeitos:
 
 - **Aqui perto (todo mundo no mesmo lugar):** o celular cria um Wi-Fi do Cartucho. Os amigos apontam a câmera para o primeiro QR (para entrar no Wi-Fi) e para o segundo QR (para virar controle). Eles não precisam instalar nada e não precisa de internet.
 - **De longe (cada um na sua casa):** mande o convite pelo WhatsApp, pelo QR ou pelo código. Quem tem o Cartucho entra na sala e joga junto. Funciona até usando os dados do celular.
 
 Controles ligados no celular também viram os jogadores 2, 3 e 4.
 
-### 📺 Jogar na TV
+### Jogar na TV
 No menu do jogo, toque em **Transmitir para TV**. Funciona espelhando a tela do celular (Smart View, Google Home) ou com cabo HDMI. Você pode ver só no celular, nos dois, ou só na TV (aí o celular vira o controle).
 
-### 📱 Duas telas (Nintendo DS e 3DS)
+### Duas telas (Nintendo DS e 3DS)
 No menu do jogo, toque em **Telas** para escolher como as duas telas aparecem: lado a lado, uma em cima da outra, ou a de cima grande. A tela de baixo funciona com o dedo, igual ao videogame de verdade.
 
-### 🔒 Travar a tela
+### Travar a tela
 No menu do jogo, toque em **Girar a tela**. Você pode deixar a tela girar junto com o celular, ou travar em pé, ou travar deitada.
 
-### 🇧🇷 Jogos traduzidos
+### Save automático
+O Cartucho guarda o seu progresso sozinho, em 3 pontos que vão se revezando. Você escolhe de quanto em quanto tempo: de 1 a 30 minutos (o normal é 5). Se o jogo travar, ele avisa e você volta do último ponto. No menu do jogo, toque em *Mais opções → Save automático*.
+
+### Jogos traduzidos
 Se fãs brasileiros traduziram o jogo para o português, o app pergunta se você quer usar a tradução. As traduções vêm do [PO.B.R.E](https://romhackers.org/traducoes), com o nome de quem traduziu. O seu arquivo original não muda.
 
-### 🛠️ Hacks
+### Hacks
 Hack é uma versão modificada de um jogo (com fases novas, por exemplo). Segure o dedo num jogo e toque em **Hacks e traduções** para colocar uma.
 
-### 📒 Coleção
-Marque cada jogo como *jogando*, *zerado*, *platinado* ou *larguei*. Dê estrelas e escreva o que achou. O app conta as horas sozinho. Dá até para criar um cartão bonito do jogo e mandar no WhatsApp ou no Instagram.
+### Coleção
+Marque cada jogo como *jogando*, *zerado*, *platinado* ou *larguei*. Dê estrelas e escreva o que achou. O app conta as horas sozinho.
 
-### ☁️ Guardar o progresso no Google Drive (se quiser)
+### Compartilhar o seu jogo
+Na página do jogo (ou no menu de pausa), toque em **Compartilhar**. O Cartucho monta um card com o jogo, o seu resultado (**ZERADO!** ou **JOGANDO AGORA**), os troféus, as horas, a sua nota e um comentário seu. Tem três tamanhos:
+
+| Story (celular) | Feed (tablet) | Link (computador) |
+|---|---|---|
+| <img src="docs/card-story.png" width="200" alt="Card no formato story"> | <img src="docs/card-feed.png" width="260" alt="Card no formato feed"> | <img src="docs/card-link.png" width="320" alt="Card no formato link"> |
+
+Toque em **Compartilhar** para mandar no WhatsApp ou no Instagram, ou em **Salvar imagem**. No computador, clique com o botão direito numa capa e escolha *Compartilhar card*: a imagem fica salva e já copiada, é só colar.
+
+### Guardar o progresso no Google Drive (se quiser)
 Em *Ajustes → Nuvem*, escolha sua conta do Google. Seus saves vão para uma pasta chamada *Cartucho* no seu Drive. Assim você pode começar no celular e continuar no computador. O app só mexe nessa pasta.
 
-### 🎛️ Controles
+### Controles
 Use os botões na tela (dá para arrastar e mudar o tamanho) ou um controle de verdade, com fio ou Bluetooth (Xbox, PlayStation ou outros). Dá para trocar a função de cada botão.
 
 ---
@@ -147,7 +167,7 @@ Use os botões na tela (dá para arrastar e mudar o tamanho) ou um controle de v
 *"Beta" quer dizer que ainda está em teste: pode ter erros.*
 
 **PlayStation 2: coloque a BIOS para os jogos não fecharem.**
-Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa um "motor" mais forte, e os jogos rodam melhor e não fecham sozinhos. Sem a BIOS, ele usa outro motor, mas alguns jogos fecham no meio. Se fechar, não se preocupe: o jogo é salvo sozinho a cada 2 minutos, e a biblioteca mostra **Continuar de onde parou**.
+Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa um "motor" mais forte, e os jogos rodam melhor e não fecham sozinhos. Sem a BIOS, ele usa outro motor, mas alguns jogos fecham no meio. Se fechar, não se preocupe: o save automático guarda o seu progresso, e a biblioteca mostra **Continuar de onde parou**.
 
 > **De onde vem a BIOS?** Do seu próprio PlayStation 2. Ela pertence à Sony, por isso o Cartucho não traz e não diz onde baixar. Para copiar a do seu videogame, use o programa grátis *biosdrain* no seu PS2. Ele grava o arquivo num pendrive.
 
@@ -180,6 +200,18 @@ Espere alguns segundos com o app aberto: ele reconhece os jogos aos poucos. Se f
 - Arquivos `.rar` do tipo RAR5 ainda não abrem.
 - Jogos feitos de vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) precisam ser adicionados pelo botão **Adicionar pasta**.
 - O reconhecimento de nome ainda não lê `.cue`, `.chd` e `.cso`, e por enquanto só funciona no celular.
+
+---
+
+## A cara do Cartucho
+
+O visual lembra os videogames cinza dos anos 90: plástico claro, listras roxas e quatro botões coloridos. Só a cor e a forma, sem usar a marca de ninguém.
+
+| | |
+|---|---|
+| **Cores** | Cinza console `#E3E3EA`, roxo `#4F43AE` e os quatro pontos: vermelho `#D3262F`, amarelo `#F0BE1E`, verde `#23965A` e azul `#2A5DB8` |
+| **Letras** | [Space Grotesk](https://github.com/floriankarsten/space-grotesk) nos títulos e [Inter](https://rsms.me/inter/) no resto (as duas são grátis, licença OFL) |
+| **Jeito** | Uma ideia por tela, cantos arredondados e frases curtas |
 
 ---
 
