@@ -240,7 +240,7 @@ jobs:
         run: |
           cp build/Release/Cartucho.exe dist/
           cp desktop/third_party/sdl2/lib/x64/SDL2.dll dist/
-          cp desktop/assets/Geist-Regular.ttf desktop/assets/Geist-SemiBold.ttf dist/assets/
+          cp desktop/assets/*.ttf desktop/assets/brand_icon.png dist/assets/
           cp LICENSES.md dist/ 2>/dev/null || true
           # Catálogo da Loja: o mesmo gerado na compilação do Android (com o banco do ZX Spectrum).
           if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv dist/loja.tsv
