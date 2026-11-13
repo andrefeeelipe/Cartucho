@@ -241,6 +241,7 @@ jobs:
           cp build/Release/Cartucho.exe dist/
           cp desktop/third_party/sdl2/lib/x64/SDL2.dll dist/
           cp desktop/assets/*.ttf desktop/assets/brand_icon.png dist/assets/
+          curl -fsSL -o dist/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
           cp LICENSES.md dist/ 2>/dev/null || true
           # Catálogo da Loja: o mesmo gerado na compilação do Android (com o banco do ZX Spectrum).
           if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv dist/loja.tsv
@@ -366,3 +367,136 @@ jobs:
           # Opcional: com o secret NETLIFY_BUILD_HOOK, o site é publicado de novo assim que a versão sai.
           # Sem ele, o site continua certo (busca a versão no GitHub ao abrir), só o plano B fica atrasado.
           if [ -n "$NETLIFY_BUILD_HOOK" ]; then curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" && echo "Netlify avisado"; else echo "NETLIFY_BUILD_HOOK não configurado; pulando"; fi
+
+  ios:
+    needs: build
+    runs-on: macos-15
+    timeout-minutes: 75
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Extrair o código-fonte (se enviado como .zip)
+        run: |
+          if [ -f cartucho-src.zip ]; then
+            unzip -o -q cartucho-src.zip -d .
+            rm cartucho-src.zip
+          fi
+
+      - name: Baixar SDL2, Dear ImGui, miniz e libretro.h
+        run: |
+          cd desktop/third_party
+          curl -fsSL -o sdl.tar.gz https://github.com/libsdl-org/SDL/releases/download/release-2.30.9/SDL2-2.30.9.tar.gz
+          tar xzf sdl.tar.gz
+          git clone --depth 1 -b v1.91.9b https://github.com/ocornut/imgui.git
+          mkdir -p miniz && curl -fsSL -o miniz.zip https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
+          unzip -q -o miniz.zip -d miniz
+          curl -fsSL -o libretro.h https://raw.githubusercontent.com/libretro/RetroArch/master/libretro-common/include/libretro.h
+
+      - name: Compilar o SDL2 para iPhone
+        run: |
+          cd desktop/third_party
+          cmake -S SDL2-2.30.9 -B sdl-build -G "Unix Makefiles" -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_BUILD_TYPE=Release -DSDL_SHARED=OFF -DSDL_STATIC=ON -DSDL_TEST=OFF \
+            -DCMAKE_INSTALL_PREFIX="$PWD/sdl-ios"
+          cmake --build sdl-build -j 4
+          cmake --install sdl-build
+          ls -R sdl-ios/lib | head -30
+
+      - name: Compilar o Cartucho para iPhone
+        run: |
+          cmake -S desktop -B build-ios -G "Unix Makefiles" -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_ARCHITECTURES=arm64 \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_BUILD_TYPE=Release \
+            -DSDL2_DIR="$PWD/desktop/third_party/sdl-ios/lib/cmake/SDL2"
+          cmake --build build-ios -j 4
+          BIN=$(find build-ios -name Cartucho -type f -perm -u+x | head -1)
+          echo "BIN=$BIN" >> $GITHUB_ENV
+          file "$BIN"
+
+      - name: Baixar os emuladores para iPhone (cores libretro)
+        run: |
+          APP=Payload/Cartucho.app
+          mkdir -p $APP/Frameworks $APP/assets $APP/system
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds pcsx_rearmed ppsspp atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc pokemini potator arduous gw opera virtualjaguar prboom tyrquake ecwolf nxengine cannonball easyrpg lowresnx retro8 wasm4 mu numero minivmac hatari 81 b2 vice_xvic vice_xplus4 vice_xpet vice_x128 quasi88 np2kai px68k x1 geartowns ep128emu_core theodore m2000 bk galaksija same_cdi geolith sameduck amiarcadia emuscv uzem gametank vemulator squirreljme applewin; do
+            rm -rf core.zip coredir
+            if curl -fsSL -o core.zip "https://buildbot.libretro.com/nightly/apple/ios-arm64/latest/${core}_libretro_ios.dylib.zip" || \
+               curl -fsSL -o core.zip "https://buildbot.libretro.com/nightly/apple/ios-arm64/latest/${core}_libretro.dylib.zip"; then
+              unzip -o -q core.zip -d coredir
+              lib=$(find coredir -name '*.dylib' | head -1)
+              # Core de iPhone: arm64 e marcado para iOS (os mais antigos usam LC_VERSION_MIN_IPHONEOS).
+              if [ -z "$lib" ] || ! lipo -archs "$lib" 2>/dev/null | grep -qw arm64 || \
+                 ! otool -l "$lib" 2>/dev/null | grep -Eq "LC_VERSION_MIN_IPHONEOS|platform (2|IOS)$"; then
+                echo "::warning::$core não é um core de iPhone; ficou de fora"; continue
+              fi
+              # Cada core vira um .framework (o iOS só carrega bibliotecas dentro de Frameworks, assinadas junto com o app).
+              fw=$APP/Frameworks/$core.framework
+              mkdir -p $fw
+              cp "$lib" $fw/$core
+              codesign --remove-signature $fw/$core 2>/dev/null || true
+              install_name_tool -id "@rpath/$core.framework/$core" $fw/$core
+              id=$(echo "$core" | tr '_' '-')
+              cat > $fw/Info.plist <<PLIST
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0"><dict>
+          <key>CFBundleExecutable</key><string>$core</string>
+          <key>CFBundleIdentifier</key><string>app.cartucho.ios.core.c$id</string>
+          <key>CFBundleName</key><string>$core</string>
+          <key>CFBundlePackageType</key><string>FMWK</string>
+          <key>CFBundleShortVersionString</key><string>1.0</string>
+          <key>CFBundleVersion</key><string>1</string>
+          <key>CFBundleSupportedPlatforms</key><array><string>iPhoneOS</string></array>
+          <key>MinimumOSVersion</key><string>14.0</string>
+          </dict></plist>
+          PLIST
+              sed -i '' 's/^          //' $fw/Info.plist
+              echo "$core" >> cores-incluidos-ios.txt
+            else
+              echo "::warning::Não foi possível baixar $core para iPhone"
+            fi
+          done
+          rm -rf core.zip coredir
+          for pack in BlueMSX PPSSPP PrBoom ECWolf "NXEngine%20%28Cave%20Story%29"; do
+            curl -fsSL -o pack.zip "https://buildbot.libretro.com/assets/system/$pack.zip" && unzip -o -q pack.zip -d $APP/system || echo "::warning::sem arquivos de sistema $pack"
+            rm -f pack.zip
+          done
+          echo "Cores no app: $(wc -l < cores-incluidos-ios.txt)"
+          du -sh $APP/Frameworks
+
+      - name: Pegar o catálogo da Loja
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: loja
+          path: loja-art
+
+      - name: Montar o Cartucho.app e o .ipa
+        run: |
+          APP=Payload/Cartucho.app
+          v="1.0.${{ github.run_number }}"
+          cp "$BIN" $APP/Cartucho
+          cp desktop/assets/*.ttf desktop/assets/brand_icon.png $APP/assets/
+          # Botões de milhares de controles (lista da comunidade SDL_GameControllerDB, licença zlib).
+          curl -fsSL -o $APP/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
+          if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv $APP/loja.tsv; fi
+          sed -e "s/__VERSION__/$v/" -e "s/__BUILD__/${{ github.run_number }}/" desktop/ios/Info.plist > $APP/Info.plist
+          plutil -lint $APP/Info.plist
+          for spec in "AppIcon60x60@2x:120" "AppIcon60x60@3x:180" "AppIcon76x76@2x:152" "AppIcon83.5x83.5@2x:167"; do
+            name=${spec%%:*}; size=${spec##*:}
+            sips -z $size $size desktop/assets/ios-icon.png --out "$APP/$name.png" >/dev/null
+          done
+          printf 'APPL????' > $APP/PkgInfo
+          # Assinatura provisória (ad hoc): o AltStore/SideStore assina de novo com o ID Apple de quem instala.
+          for fw in $APP/Frameworks/*.framework; do codesign -f -s - "$fw" >/dev/null 2>&1 || echo "::warning::não assinou $fw"; done
+          codesign -f -s - $APP
+          mkdir -p out
+          zip -qry "out/Cartucho-$v-iphone.ipa" Payload
+          ls -la out
+          shasum -a 256 out/*.ipa | sed 's#out/##' > out/SHA256SUMS-iphone.txt
+          cat out/SHA256SUMS-iphone.txt
+
+      - name: Publicar na mesma versão
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          files: out/*

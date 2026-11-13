@@ -19,7 +19,9 @@
     { id: 'win-setup', end: 'windows-instalador.exe' },
     { id: 'win-zip', end: 'windows-x64.zip' },
     { id: 'sha-android', end: 'SHA256SUMS.txt' },
-    { id: 'sha-windows', end: 'SHA256SUMS-windows.txt' }
+    { id: 'sha-windows', end: 'SHA256SUMS-windows.txt' },
+    { id: 'ios-ipa', end: '-iphone.ipa' },
+    { id: 'sha-ios', end: 'SHA256SUMS-iphone.txt' }
   ];
 
   function $all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -28,11 +30,17 @@
   var ua = navigator.userAgent || '';
   var isAndroid = /Android/i.test(ua);
   var isWindows = !isAndroid && /Windows/i.test(ua);
+  // iPad novo se apresenta como Mac: tela de toque denuncia.
+  var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
   var grid = document.getElementById('dl-grid');
   if (grid) {
     if (isAndroid) {
       var a = grid.querySelector('.dl-android');
       if (a) a.classList.add('is-yours');
+    } else if (isIOS) {
+      var i = grid.querySelector('.dl-ios');
+      if (i) i.classList.add('is-yours');
+      grid.classList.add('ios-first');
     } else if (isWindows) {
       var w = grid.querySelector('.dl-win');
       if (w) w.classList.add('is-yours');
@@ -133,6 +141,13 @@
       var fw = files['win-setup'];
       metaWin.textContent = ['Versão ' + version, fw ? formatSize(fw.size) : '', 'Windows 10 ou 11, 64 bits']
         .filter(Boolean).join(' · ');
+    }
+
+    var metaIos = document.querySelector('[data-meta="ios"]');
+    if (metaIos && files['ios-ipa']) {
+      var link = metaIos.querySelector('a');
+      metaIos.textContent = ['Versão ' + version, formatSize(files['ios-ipa'].size), 'iOS 14+'].filter(Boolean).join(' · ') + ' · ';
+      if (link) metaIos.appendChild(link);
     }
 
     var line = document.querySelector('[data-release-line]');

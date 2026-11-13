@@ -3,7 +3,7 @@ name: Checar Kotlin (rápido)
 # Só compila o Kotlin do app, sem a parte nativa nem release. Usado nos branches de trabalho ui-*.
 on:
   push:
-    branches: [ 'ui-*' ]
+    branches: [ 'ui-*', 'ios-*' ]
   workflow_dispatch:
 
 permissions:
