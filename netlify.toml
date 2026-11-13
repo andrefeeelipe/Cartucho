@@ -3,6 +3,10 @@
   base = "site"
   publish = "."
   command = "node build.mjs"
+  # Cada publicação gasta créditos do plano grátis (15 por deploy, limite de 300/mês).
+  # Só publica quando algo dentro de site/ muda; versões novas do app NÃO precisam de deploy,
+  # porque o site busca os links da versão mais recente no GitHub quando a página abre.
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- ."
 
 [build.environment]
   NODE_VERSION = "20"
