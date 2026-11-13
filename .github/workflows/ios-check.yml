@@ -63,7 +63,9 @@ jobs:
                curl -fsSL -o core.zip "https://buildbot.libretro.com/nightly/apple/ios-arm64/latest/${core}_libretro.dylib.zip"; then
               unzip -o -q core.zip -d coredir
               lib=$(find coredir -name '*.dylib' | head -1)
-              if [ -z "$lib" ] || ! vtool -show-build "$lib" 2>/dev/null | grep -q "platform IOS$"; then
+              # Core de iPhone: arm64 e marcado para iOS (os mais antigos usam LC_VERSION_MIN_IPHONEOS).
+              if [ -z "$lib" ] || ! lipo -archs "$lib" 2>/dev/null | grep -qw arm64 || \
+                 ! otool -l "$lib" 2>/dev/null | grep -Eq "LC_VERSION_MIN_IPHONEOS|platform (2|IOS)$"; then
                 echo "::warning::$core não é um core de iPhone; ficou de fora"; continue
               fi
               # Cada core vira um .framework (o iOS só carrega bibliotecas dentro de Frameworks, assinadas junto com o app).
@@ -114,6 +116,8 @@ jobs:
           v="1.0.${{ github.run_number }}"
           cp "$BIN" $APP/Cartucho
           cp desktop/assets/*.ttf desktop/assets/brand_icon.png $APP/assets/
+          # Botões de milhares de controles (lista da comunidade SDL_GameControllerDB, licença zlib).
+          curl -fsSL -o $APP/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
           if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv $APP/loja.tsv; fi
           sed -e "s/__VERSION__/$v/" -e "s/__BUILD__/${{ github.run_number }}/" desktop/ios/Info.plist > $APP/Info.plist
           plutil -lint $APP/Info.plist
