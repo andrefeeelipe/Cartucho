@@ -1,12 +1,12 @@
 # Cartucho
 
-<img src="docs/banner.png" alt="Cartucho: um console para todos os consoles. Do Atari ao Xbox 360, grátis para Android e Windows.">
+<img src="docs/banner.png" alt="Cartucho: um console para todos os consoles. Do Atari ao Xbox 360, grátis para Android, iPhone e Windows.">
 
 ### Baixe aqui: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**
 
 **O Cartucho transforma o seu celular ou o seu computador num videogame antigo.**
 
-Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android) ou no computador (Windows), onde estiver.
+Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android ou iPhone) ou no computador (Windows), onde estiver.
 
 - **É de graça.** Para sempre.
 - **Não tem propaganda.**
@@ -36,6 +36,17 @@ Tem mais de um arquivo de Android. Qual é o seu?
 | `armeabi-v7a` | Celulares bem velhinhos (os videogames mais pesados não rodam) |
 | `x86_64` | Chromebooks e "celulares de mentira" no computador |
 | `universal` | Funciona em qualquer um, mas é bem maior |
+
+### No iPhone e no iPad (iOS 14 ou mais novo)
+
+A Apple só deixa instalar apps de fora da App Store por um "instalador" como o **AltStore** ou o **SideStore**. Os dois são grátis e usam o seu próprio ID Apple.
+
+1. Instale o **[AltStore](https://altstore.io)** ou o **[SideStore](https://sidestore.io)** seguindo o passo a passo do site deles (o AltStore precisa de um computador na primeira vez).
+2. No iPhone, abra o **[site do Cartucho](https://cartucho-emulador.netlify.app)** e toque em **Baixar para iPhone (.ipa)**.
+3. Abra o AltStore ou SideStore, vá em **My Apps**, toque em **+** e escolha o arquivo do Cartucho.
+4. Com ID Apple grátis, o app precisa ser renovado a cada 7 dias: abra o AltStore ou SideStore e toque em **Refresh**. Seus jogos e saves continuam lá.
+
+Para colocar os seus jogos: app **Arquivos → No meu iPhone → Cartucho**. No iPhone o Cartucho roda do Atari ao **PlayStation, PSP, Nintendo 64 e Nintendo DS**, com controle na tela. Os mais pesados (PS2, GameCube, 3DS, Dreamcast, Saturn) ficam de fora: o iPhone não deixa os emuladores usarem a técnica que dá velocidade a eles.
 
 ### No computador (Windows 10 ou 11)
 
@@ -138,13 +149,24 @@ Na página do jogo (ou no menu de pausa), toque em **Compartilhar**. O Cartucho 
 |---|---|---|
 | <img src="docs/card-story.png" width="200" alt="Card no formato story"> | <img src="docs/card-feed.png" width="260" alt="Card no formato feed"> | <img src="docs/card-link.png" width="320" alt="Card no formato link"> |
 
-Toque em **Compartilhar** para mandar no WhatsApp ou no Instagram, ou em **Salvar imagem**. No computador, clique com o botão direito numa capa e escolha *Compartilhar card*: a imagem fica salva e já copiada, é só colar.
+O card sempre leva a **capa do jogo**. Toque em **Compartilhar** para mandar no WhatsApp ou no Instagram, ou em **Salvar imagem**. No computador, clique com o botão direito numa capa e escolha *Compartilhar card*: a imagem fica salva e já copiada, é só colar. No iPhone, segure a capa e escolha *Compartilhar card*.
 
 ### Guardar o progresso no Google Drive (se quiser)
 Em *Ajustes → Nuvem*, escolha sua conta do Google. Seus saves vão para uma pasta chamada *Cartucho* no seu Drive. Assim você pode começar no celular e continuar no computador. O app só mexe nessa pasta.
 
 ### Controles
-Use os botões na tela (dá para arrastar e mudar o tamanho) ou um controle de verdade, com fio ou Bluetooth (Xbox, PlayStation ou outros). Dá para trocar a função de cada botão.
+Use os botões na tela (no Android dá para arrastar e mudar o tamanho) ou um controle de verdade, com fio ou Bluetooth. Dá para trocar a função de cada botão no Android. **Select + Start juntos** abrem o menu do jogo em qualquer controle.
+
+| Controle | Android | iPhone | Windows |
+|---|---|---|---|
+| PlayStation 4 e 5 (Bluetooth) | Sim | Sim | Sim |
+| Xbox One S, Series (Bluetooth) | Sim | Sim | Sim |
+| Xbox One de 2013 (sem Bluetooth) | Com cabo USB | Não | Com cabo USB |
+| Xbox 360 (não tem Bluetooth) | Com fio, por adaptador USB-C | Não | Com fio, ou sem fio com o receptor da Microsoft |
+| 8BitDo, GameSir, Switch Pro | Sim | Sim | Sim |
+| Genéricos Bluetooth | Sim | Só com modo iOS ou selo MFi | Sim |
+
+O Windows e o iPhone trazem a lista da comunidade com os botões de milhares de controles. Controle que não está na lista também funciona, com o layout mais comum dos genéricos.
 
 ---
 
@@ -173,6 +195,8 @@ Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa 
 
 **Jogos de computador (Doom, Quake e outros):** coloque a pasta inteira do jogo dentro de um `.zip` e adicione o `.zip` no Cartucho.
 
+**No iPhone** entram os videogames até o PlayStation e o PSP (incluindo Nintendo 64 e Nintendo DS), além dos computadores antigos e dos jogos clássicos de computador.
+
 **No computador, o Cartucho avisa antes de abrir o jogo** se ele vai rodar liso, engasgar, travar ou nem abrir. Depois que você joga, o aviso fica ainda mais certo.
 
 ---
@@ -184,6 +208,9 @@ Para jogar, não. A internet só é usada para baixar capas, baixar jogos da Loj
 
 **Por que não tem Nintendo Switch?**
 Em 2026, a Nintendo mandou tirar do ar vários programas que rodavam jogos de Switch. Se o Cartucho tivesse Switch, ele poderia ser tirado do ar também, e todo mundo perderia o resto. Por isso o Switch fica de fora.
+
+**Por que o iPhone precisa do AltStore ou SideStore?**
+Para entrar na App Store, a Apple cobra uma taxa por ano de quem publica. O Cartucho é 100% grátis, então ele é instalado pelo AltStore ou SideStore, que são grátis e usam o seu próprio ID Apple.
 
 **Os jogos estão lentos no meu celular. E agora?**
 Vá em *Ajustes → Sistemas neste aparelho*. O app conta, com sinceridade, o que roda bem no seu celular. Os videogames mais pesados (PS2, GameCube, 3DS) precisam de celulares fortes.
@@ -197,6 +224,7 @@ Espere alguns segundos com o app aberto: ele reconhece os jogos aos poucos. Se f
 
 - **PlayStation 2** pesa bastante no celular. Nem todo jogo roda bem.
 - **Nintendo 3DS** precisa de um celular forte, e o jogo precisa estar "aberto" (descriptografado), nos formatos `.3ds`, `.cci`, `.cxi` ou `.3dsx`.
+- **iPhone (primeira versão):** sem saves no Google Drive, sem salas online e sem conquistas por enquanto. PSP e Nintendo 64 podem engasgar, porque o iPhone não deixa os emuladores usarem JIT.
 - Arquivos `.rar` do tipo RAR5 ainda não abrem.
 - Jogos feitos de vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) precisam ser adicionados pelo botão **Adicionar pasta**.
 - O reconhecimento de nome ainda não lê `.cue`, `.chd` e `.cso`, e por enquanto só funciona no celular.
@@ -245,7 +273,7 @@ O visual lembra os videogames cinza dos anos 90: plástico claro, listras roxas 
 Toda vez que alguém manda uma mudança para a branch `main`, o **GitHub Actions** (um robô grátis do GitHub) faz tudo sozinho:
 
 1. **Junta as peças:** baixa os emuladores, a lista que reconhece os jogos e o catálogo da Loja.
-2. **Monta o app:** um para Android e outro para Windows.
+2. **Monta o app:** um para Android, um para Windows e um para iPhone (o `.ipa`, num Mac do GitHub).
 3. **Testa de verdade:**
    - no Android, liga um celular de mentira e testa a sala de jogar junto, a Loja e os downloads;
    - no Windows, abre jogos grátis de vários videogames para ver se rodam.
@@ -272,7 +300,9 @@ Guarde o arquivo `cartucho.jks` (a assinatura) num lugar seguro. Se perder, as p
 ```
 app/src/main/cpp/          o "motor": roda os emuladores, a imagem, o som e os troféus (C++)
 app/src/main/java/...      as telas do app de Android (Kotlin + Jetpack Compose)
-desktop/                   a versão para Windows (C++, SDL2, OpenGL, Dear ImGui)
+desktop/                   as versões para Windows e iPhone (C++, SDL2, OpenGL / OpenGL ES, Dear ImGui)
+desktop/src/touch.h        no iPhone: toque na interface e o controle na tela
+desktop/ios/Info.plist     no iPhone: nome, ícone, pastas no app Arquivos
 scripts/fetch-deps.sh      baixa os emuladores e o resto que o app precisa
 scripts/build-loja.py      monta o catálogo da Loja
 scripts/build-ids.py       monta as listas que reconhecem os jogos
