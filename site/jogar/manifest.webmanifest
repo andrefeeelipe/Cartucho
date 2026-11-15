@@ -1,0 +1,15 @@
+{
+  "name": "Cartucho",
+  "short_name": "Cartucho",
+  "description": "Seus jogos retrô no navegador do celular. Grátis.",
+  "start_url": "/jogar/",
+  "scope": "/jogar/",
+  "display": "standalone",
+  "background_color": "#E3E3EA",
+  "theme_color": "#E3E3EA",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

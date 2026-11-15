@@ -110,6 +110,7 @@ Em poucas palavras: o Cartucho é feito de muitas peças de código aberto, e ca
 | ZXing (QR codes) | Apache 2.0 |
 | SDL2, Dear ImGui, glad, miniz (versões Windows e iPhone) | zlib / MIT |
 | SDL_GameControllerDB (lista de botões dos controles) | zlib |
+| EmulatorJS (Cartucho no navegador, carregado da CDN do projeto) | GPL-3.0 |
 | Vulkan-Headers | Apache 2.0 / MIT |
 | AndroidX, Jetpack Compose, Google Play Services Auth | Apache 2.0 / Termos do Google |
 

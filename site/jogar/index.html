@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cartucho · Jogar</title>
+<meta name="description" content="Jogue seus jogos retrô direto no navegador do iPhone, iPad ou Android. Grátis, sem instalar nada.">
+<meta name="theme-color" content="#E3E3EA">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Cartucho">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="stylesheet" href="jogar.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="./"><img src="icon-180.png" alt=""><b>Cartucho</b><span class="dots"><i style="background:#D3262F"></i><i style="background:#F0BE1E"></i><i style="background:#23965A"></i><i style="background:#2A5DB8"></i></span></a>
+  <span class="spacer"></span>
+  <button class="btn btn-primary" id="add">Adicionar jogos</button>
+  <input type="file" id="file" multiple hidden>
+</header>
+
+<h1>Biblioteca</h1>
+<p class="sub">Seus jogos ficam salvos só neste aparelho. Funciona com o controle na tela, com controle Bluetooth (PlayStation, Xbox, MFi) e com teclado.</p>
+
+<div class="notice hidden" id="install">
+  <button class="btn btn-ghost close" id="install-close" aria-label="Fechar">✕</button>
+  <b>Deixe o Cartucho na tela de início, como um app:</b>
+  <ol>
+    <li>No Safari, toque em <b>Compartilhar</b> (o quadrado com a seta).</li>
+    <li>Escolha <b>Adicionar à Tela de Início</b>.</li>
+    <li>Abra o Cartucho pelo ícone novo. Pronto: sem instalar nada, sem computador.</li>
+  </ol>
+</div>
+
+<div class="toolbar" id="toolbar" hidden>
+  <input class="search" id="search" type="search" placeholder="Buscar jogo" autocomplete="off">
+</div>
+
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty" hidden>
+  <div class="big">Nenhum jogo ainda</div>
+  <p>Toque em <b>Adicionar jogos</b> e escolha os seus jogos no app Arquivos (pode ser .zip).<br>
+  Funciona com NES, Super Nintendo, Game Boy, GBA, Nintendo 64, Nintendo DS, PlayStation, Mega Drive e outros.</p>
+  <p>Precisa de jogos? A <a href="../#loja">Loja do Cartucho</a> no Android e no PC tem jogos grátis e legais.</p>
+</div>
+
+<footer>
+  Cartucho é grátis e de código aberto · <a href="../">site do Cartucho</a> · emulação pelo <a href="https://emulatorjs.org" rel="noopener">EmulatorJS</a>
+</footer>
+
+<div class="sheet-bg" id="sheet-bg">
+  <div class="sheet" id="sheet"></div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="busy" id="busy">Guardando os jogos…</div>
+
+<script src="app.js"></script>
+<script>
+(function () {
+  'use strict';
+  var C = window.Cartucho;
+  var grid = document.getElementById('grid');
+  var empty = document.getElementById('empty');
+  var toolbar = document.getElementById('toolbar');
+  var search = document.getElementById('search');
+  var fileInput = document.getElementById('file');
+  var sheetBg = document.getElementById('sheet-bg');
+  var sheet = document.getElementById('sheet');
+  var games = [];
+
+  function toast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toast.timer);
+    toast.timer = setTimeout(function () { t.classList.remove('show'); }, 3200);
+  }
+  function busy(on) { document.getElementById('busy').classList.toggle('show', on); }
+
+  // Pede ao navegador para não apagar os jogos guardados.
+  if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {});
+
+  // Aviso de "Adicionar à Tela de Início" (só no iPhone/iPad, fora do modo app).
+  var standalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+  var ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.userAgent.indexOf('Macintosh') >= 0 && navigator.maxTouchPoints > 1);
+  var dismissed = false;
+  try { dismissed = localStorage.getItem('cartucho-install-ok') === '1'; } catch (e) {}
+  if (ios && !standalone && !dismissed) document.getElementById('install').classList.remove('hidden');
+  document.getElementById('install-close').onclick = function () {
+    document.getElementById('install').classList.add('hidden');
+    try { localStorage.setItem('cartucho-install-ok', '1'); } catch (e) {}
+  };
+
+  function closeSheet() { sheetBg.classList.remove('open'); sheet.innerHTML = ''; }
+  sheetBg.addEventListener('click', function (e) { if (e.target === sheetBg) closeSheet(); });
+
+  function el(tag, attrs, text) {
+    var n = document.createElement(tag);
+    if (attrs) for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  // Escolher o console (arquivos .zip/.7z ou extensão desconhecida).
+  function askSystem(name, current) {
+    return new Promise(function (resolve) {
+      sheet.innerHTML = '';
+      sheet.appendChild(el('h2', null, 'Qual é o console?'));
+      sheet.appendChild(el('p', null, C.titleOf(name) + ' — o Cartucho não descobriu pelo nome do arquivo.'));
+      var list = el('div', { class: 'sys-list' });
+      C.SYSTEMS.forEach(function (s) {
+        var b = el('button', { type: 'button' }, s.name);
+        if (C.keyOf(s) === current) b.style.borderColor = '#4F43AE';
+        b.appendChild(el('small', null, s.short));
+        b.onclick = function () { closeSheet(); resolve(C.keyOf(s)); };
+        list.appendChild(b);
+      });
+      sheet.appendChild(list);
+      var row = el('div', { class: 'row' });
+      var skip = el('button', { class: 'btn btn-ghost', type: 'button' }, 'Pular este arquivo');
+      skip.onclick = function () { closeSheet(); resolve(null); };
+      row.appendChild(skip);
+      sheet.appendChild(row);
+      sheetBg.classList.add('open');
+    });
+  }
+
+  document.getElementById('add').onclick = function () { fileInput.value = ''; fileInput.click(); };
+  fileInput.onchange = function () {
+    var files = Array.prototype.slice.call(fileInput.files || []);
+    if (!files.length) return;
+    var added = 0;
+    (function next(i) {
+      if (i >= files.length) {
+        busy(false);
+        if (added) toast(added === 1 ? 'Jogo adicionado.' : added + ' jogos adicionados.');
+        render();
+        return;
+      }
+      var f = files[i];
+      var sys = C.guessSystem(f.name);
+      var go = function (system) {
+        if (!system) return next(i + 1);
+        busy(true);
+        C.addFile(f, system).then(function () { added++; next(i + 1); }).catch(function () {
+          busy(false);
+          toast('Não deu para guardar ' + C.titleOf(f.name) + '. Falta espaço no aparelho?');
+          next(i + 1);
+        });
+      };
+      if (sys) go(sys);
+      else { busy(false); askSystem(f.name).then(go); }
+    })(0);
+  };
+
+  function cover(g, box) {
+    var urls = C.coverUrls(g);
+    var label = el('span', null, C.titleOf(g.name));
+    box.appendChild(label);
+    (function tryUrl(k) {
+      if (k >= urls.length) return;
+      var img = new Image();
+      img.alt = '';
+      img.loading = 'lazy';
+      img.onload = function () { box.innerHTML = ''; box.appendChild(img); };
+      img.onerror = function () { tryUrl(k + 1); };
+      img.src = urls[k];
+    })(0);
+  }
+
+  function options(g) {
+    sheet.innerHTML = '';
+    sheet.appendChild(el('h2', null, C.titleOf(g.name)));
+    var s = C.systemByKey(g.system);
+    sheet.appendChild(el('p', null, (s ? s.name : g.system) + ' · ' + C.formatSize(g.size || 0)));
+    var row = el('div', { class: 'row' });
+    var play = el('a', { class: 'btn btn-primary', href: 'jogo.html?id=' + encodeURIComponent(g.id) }, 'Jogar');
+    var change = el('button', { class: 'btn btn-soft', type: 'button' }, 'Trocar console');
+    var del = el('button', { class: 'btn btn-ghost', type: 'button' }, 'Remover do aparelho');
+    change.onclick = function () {
+      askSystem(g.name, g.system).then(function (sys) {
+        if (!sys) return;
+        C.getGame(g.id).then(function (full) { full.system = sys; return C.putGame(full); }).then(render);
+      });
+    };
+    del.onclick = function () {
+      if (!confirm('Remover ' + C.titleOf(g.name) + ' deste aparelho? Os saves do jogo continuam guardados.')) return;
+      C.deleteGame(g.id).then(function () { closeSheet(); render(); toast('Jogo removido.'); });
+    };
+    row.appendChild(play); row.appendChild(change); row.appendChild(del);
+    sheet.appendChild(row);
+    sheetBg.classList.add('open');
+  }
+
+  function draw() {
+    var q = (search.value || '').trim().toLowerCase();
+    grid.innerHTML = '';
+    var list = games.filter(function (g) { return !q || C.titleOf(g.name).toLowerCase().indexOf(q) >= 0; });
+    list.sort(function (a, b) { return (b.lastPlayed || 0) - (a.lastPlayed || 0) || C.titleOf(a.name).localeCompare(C.titleOf(b.name)); });
+    list.forEach(function (g) {
+      var tile = el('a', { class: 'tile', href: 'jogo.html?id=' + encodeURIComponent(g.id) });
+      var box = el('div', { class: 'cover' });
+      cover(g, box);
+      tile.appendChild(box);
+      tile.appendChild(el('div', { class: 'name' }, C.titleOf(g.name)));
+      var s = C.systemByKey(g.system);
+      tile.appendChild(el('div', { class: 'sys' }, s ? s.name : g.system));
+      var more = el('button', { class: 'more', type: 'button', 'aria-label': 'Opções' }, '⋯');
+      more.onclick = function (e) { e.preventDefault(); e.stopPropagation(); options(g); };
+      tile.appendChild(more);
+      grid.appendChild(tile);
+    });
+  }
+
+  function render() {
+    C.listGames().then(function (list) {
+      games = list;
+      empty.hidden = list.length > 0;
+      toolbar.hidden = list.length < 6;
+      draw();
+    }).catch(function () {
+      empty.hidden = false;
+      toast('Este navegador não deixa guardar jogos (modo privado?).');
+    });
+  }
+  search.oninput = draw;
+  render();
+})();
+</script>
+</body>
+</html>

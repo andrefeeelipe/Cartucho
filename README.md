@@ -37,9 +37,17 @@ Tem mais de um arquivo de Android. Qual é o seu?
 | `x86_64` | Chromebooks e "celulares de mentira" no computador |
 | `universal` | Funciona em qualquer um, mas é bem maior |
 
-### No iPhone e no iPad (iOS 14 ou mais novo)
+### No iPhone e no iPad
 
-A Apple só deixa instalar apps de fora da App Store por um "instalador" como o **AltStore** ou o **SideStore**. Os dois são grátis e usam o seu próprio ID Apple.
+**O jeito mais fácil, sem instalar nada e sem computador:**
+
+1. No iPhone, abra **[cartucho-emulador.netlify.app/jogar](https://cartucho-emulador.netlify.app/jogar/)** no Safari.
+2. Toque em **Compartilhar** (o quadrado com a seta) e em **Adicionar à Tela de Início**. O Cartucho vira um ícone, como qualquer app.
+3. Toque em **Adicionar jogos** e escolha os seus jogos no app Arquivos (pode ser `.zip`).
+
+Roda NES, Super Nintendo, Game Boy, GBA, Nintendo 64, Nintendo DS, PlayStation, Mega Drive e outros, com controle na tela, controle Bluetooth ou teclado. Os jogos e os saves ficam só no seu aparelho. A emulação no navegador é feita pelo [EmulatorJS](https://emulatorjs.org) (código aberto).
+
+**O app completo (.ipa), para quem já usa sideload.** A Apple só deixa instalar apps de fora da App Store por um "instalador" como o **Sideloadly**, o **AltStore** ou o **SideStore**. Todos são grátis e usam o seu próprio ID Apple, mas precisam de um computador na primeira vez. Depois de instalar: **Ajustes › Geral › VPN e Gerenciamento de Dispositivos › Confiar** e, no iOS 16 ou mais novo, **Ajustes › Privacidade e Segurança › Modo de Desenvolvedor**.
 
 1. Instale o **[AltStore](https://altstore.io)** ou o **[SideStore](https://sidestore.io)** seguindo o passo a passo do site deles (o AltStore precisa de um computador na primeira vez).
 2. No iPhone, abra o **[site do Cartucho](https://cartucho-emulador.netlify.app)** e toque em **Baixar para iPhone (.ipa)**.

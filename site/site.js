@@ -143,13 +143,6 @@
         .filter(Boolean).join(' · ');
     }
 
-    var metaIos = document.querySelector('[data-meta="ios"]');
-    if (metaIos && files['ios-ipa']) {
-      var link = metaIos.querySelector('a');
-      metaIos.textContent = ['Versão ' + version, formatSize(files['ios-ipa'].size), 'iOS 14+'].filter(Boolean).join(' · ') + ' · ';
-      if (link) metaIos.appendChild(link);
-    }
-
     var line = document.querySelector('[data-release-line]');
     if (line) {
       var date = formatDate(rel.published_at);
