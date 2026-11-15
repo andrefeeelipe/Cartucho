@@ -1,0 +1,3 @@
+console 18 Digimon World - Dawn (USA) (PT-BR) -> (9443, Digimon World Dawn)
+console 3 Chrono Trigger (Traduzido) -> (319, Chrono Trigger)
+console 5 Pokemon - Edicao Vermelho Fogo -> (515, Pokémon FireRed Version)
