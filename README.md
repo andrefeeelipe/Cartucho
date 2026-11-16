@@ -1,18 +1,18 @@
 # Cartucho
 
-<img src="docs/banner.png" alt="Cartucho: um console para todos os consoles. Do Atari ao Xbox 360, grátis para Android, iPhone e Windows.">
+<img src="docs/banner.png" alt="Cartucho: um console para todos os consoles. Do Atari ao Xbox 360, grátis para Android, iPhone, Windows e Linux.">
 
 ### Baixe aqui: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**
 
 **O Cartucho transforma o seu celular ou o seu computador num videogame antigo.**
 
-Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android ou iPhone) ou no computador (Windows), onde estiver.
+Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o PlayStation? O Cartucho "finge" ser eles. Assim você joga os seus jogos no celular (Android ou iPhone) ou no computador (Windows ou Linux), onde estiver.
 
 - **É de graça.** Para sempre.
 - **Não tem propaganda.**
 - **Funciona sem internet.**
 
-> **Importante:** o Cartucho não vem com jogos de loja nem com a BIOS (BIOS é o "cérebro" de alguns videogames). Ele também não diz onde achar. Use só arquivos que são seus. Mas dentro do app tem uma Loja com milhares de jogos grátis, que os próprios criadores liberaram.
+> **Importante:** o Cartucho não vem com jogos de loja nem com a BIOS (BIOS é o "cérebro" de alguns videogames). Ele também não diz onde achar. Use só arquivos que são seus. Mas dentro do app, na aba Explorar, tem milhares de jogos grátis, que os próprios criadores liberaram.
 
 ---
 
@@ -65,9 +65,17 @@ Para colocar os seus jogos: app **Arquivos → No meu iPhone → Cartucho**. No 
 
 Quer usar sem instalar? Baixe o `windows-x64.zip`, abra a pasta e clique em `Cartucho.exe`.
 
-**Saiu versão nova?** É só instalar por cima. Seus jogos, saves e ajustes continuam lá.
+**Saiu versão nova?** O Cartucho avisa sozinho ao abrir. Clique em **Atualizar agora**: ele baixa, instala por cima e abre de novo. Seus jogos, saves e ajustes continuam lá.
 
 **Computador fraquinho ou sem placa de vídeo boa?** O Cartucho percebe sozinho e usa o processador para mostrar a imagem. Os jogos leves rodam bem. Os pesados (PS2, GameCube) ficam lentos. Instalar o programa da placa de vídeo (o "driver") ajuda.
+
+### No computador (Linux)
+
+1. Abra o **[site do Cartucho](https://cartucho-emulador.netlify.app)** e clique em **Baixar para Linux**. Vem um arquivo `.AppImage`.
+2. Clique com o botão direito no arquivo, vá em **Propriedades** e marque **Permitir executar como programa** (ou no terminal: `chmod +x Cartucho-*.AppImage`).
+3. Dê dois cliques para abrir. Clique em **Adicionar pasta** e escolha onde estão os seus jogos.
+
+Funciona em Linux de 64 bits (Ubuntu 22.04, Fedora 36, Mint 21 ou mais novos). Prefere uma pasta comum? Baixe o `linux-x86_64.tar.gz`, extraia e abra o `AppRun`. A versão AppImage se atualiza sozinha quando sai versão nova. Os saves no Google Drive, por enquanto, só no Windows e no celular.
 
 ### Teclas no computador
 
@@ -89,7 +97,7 @@ Qualquer controle USB ou Bluetooth funciona sozinho, sem configurar. Dá para jo
 
 ### O jeito do app
 
-Embaixo da tela ficam quatro abas: **Biblioteca**, **Loja**, **Online** e **Ajustes**. No computador, elas ficam num menu do lado esquerdo.
+Embaixo da tela ficam quatro abas: **Biblioteca**, **Explorar**, **Amigos** e **Ajustes**. No computador, elas ficam num menu do lado esquerdo.
 
 ### Biblioteca (a primeira tela)
 - Você escolhe uma pasta e o Cartucho acha os jogos sozinho. Até os que estão dentro de arquivos compactados (`.zip`, `.7z`, `.rar`).
@@ -103,13 +111,13 @@ Embaixo da tela ficam quatro abas: **Biblioteca**, **Loja**, **Online** e **Ajus
 - **Toque numa capa** para abrir a página do jogo: horas jogadas, saves, sua nota, troféus e os botões **Jogar** e **Compartilhar**.
 - No canto de cima ficam o **+** (para abrir um jogo ou uma pasta) e a sua foto (Perfil e Coleção).
 
-### Loja de jogos grátis
+### Explorar: jogos grátis
 Mais de **9 mil jogos de graça**, que os próprios criadores deixaram todo mundo jogar:
 - Game Boy, Game Boy Color, Game Boy Advance e NES, do [Homebrew Hub](https://hh.gbdev.io)
 - ZX Spectrum, só os liberados pelos autores ([ZXDB](https://github.com/zxdb/ZXDB) e [Spectrum Computing](https://spectrumcomputing.co.uk)). Tem até jogos brasileiros em português!
 - TIC-80, um videogame "de mentirinha" feito para jogos novos, do [tic80.com](https://tic80.com)
 
-Escolha um jogo e toque em **Baixar e jogar**. Ele baixa direto do site de quem criou e já aparece na sua biblioteca. A Loja não tem jogos de loja de verdade, só os liberados.
+Escolha um jogo e toque em **Baixar e jogar**. Ele baixa direto do site de quem criou e já aparece na sua biblioteca. O Explorar não tem jogos de loja de verdade, só os liberados.
 
 ### Perfil
 - Coloque uma foto sua ou escolha um dos 12 bichinhos desenhados em pixel.
@@ -122,7 +130,7 @@ Crie uma conta grátis no [RetroAchievements](https://retroachievements.org) e e
 **Jogando a versão traduzida?** Quando o RetroAchievements não conhece a tradução, o Cartucho procura o jogo pelo nome e usa os troféus da versão oficial. No modo *hardcore* isso não vale: lá só contam as versões que o RetroAchievements aceita.
 
 ### Jogar com amigos (até 4 pessoas)
-Na aba **Online**, escolha um jogo e toque em **Criar sala**, ou digite o código de 6 letras de um amigo para entrar na sala dele. Dentro do jogo, o menu também tem **Jogar com amigos**. Tem dois jeitos:
+Na aba **Amigos**, escolha um jogo e toque em **Criar sala**, ou digite o código de 6 letras de um amigo para entrar na sala dele. Dentro do jogo, o menu também tem **Jogar com amigos**. Tem dois jeitos:
 
 - **Aqui perto (todo mundo no mesmo lugar):** o celular cria um Wi-Fi do Cartucho. Os amigos apontam a câmera para o primeiro QR (para entrar no Wi-Fi) e para o segundo QR (para virar controle). Eles não precisam instalar nada e não precisa de internet.
 - **De longe (cada um na sua casa):** mande o convite pelo WhatsApp, pelo QR ou pelo código. Quem tem o Cartucho entra na sala e joga junto. Funciona até usando os dados do celular.
@@ -165,7 +173,7 @@ Em *Ajustes → Nuvem*, escolha sua conta do Google. Seus saves vão para uma pa
 ### Controles
 Use os botões na tela (no Android dá para arrastar e mudar o tamanho) ou um controle de verdade, com fio ou Bluetooth. Dá para trocar a função de cada botão no Android. **Select + Start juntos** abrem o menu do jogo em qualquer controle.
 
-| Controle | Android | iPhone | Windows |
+| Controle | Android | iPhone | Windows e Linux |
 |---|---|---|---|
 | PlayStation 4 e 5 (Bluetooth) | Sim | Sim | Sim |
 | Xbox One S, Series (Bluetooth) | Sim | Sim | Sim |
@@ -174,7 +182,7 @@ Use os botões na tela (no Android dá para arrastar e mudar o tamanho) ou um co
 | 8BitDo, GameSir, Switch Pro | Sim | Sim | Sim |
 | Genéricos Bluetooth | Sim | Só com modo iOS ou selo MFi | Sim |
 
-O Windows e o iPhone trazem a lista da comunidade com os botões de milhares de controles. Controle que não está na lista também funciona, com o layout mais comum dos genéricos.
+O Windows, o Linux e o iPhone trazem a lista da comunidade com os botões de milhares de controles. Controle que não está na lista também funciona, com o layout mais comum dos genéricos.
 
 ---
 
@@ -212,7 +220,7 @@ Com a BIOS do seu PS2 (em *Ajustes → BIOS → PlayStation 2*), o Cartucho usa 
 ## Perguntas rápidas
 
 **Precisa de internet?**
-Para jogar, não. A internet só é usada para baixar capas, baixar jogos da Loja, ganhar troféus, guardar no Drive e jogar com amigos de longe.
+Para jogar, não. A internet só é usada para baixar capas, baixar jogos do Explorar, ganhar troféus, guardar no Drive e jogar com amigos de longe.
 
 **Por que não tem Nintendo Switch?**
 Em 2026, a Nintendo mandou tirar do ar vários programas que rodavam jogos de Switch. Se o Cartucho tivesse Switch, ele poderia ser tirado do ar também, e todo mundo perderia o resto. Por isso o Switch fica de fora.
@@ -281,7 +289,7 @@ O visual lembra os videogames cinza dos anos 90: plástico claro, listras roxas 
 Toda vez que alguém manda uma mudança para a branch `main`, o **GitHub Actions** (um robô grátis do GitHub) faz tudo sozinho:
 
 1. **Junta as peças:** baixa os emuladores, a lista que reconhece os jogos e o catálogo da Loja.
-2. **Monta o app:** um para Android, um para Windows e um para iPhone (o `.ipa`, num Mac do GitHub).
+2. **Monta o app:** um para Android, um para Windows, um para Linux (AppImage) e um para iPhone (o `.ipa`, num Mac do GitHub).
 3. **Testa de verdade:**
    - no Android, liga um celular de mentira e testa a sala de jogar junto, a Loja e os downloads;
    - no Windows, abre jogos grátis de vários videogames para ver se rodam.
@@ -308,7 +316,7 @@ Guarde o arquivo `cartucho.jks` (a assinatura) num lugar seguro. Se perder, as p
 ```
 app/src/main/cpp/          o "motor": roda os emuladores, a imagem, o som e os troféus (C++)
 app/src/main/java/...      as telas do app de Android (Kotlin + Jetpack Compose)
-desktop/                   as versões para Windows e iPhone (C++, SDL2, OpenGL / OpenGL ES, Dear ImGui)
+desktop/                   as versões para Windows, Linux e iPhone (C++, SDL2, OpenGL / OpenGL ES, Dear ImGui)
 desktop/src/touch.h        no iPhone: toque na interface e o controle na tela
 desktop/ios/Info.plist     no iPhone: nome, ícone, pastas no app Arquivos
 scripts/fetch-deps.sh      baixa os emuladores e o resto que o app precisa

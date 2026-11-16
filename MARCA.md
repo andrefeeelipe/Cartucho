@@ -5,7 +5,7 @@
 ## Em palavras simples
 
 - O **código do app** usa a licença **GPLv3** (veja [LICENSES.md](LICENSES.md)). Isso é obrigatório, porque o Cartucho usa emuladores que também são GPL.
-- O **nome "Cartucho"**, o **logo** (o cartucho cinza com o nome escrito) e o **visual do site** são do André Felipe. A GPLv3 **não** dá permissão para usar nada disso.
+- O **nome "Cartucho"**, o **logo** (o cartucho cinza com rótulo grafite e quatro pontos coloridos, sobre o quadrado roxo) e o **visual do site** são do André Felipe. A GPLv3 **não** dá permissão para usar nada disso.
 - Os **textos e o design do site** ([cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app), pasta `site/`) também são do André Felipe, com todos os direitos reservados. As exceções são as fontes Inter e Space Grotesk, que têm licença própria (veja `site/fonts/`).
 
 ## O que você **não** pode fazer
