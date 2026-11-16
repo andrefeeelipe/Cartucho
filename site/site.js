@@ -21,7 +21,10 @@
     { id: 'sha-android', end: 'SHA256SUMS.txt' },
     { id: 'sha-windows', end: 'SHA256SUMS-windows.txt' },
     { id: 'ios-ipa', end: '-iphone.ipa' },
-    { id: 'sha-ios', end: 'SHA256SUMS-iphone.txt' }
+    { id: 'sha-ios', end: 'SHA256SUMS-iphone.txt' },
+    { id: 'linux-appimage', end: '-linux-x86_64.AppImage' },
+    { id: 'linux-tar', end: '-linux-x86_64.tar.gz' },
+    { id: 'sha-linux', end: 'SHA256SUMS-linux.txt' }
   ];
 
   function $all(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
@@ -30,6 +33,7 @@
   var ua = navigator.userAgent || '';
   var isAndroid = /Android/i.test(ua);
   var isWindows = !isAndroid && /Windows/i.test(ua);
+  var isLinux = !isAndroid && /Linux|X11/i.test(ua) && !/CrOS/i.test(ua);
   // iPad novo se apresenta como Mac: tela de toque denuncia.
   var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
   var grid = document.getElementById('dl-grid');
@@ -45,6 +49,10 @@
       var w = grid.querySelector('.dl-win');
       if (w) w.classList.add('is-yours');
       grid.classList.add('windows-first');
+    } else if (isLinux) {
+      var l = grid.querySelector('.dl-linux');
+      if (l) l.classList.add('is-yours');
+      grid.classList.add('linux-first');
     }
   }
 
@@ -141,6 +149,14 @@
       var fw = files['win-setup'];
       metaWin.textContent = ['Versão ' + version, fw ? formatSize(fw.size) : '', 'Windows 10 ou 11, 64 bits']
         .filter(Boolean).join(' · ');
+    }
+
+    var metaLinux = document.querySelector('[data-meta="linux"]');
+    if (metaLinux) {
+      var fl = files['linux-appimage'];
+      metaLinux.textContent = fl
+        ? ['Versão ' + version, formatSize(fl.size), 'Linux 64 bits'].filter(Boolean).join(' · ')
+        : 'Linux 64 bits · chega na próxima versão';
     }
 
     var line = document.querySelector('[data-release-line]');

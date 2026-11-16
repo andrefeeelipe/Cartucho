@@ -146,19 +146,28 @@ jobs:
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
           script: bash scripts/autoteste.sh
 
+      - name: Notas da versão (as Novidades aparecem no aviso de atualização do app)
+        run: |
+          {
+            if [ -f NOVIDADES.md ]; then cat NOVIDADES.md; echo; fi
+            echo '**Jeito mais fácil de baixar:** https://cartucho-emulador.netlify.app (o site já sabe se você está no celular ou no computador).'
+            echo
+            echo '**Celular:** quase todo celular de hoje usa o `arm64-v8a`. Na dúvida, baixe o `universal` (é maior, mas funciona em qualquer um).'
+            echo
+            echo '**Windows 10 ou 11:** baixe o `windows-instalador.exe` e abra. Para usar sem instalar, baixe o `windows-x64.zip`.'
+            echo
+            echo '**Linux:** baixe o `linux-x86_64.AppImage`, marque como executável e abra (ele se atualiza sozinho). Ou use o `linux-x86_64.tar.gz`.'
+            echo
+            echo 'O `SHA256SUMS.txt` é a "impressão digital" de cada arquivo, para conferir que ninguém mexeu nele.'
+          } > release-notes.md
+          cat release-notes.md
+
       - name: Publicar em Releases
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v1.0.${{ github.run_number }}
           name: Cartucho 1.0.${{ github.run_number }}
-          body: |
-            **Jeito mais fácil de baixar:** https://cartucho-emulador.netlify.app (o site já sabe se você está no celular ou no computador).
-
-            **Celular:** quase todo celular de hoje usa o `arm64-v8a`. Na dúvida, baixe o `universal` (é maior, mas funciona em qualquer um).
-
-            **Computador (Windows 10 ou 11):** baixe o `windows-instalador.exe` e abra. Para usar sem instalar, baixe o `windows-x64.zip`, abra a pasta e clique em `Cartucho.exe`.
-
-            O `SHA256SUMS.txt` é a "impressão digital" de cada arquivo, para conferir que ninguém mexeu nele.
+          body_path: release-notes.md
           files: out/*
 
   windows:
@@ -196,7 +205,7 @@ jobs:
           CARTUCHO_GOOGLE_DESKTOP_ID: ${{ secrets.CARTUCHO_GOOGLE_DESKTOP_ID }}
           CARTUCHO_GOOGLE_DESKTOP_SECRET: ${{ secrets.CARTUCHO_GOOGLE_DESKTOP_SECRET }}
         run: |
-          cmake -S desktop -B build -A x64 -DSDL2_DIR="$PWD/desktop/third_party/sdl2/cmake" -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+          cmake -S desktop -B build -A x64 -DSDL2_DIR="$PWD/desktop/third_party/sdl2/cmake" -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded -DCARTUCHO_VERSION=1.0.${{ github.run_number }}
           cmake --build build --config Release
 
       - name: Baixar os emuladores (cores libretro para Windows)
@@ -240,7 +249,7 @@ jobs:
         run: |
           cp build/Release/Cartucho.exe dist/
           cp desktop/third_party/sdl2/lib/x64/SDL2.dll dist/
-          cp desktop/assets/*.ttf desktop/assets/brand_icon.png dist/assets/
+          cp desktop/assets/*.ttf desktop/assets/brand_icon.png desktop/assets/intro.wav dist/assets/
           curl -fsSL -o dist/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
           cp LICENSES.md dist/ 2>/dev/null || true
           # Catálogo da Loja: o mesmo gerado na compilação do Android (com o banco do ZX Spectrum).
@@ -368,6 +377,123 @@ jobs:
           # Sem ele, o site continua certo (busca a versão no GitHub ao abrir), só o plano B fica atrasado.
           if [ -n "$NETLIFY_BUILD_HOOK" ]; then curl -fsS -X POST -d '{}' "$NETLIFY_BUILD_HOOK" && echo "Netlify avisado"; else echo "NETLIFY_BUILD_HOOK não configurado; pulando"; fi
 
+
+  linux:
+    needs: build
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Extrair o código-fonte (se enviado como .zip)
+        run: |
+          if [ -f cartucho-src.zip ]; then
+            unzip -o -q cartucho-src.zip -d .
+            rm cartucho-src.zip
+          fi
+
+      - name: Ferramentas para compilar
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q build-essential cmake ninja-build pkg-config xvfb mesa-utils libgl1-mesa-dri \
+            libgl1-mesa-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxi-dev libxss-dev libxinerama-dev \
+            libxkbcommon-dev libwayland-dev wayland-protocols libdecor-0-dev libpulse-dev libasound2-dev libudev-dev \
+            libdbus-1-dev libibus-1.0-dev libdrm-dev libgbm-dev libegl1-mesa-dev
+
+      - name: Compilar o SDL2 (vai junto no AppImage)
+        run: |
+          cd desktop/third_party
+          curl -fsSL -o sdl.tar.gz https://github.com/libsdl-org/SDL/releases/download/release-2.30.9/SDL2-2.30.9.tar.gz
+          tar xzf sdl.tar.gz
+          cmake -S SDL2-2.30.9 -B sdl-build -G Ninja -DCMAKE_BUILD_TYPE=Release -DSDL_SHARED=ON -DSDL_STATIC=OFF -DSDL_TEST=OFF \
+            -DCMAKE_INSTALL_PREFIX="$PWD/sdl-linux"
+          cmake --build sdl-build
+          cmake --install sdl-build
+
+      - name: Baixar Dear ImGui, miniz e libretro.h
+        run: |
+          cd desktop/third_party
+          git clone --depth 1 -b v1.91.9b https://github.com/ocornut/imgui.git
+          mkdir -p miniz && curl -fsSL -o miniz.zip https://github.com/richgel999/miniz/releases/download/3.0.2/miniz-3.0.2.zip
+          unzip -q -o miniz.zip -d miniz
+          curl -fsSL -o libretro.h https://raw.githubusercontent.com/libretro/RetroArch/master/libretro-common/include/libretro.h
+          curl -fsSL -o libretro_vulkan.h https://raw.githubusercontent.com/libretro/libretro-common/master/include/libretro_vulkan.h
+          git clone --depth 1 --branch v1.3.296 https://github.com/KhronosGroup/Vulkan-Headers.git vulkan-headers
+
+      - name: Compilar o Cartucho para Linux
+        run: |
+          cmake -S desktop -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCARTUCHO_VERSION=1.0.${{ github.run_number }} \
+            -DSDL2_DIR="$PWD/desktop/third_party/sdl-linux/lib/cmake/SDL2"
+          cmake --build build
+          file build/Cartucho
+
+      - name: Baixar os emuladores (cores libretro para Linux)
+        run: |
+          D=AppDir/usr/bin
+          mkdir -p $D/cores $D/assets $D/system AppDir/usr/lib
+          for core in stella prosystem handy fceumm snes9x gambatte mgba genesis_plus_gx picodrive mednafen_pce_fast mednafen_ngp mednafen_wswan fbneo mupen64plus_next melonds citra pcsx_rearmed ppsspp flycast yabause play dolphin opera virtualjaguar atari800 vecx mednafen_vb neocd mednafen_pcfx gearcoleco freeintv o2em freechaf bluemsx fuse cap32 vice_x64sc puae dosbox_pure pokemini potator arduous gw cemu xenia_edge tic80 same_cdi geolith sameduck amiarcadia emuscv hyperscanemu uzem gametank vemulator squirreljme mu numero applewin minivmac hatari 81 b2 vice_xvic vice_xplus4 vice_xpet vice_x128 quasi88 np2kai px68k x1 geartowns ep128emu_core theodore m2000 bk galaksija retro8 wasm4 lowresnx easyrpg scummvm prboom tyrquake ecwolf eduke32 nxengine cannonball pcsx2; do
+            if curl -fsSL -o core.zip "https://buildbot.libretro.com/nightly/linux/x86_64/latest/${core}_libretro.so.zip"; then
+              unzip -o -q core.zip -d $D/cores && echo "$core" >> cores-incluidos-linux.txt
+            else
+              echo "::warning::Não foi possível baixar $core para Linux"
+            fi
+            rm -f core.zip
+          done
+          for pack in Dolphin BlueMSX PPSSPP ScummVM PrBoom ECWolf "NXEngine%20%28Cave%20Story%29" LRPS2; do
+            curl -fsSL -o pack.zip "https://buildbot.libretro.com/assets/system/$pack.zip" && unzip -o -q pack.zip -d $D/system || echo "::warning::sem arquivos de sistema $pack"
+            rm -f pack.zip
+          done
+          echo "Cores no Linux: $(wc -l < cores-incluidos-linux.txt)"
+          du -sh $D/cores
+
+      - name: Pegar o catálogo da Loja
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: loja
+          path: loja-art
+
+      - name: Montar a pasta do programa
+        run: |
+          D=AppDir/usr/bin
+          cp build/Cartucho $D/
+          cp -L desktop/third_party/sdl-linux/lib/libSDL2-2.0.so.0 AppDir/usr/lib/
+          cp desktop/assets/*.ttf desktop/assets/brand_icon.png desktop/assets/intro.wav $D/assets/
+          curl -fsSL -o $D/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
+          cp LICENSES.md $D/ 2>/dev/null || true
+          if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv $D/loja.tsv; fi
+          cp desktop/assets/cartucho-256.png AppDir/cartucho.png
+          mkdir -p AppDir/usr/share/icons/hicolor/256x256/apps && cp desktop/assets/cartucho-256.png AppDir/usr/share/icons/hicolor/256x256/apps/cartucho.png
+          cp desktop/linux/cartucho.desktop AppDir/cartucho.desktop
+          cp desktop/linux/AppRun AppDir/AppRun && chmod +x AppDir/AppRun
+          ldd $D/Cartucho
+
+      - name: Autoteste no Linux (tela inicial, sem placa de vídeo)
+        continue-on-error: true
+        run: |
+          export SDL_AUDIODRIVER=dummy LIBGL_ALWAYS_SOFTWARE=1
+          timeout 180 xvfb-run -a -s "-screen 0 1280x800x24" ./AppDir/AppRun --autoteste-inicio; code=$?
+          echo "código de saída: $code"
+          cat ~/.local/share/Cartucho/Cartucho/*.log 2>/dev/null | tail -20 || true
+          if [ "$code" != "0" ]; then echo "::warning::a tela inicial no Linux saiu com código $code"; fi
+
+      - name: Gerar AppImage e .tar.gz
+        run: |
+          v="1.0.${{ github.run_number }}"
+          mkdir -p out
+          curl -fsSL -o appimagetool https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
+          ARCH=x86_64 APPIMAGE_EXTRACT_AND_RUN=1 ./appimagetool --no-appstream AppDir "out/Cartucho-$v-linux-x86_64.AppImage"
+          mv AppDir Cartucho && tar czf "out/Cartucho-$v-linux-x86_64.tar.gz" Cartucho && mv Cartucho AppDir
+          cd out && sha256sum * > SHA256SUMS-linux.txt && cat SHA256SUMS-linux.txt && ls -la
+
+      - name: Publicar na mesma versão
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          files: out/*
+
   ios:
     needs: build
     runs-on: macos-15
@@ -406,7 +532,7 @@ jobs:
       - name: Compilar o Cartucho para iPhone
         run: |
           cmake -S desktop -B build-ios -G "Unix Makefiles" -DCMAKE_SYSTEM_NAME=iOS -DCMAKE_OSX_ARCHITECTURES=arm64 \
-            -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_OSX_DEPLOYMENT_TARGET=14.0 -DCMAKE_BUILD_TYPE=Release -DCARTUCHO_VERSION=1.0.${{ github.run_number }} \
             -DSDL2_DIR="$PWD/desktop/third_party/sdl-ios/lib/cmake/SDL2"
           cmake --build build-ios -j 4
           BIN=$(find build-ios -name Cartucho -type f -perm -u+x | head -1)
@@ -475,7 +601,7 @@ jobs:
           APP=Payload/Cartucho.app
           v="1.0.${{ github.run_number }}"
           cp "$BIN" $APP/Cartucho
-          cp desktop/assets/*.ttf desktop/assets/brand_icon.png $APP/assets/
+          cp desktop/assets/*.ttf desktop/assets/brand_icon.png desktop/assets/intro.wav $APP/assets/
           # Botões de milhares de controles (lista da comunidade SDL_GameControllerDB, licença zlib).
           curl -fsSL -o $APP/gamecontrollerdb.txt https://raw.githubusercontent.com/mdqinc/SDL_GameControllerDB/master/gamecontrollerdb.txt || echo "::warning::sem gamecontrollerdb"
           if [ -f loja-art/loja.tsv ]; then cp loja-art/loja.tsv $APP/loja.tsv; fi
