@@ -16,6 +16,22 @@ Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o 
 
 ---
 
+## Novidades (versão 1.0.89)
+
+Pense no Cartucho como uma caixa de brinquedos que fica melhor a cada versão. Veja o que mudou:
+
+- **Cara nova.** O ícone agora é um cartucho cinza sobre um quadrado roxo, com quatro bolinhas coloridas no meio: azul, vermelha, amarela e verde, sempre nessa ordem, girando como o ponteiro do relógio.
+- **Abertura animada.** Quando você abre o app, o cartucho cai na tela, encaixa, as bolinhas acendem uma por uma e aparece o nome *Cartucho*. Dura uns segundos. Quer pular? É só tocar na tela ou apertar qualquer botão.
+- **O app avisa quando tem versão nova.** Aparece uma janelinha dizendo "Tem versão nova do Cartucho". Você escolhe: **Atualizar agora** (ele baixa e instala sozinho) ou **Depois**. Seus jogos e saves não somem.
+- **Agora tem Cartucho para Linux.** Linux é outro jeito de deixar o computador funcionando, como o Windows. Agora ele também ganhou o Cartucho.
+- **Abas com nomes novos.** A *Loja* virou **Explorar** (onde você acha jogos grátis) e o *Online* virou **Amigos** (onde você conversa e joga junto).
+- **Jogos grandes que vêm em pedaços ou "amassados" (compactados)** agora abrem sozinhos. O Cartucho junta os pedaços, "desamassa" o jogo e mostra quanto falta, em porcentagem. Só demora na primeira vez.
+- **A sua nota aparece na página do jogo**, e os botões agora cabem numa linha só.
+
+Quer ver o que mudou em cada versão? Olhe em **[Releases](https://github.com/andrefeeelipe/Cartucho/releases)**: cada versão tem a sua lista de novidades.
+
+---
+
 ## Como instalar
 
 O jeito mais fácil é pelo site: **[cartucho-emulador.netlify.app](https://cartucho-emulador.netlify.app)**. Ele sempre mostra a versão mais nova e já sabe se você está no celular ou no computador.
@@ -110,6 +126,16 @@ Embaixo da tela ficam quatro abas: **Biblioteca**, **Explorar**, **Amigos** e **
 - **Continuar jogando:** o último jogo aparece no topo, com um botão roxo para voltar a jogar na hora.
 - **Toque numa capa** para abrir a página do jogo: horas jogadas, saves, sua nota, troféus e os botões **Jogar** e **Compartilhar**.
 - No canto de cima ficam o **+** (para abrir um jogo ou uma pasta) e a sua foto (Perfil e Coleção).
+
+### Abertura
+Toda vez que você abre o Cartucho, aparece uma animação curtinha: o cartucho desce, encaixa e as quatro bolinhas acendem. Tem até um somzinho. No celular ele fica quieto se o telefone estiver no silencioso, e não para a música que você estiver ouvindo. Embaixo aparece o número da versão (por exemplo, *v1.0.89*). Quer pular? Toque na tela ou aperte um botão.
+
+### Atualizar o app (sem complicação)
+Quando sai uma versão nova, o Cartucho mostra a janelinha **Tem versão nova do Cartucho**, com a lista do que mudou.
+- **Atualizar agora:** ele baixa a versão nova do GitHub e instala por cima. No Android, o celular pergunta se pode instalar; na primeira vez, ele pede para você liberar o Cartucho em *Instalar apps desconhecidos* (é só ligar a chavinha e voltar). No Windows e no Linux, ele fecha, atualiza e abre de novo sozinho.
+- **Depois:** a janelinha some. Você pode atualizar quando quiser em **Ajustes → Atualização** (no computador, em *Ajustes → BIOS e sobre*).
+- Seus jogos, saves, notas e ajustes **continuam lá**. Nada se perde.
+- No iPhone e no Windows sem instalar (o `.zip`), o botão abre o site para você baixar a versão nova.
 
 ### Explorar: jogos grátis
 Mais de **9 mil jogos de graça**, que os próprios criadores deixaram todo mundo jogar:
@@ -241,7 +267,8 @@ Espere alguns segundos com o app aberto: ele reconhece os jogos aos poucos. Se f
 - **PlayStation 2** pesa bastante no celular. Nem todo jogo roda bem.
 - **Nintendo 3DS** precisa de um celular forte, e o jogo precisa estar "aberto" (descriptografado), nos formatos `.3ds`, `.cci`, `.cxi` ou `.3dsx`.
 - **iPhone (primeira versão):** sem saves no Google Drive, sem salas online e sem conquistas por enquanto. PSP e Nintendo 64 podem engasgar, porque o iPhone não deixa os emuladores usarem JIT.
-- Arquivos `.rar` do tipo RAR5 ainda não abrem.
+- Arquivos `.rar` do tipo RAR5 ainda não abrem. Se aparecer esse aviso, use `.zip` ou `.7z`.
+- **Linux (primeira versão):** ainda sem saves no Google Drive.
 - Jogos feitos de vários arquivos (`.cue`/`.bin`, `.gdi`, `.m3u`) precisam ser adicionados pelo botão **Adicionar pasta**.
 - O reconhecimento de nome ainda não lê `.cue`, `.chd` e `.cso`, e por enquanto só funciona no celular.
 
@@ -255,6 +282,7 @@ O visual lembra os videogames cinza dos anos 90: plástico claro, listras roxas 
 |---|---|
 | **Cores** | Cinza console `#E3E3EA`, roxo `#4F43AE` e os quatro pontos: vermelho `#D3262F`, amarelo `#F0BE1E`, verde `#23965A` e azul `#2A5DB8` |
 | **Letras** | [Space Grotesk](https://github.com/floriankarsten/space-grotesk) nos títulos e [Inter](https://rsms.me/inter/) no resto (as duas são grátis, licença OFL) |
+| **Ícone** | Um cartucho cinza com ombros, um rótulo escuro e quatro bolinhas em cruz (azul em cima, depois vermelha, amarela e verde), sobre um quadrado roxo de cantos arredondados |
 | **Jeito** | Uma ideia por tela, cantos arredondados e frases curtas |
 
 ---
@@ -292,11 +320,16 @@ Toda vez que alguém manda uma mudança para a branch `main`, o **GitHub Actions
 2. **Monta o app:** um para Android, um para Windows, um para Linux (AppImage) e um para iPhone (o `.ipa`, num Mac do GitHub).
 3. **Testa de verdade:**
    - no Android, liga um celular de mentira e testa a sala de jogar junto, a Loja e os downloads;
-   - no Windows, abre jogos grátis de vários videogames para ver se rodam.
+   - no Windows, abre jogos grátis de vários videogames para ver se rodam;
+   - no Linux, abre a tela inicial num computador de mentira (sem placa de vídeo) para ver se não fecha.
 4. **Publica** tudo em **Releases**, junto com o arquivo `SHA256SUMS`. Ele é como uma "impressão digital" de cada arquivo, para conferir que ninguém mexeu nele.
 5. **O site se atualiza sozinho:** os botões de download sempre pegam a versão mais nova das Releases.
 
 Mudanças só na pasta `site/` **não** montam o app de novo. Elas só atualizam o site.
+
+**As novidades de cada versão** ficam no arquivo [`NOVIDADES.md`](NOVIDADES.md). O robô copia esse texto para a página da versão no GitHub, e o próprio app mostra os itens da lista na janelinha "Tem versão nova". Antes de mandar uma versão nova, troque os itens desse arquivo (frases curtas, uma por linha, começando com `- `).
+
+**O ícone** nasce de um desenho só: a pasta `brand/` (dentro do zip) tem o desenho e o `gen.py`, que cria os ícones de todos os tamanhos (Android, iPhone, Windows, Linux e site) de uma vez.
 
 ### Segredos do repositório
 
