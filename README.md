@@ -16,7 +16,7 @@ Sabe aqueles videogames de antigamente, como o Super Nintendo, o Mega Drive e o 
 
 ---
 
-## Novidades (versão 1.0.89)
+## Novidades (versão 1.0.90)
 
 Pense no Cartucho como uma caixa de brinquedos que fica melhor a cada versão. Veja o que mudou:
 
@@ -128,7 +128,7 @@ Embaixo da tela ficam quatro abas: **Biblioteca**, **Explorar**, **Amigos** e **
 - No canto de cima ficam o **+** (para abrir um jogo ou uma pasta) e a sua foto (Perfil e Coleção).
 
 ### Abertura
-Toda vez que você abre o Cartucho, aparece uma animação curtinha: o cartucho desce, encaixa e as quatro bolinhas acendem. Tem até um somzinho. No celular ele fica quieto se o telefone estiver no silencioso, e não para a música que você estiver ouvindo. Embaixo aparece o número da versão (por exemplo, *v1.0.89*). Quer pular? Toque na tela ou aperte um botão.
+Toda vez que você abre o Cartucho, aparece uma animação curtinha: o cartucho desce, encaixa e as quatro bolinhas acendem. Tem até um somzinho. No celular ele fica quieto se o telefone estiver no silencioso, e não para a música que você estiver ouvindo. Embaixo aparece o número da versão (por exemplo, *v1.0.90*). Quer pular? Toque na tela ou aperte um botão.
 
 ### Atualizar o app (sem complicação)
 Quando sai uma versão nova, o Cartucho mostra a janelinha **Tem versão nova do Cartucho**, com a lista do que mudou.
